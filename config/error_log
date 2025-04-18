@@ -1,0 +1,120 @@
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php on line 16
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php on line 16
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php on line 16
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php on line 17
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php on line 9
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php on line 9
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php on line 18
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php on line 18
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php on line 17
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php on line 18
+[31-Mar-2025 17:18:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/database.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/database.php on line 19
+[31-Mar-2025 17:18:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/database.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/database.php on line 19
+[31-Mar-2025 17:18:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php on line 18
+[31-Mar-2025 17:18:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php on line 18
+[31-Mar-2025 17:18:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php on line 17
+[31-Mar-2025 17:18:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/database.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/database.php on line 19
+[31-Mar-2025 17:18:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php on line 18
+[31-Mar-2025 17:18:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php on line 17
+[31-Mar-2025 17:18:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php on line 16
+[31-Mar-2025 17:18:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php on line 18
+[31-Mar-2025 17:18:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php on line 9
+[31-Mar-2025 17:18:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php on line 18
+[31-Mar-2025 17:18:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php on line 9
+[31-Mar-2025 17:18:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/auth.php on line 17
+[31-Mar-2025 17:18:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php on line 16
+[31-Mar-2025 17:18:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/broadcasting.php on line 18
+[31-Mar-2025 17:18:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/cache.php on line 18
+[31-Mar-2025 17:18:22 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/chatify.php on line 9
+[01-Apr-2025 00:29:22 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php on line 16
+[01-Apr-2025 00:44:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/xadtstey/xpdi.xadtechnologies.us/config/app.php on line 16
