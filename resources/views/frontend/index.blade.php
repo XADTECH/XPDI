@@ -18,7 +18,11 @@
                 <span><i class="bi bi-telephone"></i> +971 54 701 4800</span>
                 <span><i class="bi bi-envelope-at"></i> info@xpdi.com</span>
             </div>
-            <a href="#" class="text-dark fw-semibold">LOGIN/REGISTER</a>
+            <span class="text-dark fw-semibold">
+                <a href="{{ url('/login') }}" style="text-decoration: none; color: inherit;">LOGIN</a> /
+                <a href="{{ url('/register') }}" style="text-decoration: none; color: inherit;">REGISTER</a>
+            </span>
+
         </div>
     </div>
 
