@@ -69,7 +69,7 @@
                         <a class="nav-link active" href="#!" style="border-bottom: 2px solid #00bcd4">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">ABOUT</a>
+                        <a class="nav-link" href="#!">ABOUT</a>
                     </li>
 
                     <!-- Courses Dropdown -->
@@ -113,7 +113,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="blogs.html">BLOGS</a>
+                        <a class="nav-link" href="#!">BLOGS</a>
                     </li>
                 </ul>
             </div>
