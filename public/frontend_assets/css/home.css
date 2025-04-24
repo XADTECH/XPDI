@@ -1,0 +1,371 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+}
+.text-warning {
+    color: #f5810b !important;
+}
+/*//////////////////////////////////////////// Top Contact Bar ///////////////////////////////////////////////////////////////////*/
+
+/* Top Contact Bar */
+.top-bar {
+    background-color: #f0ece9;
+    font-size: 14px;
+    height: 50px;
+    color: #0a122a;
+}
+
+/* ////////////////////////////////////  style for hero section ////////////////////////////////////////////////////////////////// */
+.hero-section {
+    background: url("https://i.ibb.co/tpj4C05Y/Hero-section-bg-image.png")
+        no-repeat center center/cover;
+    min-height: 140vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 80px 20px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15); /* light overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.highlight-orange {
+    color: #f7941e;
+    font-weight: bold;
+}
+
+.highlight-yellow {
+    color: #ffe600;
+    font-weight: bold;
+}
+
+/* .feature-card {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  backdrop-filter: blur(5px);
+  text-align: center;
+  margin-bottom: 20px;
+} */
+
+.feature-card {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+.feature-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #f7941e;
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        padding: 60px 15px;
+    }
+
+    .hero-content h1,
+    .hero-content h2,
+    .hero-content h3,
+    .hero-content p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .hero-content h1.display-5,
+    .hero-content h1.display-4 {
+        font-size: 4.5rem;
+    }
+
+    .feature-icon {
+        font-size: 27px;
+    }
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 15px;
+    }
+
+    .hero-content h1,
+    .hero-content h2,
+    .hero-content h3,
+    .hero-content p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .hero-content h1.display-5,
+    .hero-content h1.display-4 {
+        font-size: 2rem;
+    }
+
+    .feature-icon {
+        font-size: 24px;
+    }
+}
+
+/* ////////////////////////////////// style for populer courses /////////////////////////////////////////  */
+.course-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #0d6efd;
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 0.5rem;
+}
+.course-card {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    transition: transform 0.2s;
+}
+.course-card:hover {
+    transform: scale(1.01);
+}
+.course-img-wrapper {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+.course-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.rating-stars {
+    color: orange;
+}
+.btn-learn {
+    background-color: #00698f;
+    color: white;
+    width: 100%;
+}
+/* /////////////////////////////////////////////////   Style for How XPDI Works ///////////////////////////////////////////////// */
+
+.how_it_work_card {
+    border: 1px solid #37b7cb;
+}
+
+/* //////////////////////////////////////////////// style for Skill building ///////////////////////////////////////////////////// */
+
+.skill-building-section {
+    padding: 50px 0;
+    background-color: #f0ede5;
+}
+
+.skill-card {
+    background-color: #006685;
+    color: white;
+    border-radius: 20px;
+    padding: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #f6e84e; /* Yellow */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.feature-list {
+    margin-bottom: 30px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.feature-item i {
+    color: #f6e84e; /* Yellow */
+    font-size: 1.25rem;
+    margin-right: 15px;
+}
+
+.feature-item span {
+    font-size: 1.1rem;
+}
+
+.register-btn {
+    display: inline-block;
+    background-color: white;
+    color: #006685;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: #f6e84e;
+    color: #006685;
+}
+
+.register-btn i {
+    margin-left: 10px;
+}
+
+.students-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.graduation-icon {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+}
+
+.graduation-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.students-info p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* .student-avatars {
+    display: flex;
+    justify-content: center;
+}
+
+.student-avatars .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin: 0 -8px;
+} */
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .students-card {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .skill-card {
+        padding: 30px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-description {
+        font-size: 1rem;
+    }
+}
+
+.skill-building-section .section-title {
+    font-size: 2.25rem;
+}
+
+.student-avatars {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.student-avatars .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    margin-left: -15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    position: relative;
+}
+
+.student-avatars .avatar:first-child {
+    margin-left: 0;
+}
+
+/* ////////////////////////////////////////////// style for our Expert Instructors //////////////////////////////////////////////// */
+
+.expert-icon {
+    color: #87cefa; /* Light sky blue */
+    font-size: 1.75rem; /* Increase size (adjust as needed) */
+}
+
+.instructor-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+/* ///////////////////////////////////////// style for Counters and Testimonials ////////////////////////////////////////////////// */
+
+.text-orange {
+    color: #ff7a00;
+}
+.border-orange {
+    border-color: #f7a900 !important;
+}
+/* /////////////////////////////////////////// STyle for footer //////////////////////////////////////////////////////////////// */
+
+.social-icon {
+    color: #00d4ff;
+    font-size: 1.25rem;
+    transition: 0.3s ease;
+}
+.social-icon:hover {
+    color: #ffffff;
+}

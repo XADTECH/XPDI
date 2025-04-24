@@ -381,19 +381,17 @@ class FrontendController extends Controller
     }
 
 
-    public function allCourseGrid(){
+    public function allCourseGrid()
+    {
         $all_courses = Course::with('user')->latest()->paginate(9);
 
         return view('frontend.pages.all-courses.grid.index', compact('all_courses'));
     }
 
-    public function allCourseList(){
+    public function allCourseList()
+    {
         $all_courses = Course::with('user')->latest()->paginate(9);
 
         return view('frontend.pages.all-courses.list.index', compact('all_courses'));
     }
-
-
-
-
 }

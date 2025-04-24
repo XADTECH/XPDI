@@ -72,15 +72,16 @@ class BlogController extends Controller
         return redirect()->back()->with('success', 'Blog Updated successfully');
     }
 
-    public function blogDetails($slug){
+    public function blogDetails($slug)
+    {
         $blog = BlogPost::where('post_slug', $slug)->first();
         $category = Blogcategory::orderBy('category_name', 'asc')->with('blogpost')->get();
-        $all_blog = BlogPost::where('id','!=', $blog->id)->limit(3)->get();
+        $all_blog = BlogPost::where('id', '!=', $blog->id)->limit(3)->get();
         return view('frontend.pages.blog.index', compact('blog', 'category', 'all_blog'));
-
     }
 
-    public function category($slug){
+    public function category($slug)
+    {
 
         $blog_data = Blogcategory::where('category_slug', $slug)->first();
 
@@ -104,7 +105,8 @@ class BlogController extends Controller
         return redirect()->route('admin.blog.index')->with('success', 'Blog deleted successfully.');
     }
 
-    public function allBlog(){
+    public function allBlog()
+    {
         $all_blog = BlogPost::latest()->paginate(9);
         return view('frontend.pages.blog.all-blog.index', compact('all_blog'));
     }
@@ -115,5 +117,4 @@ class BlogController extends Controller
         $filteredPosts = BlogPost::where('post_tags', 'like', "%{$tag}%")->paginate(10);
         return view('frontend.pages.blog.tag.index', compact('filteredPosts', 'tag'));
     }
-
 }

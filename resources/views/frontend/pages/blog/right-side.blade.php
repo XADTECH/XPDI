@@ -69,7 +69,7 @@
                 @endforeach
 
                 <div class="view-all-course-btn-box">
-                    <a href="{{route('allBlog')}}" class="btn theme-btn w-100">View All Posts <i
+                    <a href="{{ route('allBlog') }}" class="btn theme-btn w-100">View All Posts <i
                             class="la la-arrow-right icon ml-1"></i></a>
                 </div>
             </div>
@@ -80,17 +80,17 @@
                 <h3 class="card-title fs-18 pb-2">Post Tags</h3>
                 <div class="divider"><span></span></div>
                 <ul class="generic-list-item generic-list-item-boxed d-flex flex-wrap fs-15">
-                    <li class="mr-2"><a href="{{route('blogTag', 'business')}}">Business</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'event')}}">Event</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'video')}}">Video</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'audio')}}">Audio</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'software')}}">Software</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'conference')}}">Conference</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'marketing')}}">Marketing</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'freelance')}}">Freelance</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'tips')}}">Tips</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'technology')}}">Technology</a></li>
-                    <li class="mr-2"><a href="{{route('blogTag', 'entrepreneur')}}">Entrepreneur</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'business') }}">Business</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'event') }}">Event</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'video') }}">Video</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'audio') }}">Audio</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'software') }}">Software</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'conference') }}">Conference</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'marketing') }}">Marketing</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'freelance') }}">Freelance</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'tips') }}">Tips</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'technology') }}">Technology</a></li>
+                    <li class="mr-2"><a href="{{ route('blogTag', 'entrepreneur') }}">Entrepreneur</a></li>
                 </ul>
             </div>
         </div><!-- end card -->

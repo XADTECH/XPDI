@@ -1,8 +1,7 @@
 @extends('frontend.master')
 
 @section('content')
-
-@include('frontend.section.breadcrumb', ['title' => 'FAQ'])
+    @include('frontend.section.breadcrumb', ['title' => 'FAQ'])
 
     <section class="faq-topic-area section--padding bg-gray">
         <div class="container">
@@ -19,7 +18,7 @@
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
 
-           @include('frontend.pages.faq.faq-topics')
+            @include('frontend.pages.faq.faq-topics')
 
 
         </div><!-- end container -->
@@ -34,7 +33,7 @@
 
                 @include('frontend.pages.faq.faq')
 
-               @include('frontend.pages.faq.contact-form')
+                @include('frontend.pages.faq.contact-form')
 
 
             </div><!-- end row -->
