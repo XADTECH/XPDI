@@ -860,8 +860,8 @@
                         development.
                     </p>
                     <div class="d-flex gap-3 mt-3">
-                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="http://facebook.com/xadpdi" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="http://instagram.com/xadpdi" class="social-icon"><i class="bi bi-instagram"></i></a>
                         <a href="#" class="social-icon"><i class="bi bi-x"></i></a>
                         <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
                     </div>
