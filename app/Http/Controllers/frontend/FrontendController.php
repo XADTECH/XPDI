@@ -192,23 +192,9 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function pagination(Request $request)
+    public function courses(Request $request)
     {
-
-        // পেজ নাম্বার ফেচ করো, ডিফল্ট পেজ হবে ১
-        $page = $request->get('page', 1);
-
-        // পেজ অনুযায়ী ডাটা লোড
-        $all_courses = Course::with('user')->latest()->paginate(1, ['*'], 'page', $page);
-
-        // Partial ভিউ রেন্ডার করে HTML তৈরি
-        $html = view('frontend.pages.all-courses.partials.course', compact('all_courses'))->render();
-
-        // JSON রেসপন্স
-        return response()->json([
-            'status' => 'success',
-            'html' => $html,
-        ]);
+        return view('frontend.courses');
     }
 
 

@@ -260,7 +260,7 @@ Route::get('/course/all', [FrontendController::class, 'courseAll']);
 
 /* ajax pagination */
 
-Route::get('/courses', [FrontendController::class, 'pagination']);
+Route::get('/courses', [FrontendController::class, 'courses']);
 
 Route::get('/all-course/filter', [FrontendController::class, 'courseFilter']);
 
