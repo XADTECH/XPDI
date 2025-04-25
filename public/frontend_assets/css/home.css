@@ -141,6 +141,7 @@ body {
     overflow: hidden;
     background: white;
     transition: transform 0.2s;
+    text-align: left;
 }
 .course-card:hover {
     transform: scale(1.01);

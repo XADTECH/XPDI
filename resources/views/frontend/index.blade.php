@@ -66,18 +66,58 @@
         </p>
         <div class="row g-4 justify-content-center">
             <!-- Card 1 -->
+
+            <div class="col-md-6 col-lg-4">
+                <div class="course-card p-3">
+                    <div class="course-img-wrapper">
+                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                            alt="Course image" />
+                        <div class="course-badge">Software Development</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                                class="rounded-circle me-2" width="30" height="30" alt="Author">
+                            <span class="text-dark small fw-semibold">Mr. Nabeel</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="text-warning small me-1">★★★★★</div>
+                            <strong class="me-1 small">5.0</strong>
+                            <small class="text-muted">(170)</small>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2025</h6>
+                    <p class="text-muted small mb-2 ps-0 ms-0">
+                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
+                        Tailwind, advanced patterns
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-info text-dark small">Beginner</span>
+                        <span class="text-orange fw-bold">Paid</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                        <span><i class="bi bi-people"></i> 180 Students</span>
+                        <span><i class="bi bi-clock"></i> 5 hrs</span>
+                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
+                    </div>
+                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                </div>
+            </div>
+
+
             <div class="col-md-6 col-lg-4">
                 <div class="course-card p-3">
                     <div class="course-img-wrapper">
                         <img src="{{ asset('frontend_assets/images/Courses/english-british-england-language-education-concept_53876-133734.jpg') }}"
                             alt="Course image" />
-                        <div class="course-badge">Development</div>
+                        <div class="course-badge">Language and Office skills</div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('frontend_assets/images/Courses/english-british-england-language-education-concept_53876-133734.jpg') }}"
                                 class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">nabeel javed</span>
+                            <span class="text-dark small fw-semibold">Ms Alveena</span>
                         </div>
                         <div class="d-flex align-items-center">
                             <div class="text-warning small me-1">★★★★★</div>
@@ -86,18 +126,17 @@
                         </div>
                     </div>
 
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2024</h6>
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Speak and Understand English with Confidence</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
-                    </p>
+                        Build your english speaking, listening and grammer skills, step by step. This course focuses on
+                        everyday... </p>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
                         <span class="text-orange fw-bold">Free</span>
                     </div>
                     <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 1 Students</span>
-                        <span><i class="bi bi-clock"></i> 5.6 hrs</span>
+                        <span><i class="bi bi-people"></i> 110 Students</span>
+                        <span><i class="bi bi-clock"></i> 5 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 3 lessons</span>
                     </div>
                     <button class="btn btn-learn mt-3">START LEARNING →</button>
@@ -109,34 +148,34 @@
                     <div class="course-img-wrapper">
                         <img src="{{ asset('frontend_assets/images/Courses/human-resource-hiring-recruiter-select-career-concept.jpg') }}"
                             alt="Course image" />
-                        <div class="course-badge">Development</div>
+                        <div class="course-badge">Language and Office skills</div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('frontend_assets/images/Courses/human-resource-hiring-recruiter-select-career-concept.jpg') }}"
                                 class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">nabeel javed</span>
+                            <span class="text-dark small fw-semibold">Ms Maheen</span>
                         </div>
                         <div class="d-flex align-items-center">
-                            <div class="text-warning small me-1">★★★★★</div>
-                            <strong class="me-1 small">5.0</strong>
-                            <small class="text-muted">(12)</small>
+                            <div class="text-warning small me-1">★★★★</div>
+                            <strong class="me-1 small">4.0</strong>
+                            <small class="text-muted">(16)</small>
                         </div>
                     </div>
 
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2024</h6>
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Introduction to Human Resource Management</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
+                        Learn the essentials of HR, including recruitment, employee relations, training and performace
+                        management...
                     </p>
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-info text-dark small">Beginner</span>
+                        <span class="badge bg-info text-dark small">Advanced</span>
                         <span class="text-orange fw-bold">Free</span>
                     </div>
                     <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 1 Students</span>
+                        <span><i class="bi bi-people"></i> 50 Students</span>
                         <span><i class="bi bi-clock"></i> 5.6 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 3 lessons</span>
+                        <span><i class="bi bi-play-circle"></i> 5 lessons</span>
                     </div>
                     <button class="btn btn-learn mt-3">START LEARNING →</button>
                 </div>
@@ -146,78 +185,41 @@
             <div class="col-md-6 col-lg-4">
                 <div class="course-card p-3">
                     <div class="course-img-wrapper">
-                        <img src="{{ asset('frontend_assets/images/Courses/marketing-strategy-planning-strategy-concept (1).jpg') }}"
-                            alt="Course image" />
-                        <div class="course-badge">Development</div>
+                        <img src="{{ asset('frontend_assets/images/Courses/telecom.jpeg') }}" alt="Course image" />
+                        <div class="course-badge">Telecom and Fixed Networks</div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('frontend_assets/images/Courses/marketing-strategy-planning-strategy-concept (1).jpg') }}"
+                            <img src="{{ asset('frontend_assets/images/Courses/telecom.jpeg') }}"
                                 class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">nabeel javed</span>
+                            <span class="text-dark small fw-semibold">Mr. Azhar Iqbal</span>
                         </div>
                         <div class="d-flex align-items-center">
                             <div class="text-warning small me-1">★★★★★</div>
                             <strong class="me-1 small">5.0</strong>
-                            <small class="text-muted">(12)</small>
+                            <small class="text-muted">(150)</small>
                         </div>
                     </div>
 
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2024</h6>
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Master of modern telecommunications</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
+                        Learn telecommunications from industry experts and gain hands-on skills to thrive in today’s
+                        connected world
                     </p>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
-                        <span class="text-orange fw-bold">Free</span>
+                        <span class="text-orange fw-bold">Paid</span>
                     </div>
                     <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 1 Students</span>
-                        <span><i class="bi bi-clock"></i> 5.6 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 3 lessons</span>
+                        <span><i class="bi bi-people"></i> 160 Students</span>
+                        <span><i class="bi bi-clock"></i> 4 hrs</span>
+                        <span><i class="bi bi-play-circle"></i> 6 lessons</span>
                     </div>
                     <button class="btn btn-learn mt-3">START LEARNING →</button>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4">
-                <div class="course-card p-3">
-                    <div class="course-img-wrapper">
-                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                            alt="Course image" />
-                        <div class="course-badge">Development</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">nabeel javed</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="text-warning small me-1">★★★★★</div>
-                            <strong class="me-1 small">5.0</strong>
-                            <small class="text-muted">(12)</small>
-                        </div>
-                    </div>
 
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2024</h6>
-                    <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-info text-dark small">Beginner</span>
-                        <span class="text-orange fw-bold">Free</span>
-                    </div>
-                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 1 Students</span>
-                        <span><i class="bi bi-clock"></i> 5.6 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 3 lessons</span>
-                    </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
-                </div>
-            </div>
 
 
             <div class="col-md-6 col-lg-4">
@@ -225,13 +227,13 @@
                     <div class="course-img-wrapper">
                         <img src="{{ asset('frontend_assets/images/Courses/shopping-banking-accounting-webpage-text-search-concept.jpg') }}"
                             alt="Course image" />
-                        <div class="course-badge">Development</div>
+                        <div class="course-badge">Accounts & Finance</div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('frontend_assets/images/Courses/shopping-banking-accounting-webpage-text-search-concept.jpg') }}"
                                 class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">nabeel javed</span>
+                            <span class="text-dark small fw-semibold">Mr. Shahbaz</span>
                         </div>
                         <div class="d-flex align-items-center">
                             <div class="text-warning small me-1">★★★★★</div>
@@ -240,10 +242,10 @@
                         </div>
                     </div>
 
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2024</h6>
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Basic Accounts and Finance for Everyday Use</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
+                        Understand the fundamentals of accounting, budgeting and money management. This course is ideal
+                        for students,...
                     </p>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
@@ -264,34 +266,34 @@
                     <div class="course-img-wrapper">
                         <img src="{{ asset('frontend_assets/images/Courses/young-adult-reusing-fabric-material.jpg') }}"
                             alt="Course image" />
-                        <div class="course-badge">Development</div>
+                        <div class="course-badge">Stitching and Embridory</div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('frontend_assets/images/Courses/young-adult-reusing-fabric-material.jpg') }}"
                                 class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">nabeel javed</span>
+                            <span class="text-dark small fw-semibold">Ms Shahana</span>
                         </div>
                         <div class="d-flex align-items-center">
-                            <div class="text-warning small me-1">★★★★★</div>
-                            <strong class="me-1 small">5.0</strong>
-                            <small class="text-muted">(12)</small>
+                            <div class="text-warning small me-1">★★★★</div>
+                            <strong class="me-1 small">4.0</strong>
+                            <small class="text-muted">(65)</small>
                         </div>
                     </div>
 
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2024</h6>
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Learn Stitching and Embridory Step by Step </h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
+                        Discover the art of stitching and embridory with easy-to-follow lessons. From basic hand
+                        stitches to...
                     </p>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
-                        <span class="text-orange fw-bold">Free</span>
+                        <span class="text-orange fw-bold">Paid</span>
                     </div>
                     <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 1 Students</span>
-                        <span><i class="bi bi-clock"></i> 5.6 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 3 lessons</span>
+                        <span><i class="bi bi-people"></i> 70 Students</span>
+                        <span><i class="bi bi-clock"></i> 6.6 hrs</span>
+                        <span><i class="bi bi-play-circle"></i> 9 lessons</span>
                     </div>
                     <button class="btn btn-learn mt-3">START LEARNING →</button>
                 </div>
@@ -803,5 +805,5 @@
 </script>
 
 
-<!-- Main Navbar -->
+<!-- footer -->
 @include('frontend_components.footer')
