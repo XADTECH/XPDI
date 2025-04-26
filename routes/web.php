@@ -67,6 +67,7 @@ Route::get('/auth/google-callback', [SocialController::class, 'googleAuthenticat
 /* Admin Route   */
 
 
+Route::post('/register-user', [UserController::class, 'register'])->name('user.register');
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 
