@@ -23,9 +23,37 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
+    // public function store(LoginRequest $request): RedirectResponse
+    // {
+    //     $request->authenticate();
+
+    //     $request->session()->regenerate();
+
+    //     $user = $request->user();
+
+    //     // Update the last_login_at timestamp
+    //     $user->update(['last_login_at' => now()]);
+
+    //     if ($user->isAdmin()) {
+    //         return redirect('/admin/dashboard');
+    //     } elseif ($user->isInstructor()) {
+    //         return redirect('/instructor/dashboard');
+    //     } else {
+    //         return redirect('/user/dashboard');
+    //     }
+
+    //     // return redirect()->intended(route('dashboard', absolute: false));
+    // }
+
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        try {
+            $request->authenticate();
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()
+                ->withInput($request->only('email'))
+                ->with('error', 'Invalid email or password.');
+        }
 
         $request->session()->regenerate();
 
@@ -41,9 +69,8 @@ class AuthenticatedSessionController extends Controller
         } else {
             return redirect('/user/dashboard');
         }
-
-        // return redirect()->intended(route('dashboard', absolute: false));
     }
+
 
     /**
      * Destroy an authenticated session.

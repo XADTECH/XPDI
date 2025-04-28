@@ -33,6 +33,7 @@
         </div>
     </form>
 
+    <!-- Password Toggle Script -->
     <script>
         document.querySelectorAll(".toggle-password").forEach(icon => {
             icon.addEventListener("click", function() {
@@ -45,16 +46,26 @@
         });
     </script>
 
+    <!-- SweetAlert2 Error Popup -->
+    <script src="{{ asset('frontend_assets/js/sweetalert2.all.min.js') }}"></script>
+
+    <!-- SweetAlert2 Popup after loading the library -->
     <script>
-        @if ($errors->any())
+        @if (session('error'))
             Swal.fire({
+                toast: true,
                 icon: 'error',
-                title: 'Login Failed',
-                text: '{{ $errors->first() }}',
+                title: '{{ session('error') }}',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                background: '#e3342f',
+                color: '#ffffff',
+                iconColor: '#ffffff',
             });
         @endif
     </script>
-
 
 </body>
 
