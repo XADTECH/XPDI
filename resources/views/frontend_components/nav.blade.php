@@ -35,10 +35,11 @@
             <!-- Menu -->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase fw-bold">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#!" style="border-bottom: 2px solid #00bcd4">HOME</a>
+                    <a class="nav-link active" href="{{ url('/') }}"
+                        style="border-bottom: 2px solid #00bcd4">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!">ABOUT</a>
+                    <a class="nav-link" href="{{ url('/about-us') }}">ABOUT</a>
                 </li>
 
                 <!-- Courses Dropdown -->

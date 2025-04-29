@@ -46,10 +46,6 @@ use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Route;
 use Chatify\Facades\ChatifyMessenger;
 
-
-
-
-
 /*
 Route::get('/dashboard', function () {
     return view('dashboard');

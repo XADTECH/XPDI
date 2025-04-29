@@ -1,0 +1,270 @@
+.hero-section {
+    position: relative;
+    height: 180px; /* Adjusted height to better match your input image */
+    background: url("https://i.ibb.co/35dH74Hk/courses-slider.png") no-repeat
+        center center/cover;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+.hero-title {
+    /* Appearance */
+    opacity: 100%;
+    border-radius: 0px;
+
+    /* Typography */
+    font-family: "Roboto Slab", serif;
+    font-weight: 800; /* ExtraBold */
+    font-size: 70px;
+    line-height: auto; /* Auto line height */
+    letter-spacing: 0%;
+    text-align: left; /* Based on the selected alignment icon */
+
+    /* Fill */
+    color: #ffffff;
+}
+/* //////////////////////////////////////////////  Style for Who We Are ////////////////////////////////////////////////// */
+/* Custom CSS */
+body {
+    background-color: #d2d2d2;
+    font-family: "Roboto", sans-serif;
+}
+.who-we-are-section {
+    background-color: #f5f5f5;
+    padding: 4rem 0;
+}
+
+/* Additional responsive padding adjustments */
+@media (max-width: 768px) {
+    .left-aligned-content {
+        padding-left: 1.5rem !important; /* Less padding on mobile */
+    }
+}
+
+.who-we-are-title {
+    color: #f58108; /* Updated to match Figma color #F58108 */
+    font-size: 54px; /* 54px as shown in Figma */
+    font-weight: bold; /* Bold as shown in Figma */
+    margin-bottom: 1.5rem;
+    font-family: "Roboto", sans-serif;
+    line-height: auto; /* Auto line height as shown in Figma */
+    letter-spacing: 0%; /* 0% letter spacing as shown in Figma */
+    opacity: 100%; /* 100% opacity as shown in Figma */
+}
+
+.who-we-are-text {
+    color: #19213d; /* Dark blue color from Figma #19213D */
+    font-size: 32px; /* 32px as shown in Figma */
+    font-weight: 300; /* Light font weight as shown in Figma */
+    line-height: auto; /* Auto line height as shown in Figma */
+    letter-spacing: 0%; /* 0% letter spacing as shown in Figma */
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 0.5rem;
+    opacity: 100%; /* 100% opacity as shown in Figma */
+}
+
+.highlight-text {
+    font-weight: 700;
+    color: #19213d; /* Matching the paragraph color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .who-we-are-title {
+        font-size: 40px; /* Slightly reduced for mobile but still prominent */
+    }
+
+    .who-we-are-text {
+        font-size: 24px; /* Reduced for mobile */
+    }
+}
+/* //////////////////////////////////////////////  style for Our Mission Section////////////////////////////////////////////////// */
+.mission-section {
+    padding: 2% 0;
+    background-color: #ffffff;
+    font-family: "Roboto", sans-serif;
+}
+
+.mission-title {
+    color: #19213d;
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.mission-description {
+    color: #19213d;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.mission-image-container {
+    width: 100%;
+    height: auto;
+}
+
+.mission-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+}
+
+@media (max-width: 992px) {
+    .mission-title {
+        font-size: 42px;
+    }
+
+    .mission-description {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mission-section {
+        padding: 60px 0;
+    }
+
+    .mission-title {
+        font-size: 36px;
+    }
+
+    .mission-description {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mission-section {
+        padding: 40px 0;
+    }
+
+    .row {
+        flex-direction: column-reverse;
+    }
+
+    .mission-title {
+        margin-top: 20px;
+        font-size: 32px;
+    }
+
+    .mission-description {
+        font-size: 18px;
+    }
+}
+/* /////////////////////////////////////////////  Style for milestone section ///////////////////////////////////////////////// */
+
+.milestone-section {
+    background-color: #f4f4f4;
+    padding: 50px 0;
+    position: relative;
+}
+.milestone-title {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: #1a2b4e;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.milestone-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.milestone-item {
+    text-align: center;
+    padding: 0 20px;
+}
+.milestone-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: #f47321;
+    margin-bottom: 5px;
+}
+.milestone-label {
+    font-size: 16px;
+    color: #1a2b4e;
+}
+.divider {
+    width: 1px;
+    height: 60px;
+    background-color: #4fcbc5;
+}
+/* /////////////////////////////////////////// Style for Skill building section /////////////////////////////////////////////////// */
+.banner-section {
+    background: url("https://i.ibb.co/QvrFqJx8/frame.png") no-repeat center
+        center/cover;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 62px 0; /* Gap padding from image 3 */
+}
+
+.banner-content {
+    max-width: 970px; /* Width from image 3 and 5 */
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.banner-heading {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 62px; /* Font size from image 4 */
+    line-height: 1.2;
+    margin-bottom: 16px; /* Gap from image 6 */
+    color: white;
+}
+
+.banner-heading .teal-text {
+    color: #37b7cb; /* Teal color from color selection */
+}
+
+.banner-heading .orange-text {
+    color: #f5810b; /* Orange color from color selection */
+}
+
+.banner-description {
+    font-family: "Roboto", sans-serif;
+    font-weight: medium;
+    font-size: 24px; /* Font size from image 5 */
+    line-height: 1.5;
+    color: white;
+    margin-bottom: 24px;
+    max-width: 970px; /* Width from image 5 */
+}
+
+.register-button {
+    background-color: white;
+    color: #186d8e; /* Blue color from selection colors */
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    width: 230px; /* Width from image 6 */
+    height: 50px; /* Height from image 6 */
+    line-height: 24px;
+    text-align: center;
+}
+
+.register-button:hover {
+    background-color: #f8f8f8;
+    color: #186d8e;
+}
