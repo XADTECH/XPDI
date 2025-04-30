@@ -27,8 +27,6 @@
     font-size: 70px;
     line-height: auto; /* Auto line height */
     letter-spacing: 0%;
-    text-align: left; /* Based on the selected alignment icon */
-
     /* Fill */
     color: #ffffff;
 }
@@ -222,7 +220,7 @@ body {
 .banner-heading {
     font-family: "Roboto", sans-serif;
     font-weight: bold;
-    font-size: 62px; /* Font size from image 4 */
+    font-size: 60px; /* Font size from image 4 */
     line-height: 1.2;
     margin-bottom: 16px; /* Gap from image 6 */
     color: white;
