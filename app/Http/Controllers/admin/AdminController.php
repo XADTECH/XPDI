@@ -151,14 +151,14 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/admin/login');
+        return redirect('/login');
     }
 
-    public function contactView($id){
+    public function contactView($id)
+    {
 
         $contact = Contact::find($id);
 
         return view('backend.admin.contact.show', compact('contact'));
-
     }
 }

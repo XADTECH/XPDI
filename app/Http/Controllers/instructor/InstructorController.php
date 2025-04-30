@@ -56,10 +56,10 @@ class InstructorController extends Controller
         });
 
         $recent_order = Order::where('instructor_id', $instructor_id)->with('course')
-        ->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
-        ->get();
+            ->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
+            ->get();
 
-        return view('backend.instructor.index', compact('totalData', 'lastWeekData', 'instructor_courses','chartData', 'recent_order'));
+        return view('backend.instructor.index', compact('totalData', 'lastWeekData', 'instructor_courses', 'chartData', 'recent_order'));
     }
 
     public function register()
@@ -109,6 +109,6 @@ class InstructorController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/instructor/login');
+        return redirect('/login');
     }
 }
