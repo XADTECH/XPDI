@@ -348,3 +348,8 @@ body {
     /* Alignment */
     text-align: left; /* Based on the alignment icons shown */
 }
+
+#popular,
+#recent {
+    display: none;
+}

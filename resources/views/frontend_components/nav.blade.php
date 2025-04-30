@@ -1,3 +1,4 @@
+<!-- Main Navbar (always visible) -->
 <nav class="navbar navbar-expand-lg navbar-dark py-3" style="background-color: #0c1a38; padding: 1rem 2rem">
     <div class="container">
         <!-- Logo -->
@@ -14,16 +15,13 @@
         <!-- Nav & Search Content -->
         <div class="collapse navbar-collapse" id="mainNavbar">
             <!-- Search box (centered on desktop, full-width on mobile) -->
-            <!-- Updated Search Bar -->
-            <!-- Clean Search Box with Unified Look -->
             <form class="d-flex mx-auto my-3 my-lg-0" style="width: 50%">
                 <div class="input-group w-100"
-                    style="
-            border-radius: 10px;
-            overflow: hidden;
-            background-color: white;
-            height: 48px;
-          ">
+                    style="border-radius: 10px;
+                            overflow: hidden;
+                            background-color: white;
+                            height: 48px;">
+
                     <span class="input-group-text border-0 bg-white">
                         <i class="bi bi-search"></i>
                     </span>
