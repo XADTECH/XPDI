@@ -93,4 +93,6 @@
     </div>
 </section>
 
+
+
 @include('frontend_components.footer')

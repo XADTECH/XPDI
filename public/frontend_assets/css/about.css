@@ -184,7 +184,6 @@ body {
 }
 .milestone-item {
     text-align: center;
-    padding: 0 20px;
 }
 .milestone-number {
     font-size: 48px;
@@ -202,6 +201,7 @@ body {
     background-color: #4fcbc5;
 }
 /* /////////////////////////////////////////// Style for Skill building section /////////////////////////////////////////////////// */
+
 .banner-section {
     background: url("https://i.ibb.co/QvrFqJx8/frame.png") no-repeat center
         center/cover;
