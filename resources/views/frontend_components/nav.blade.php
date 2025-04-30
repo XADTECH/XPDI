@@ -48,7 +48,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         COURSES
                     </a>
-                    <div class="dropdown-menu w-100 shadow p-4 mega-dropdown bg-white mt-2"
+                    <div class="dropdown-menu w-100 shadow p-lg-4 mega-dropdown bg-white mt-2"
                         aria-labelledby="coursesDropdown">
                         <div class="row">
                             <div class="col-md-3">

@@ -275,19 +275,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* .student-avatars {
-    display: flex;
-    justify-content: center;
-}
-
-.student-avatars .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid white;
-    margin: 0 -8px;
-} */
-
 /* Responsive adjustments */
 @media (max-width: 992px) {
     .section-title {
@@ -342,7 +329,7 @@ body {
 /* ////////////////////////////////////////////// style for our Expert Instructors //////////////////////////////////////////////// */
 
 .expert-icon {
-    color: #87cefa; /* Light sky blue */
+    color: #87cefa;
     font-size: 1.75rem; /* Increase size (adjust as needed) */
 }
 
