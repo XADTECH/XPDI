@@ -15,7 +15,8 @@
         <!-- Nav & Search Content -->
         <div class="collapse navbar-collapse" id="mainNavbar">
             <!-- Search box (centered on desktop, full-width on mobile) -->
-            <form class="d-flex mx-auto my-3 my-lg-0" style="width: 50%">
+            {{-- <form class="d-flex mx-auto my-3 my-lg-0" style="width: 50%"> --}}
+            <form class="d-flex mx-auto my-3 my-lg-0 w-100" style="max-width: 500px;">
                 <div class="input-group w-100"
                     style="border-radius: 10px;
                             overflow: hidden;
