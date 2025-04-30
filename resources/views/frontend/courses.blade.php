@@ -317,7 +317,7 @@
             </div>
 
             <!-- popular -->
-            <div id="popular">
+            <div id="popular" style="display: none;">
                 <div class="row">
                     <!-- Course Card 1 -->
                     <div class="col-md-6 mb-4 pe-lg-5">
@@ -399,7 +399,7 @@
 
             </div>
 
-            <div id="recent">
+            <div id="recent" style="display: none;">
                 <div class="row">
                     <!-- Course Card 1 -->
                     <div class="col-md-6 mb-4 pe-lg-5">
