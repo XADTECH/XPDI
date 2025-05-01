@@ -462,27 +462,27 @@
                   border-top-left-radius: 1.5rem;
                   border-top-right-radius: 1.5rem;
                 ">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                        <img src="{{ asset('frontend_assets/images/instructors/nabeel-javed.jpg') }}"
                             class="rounded-circle mx-auto d-block instructor-img border border-3 border-white"
                             alt="Instructor" />
                     </div>
                     <div class="card-body text-center">
-                        <h5 class="fw-bold">Nabeel Javed</h5>
+                        <h5 class="fw-bold">Mr. Nabeel Javed</h5>
                         <p class="text-muted small">
-                            Machine learning and programming expert
+                            Software Development and Programming Expert
                         </p>
                         <div class="d-flex justify-content-around text-muted">
                             <div>
                                 <i class="bi bi-people expert-icon"></i>
-                                <div class="small">20<br /><small>Students</small></div>
+                                <div class="small">100<br /><small>Students</small></div>
                             </div>
                             <div>
                                 <i class="bi bi-play-btn expert-icon"></i>
-                                <div class="small">20<br /><small>Courses</small></div>
+                                <div class="small">3<br /><small>Courses</small></div>
                             </div>
                             <div>
                                 <i class="bi bi-star expert-icon"></i>
-                                <div class="small">4.9<br /><small>Ratings</small></div>
+                                <div class="small">5<br /><small>Ratings</small></div>
                             </div>
                         </div>
                     </div>
@@ -499,27 +499,27 @@
                   border-top-left-radius: 1.5rem;
                   border-top-right-radius: 1.5rem;
                 ">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg"
+                        <img src="{{ asset('frontend_assets/images/instructors/mr-raziq.jpg') }}"
                             class="rounded-circle mx-auto d-block instructor-img border border-3 border-white"
                             alt="Instructor" />
                     </div>
                     <div class="card-body text-center">
-                        <h5 class="fw-bold">Nabeel Javed</h5>
+                        <h5 class="fw-bold">Mr. Razik Khan</h5>
                         <p class="text-muted small">
-                            Machine learning and programming expert
+                            IT Infrastructure and Networking Expert
                         </p>
                         <div class="d-flex justify-content-around text-muted">
                             <div>
                                 <i class="bi bi-people expert-icon"></i>
-                                <div class="small">20<br /><small>Students</small></div>
+                                <div class="small">100<br /><small>Students</small></div>
                             </div>
                             <div>
                                 <i class="bi bi-play-btn expert-icon"></i>
-                                <div class="small">20<br /><small>Courses</small></div>
+                                <div class="small">3<br /><small>Courses</small></div>
                             </div>
                             <div>
                                 <i class="bi bi-star expert-icon"></i>
-                                <div class="small">4.9<br /><small>Ratings</small></div>
+                                <div class="small">5<br /><small>Ratings</small></div>
                             </div>
                         </div>
                     </div>
@@ -535,23 +535,136 @@
                   border-top-left-radius: 1.5rem;
                   border-top-right-radius: 1.5rem;
                 ">
-                        <img src="https://randomuser.me/api/portraits/men/44.jpg"
+                        <img src="{{ asset('frontend_assets/images/instructors/Abdullah-shah-mubarak.png') }}"
                             class="rounded-circle mx-auto d-block instructor-img border border-3 border-white"
                             alt="Instructor" />
                     </div>
                     <div class="card-body text-center">
-                        <h5 class="fw-bold">Nabeel Javed</h5>
+                        <h5 class="fw-bold">Mr. Abdullah Shah Mubarak</h5>
                         <p class="text-muted small">
-                            Machine learning and programming expert
+                            Health and Safety Expert
                         </p>
                         <div class="d-flex justify-content-around text-muted">
                             <div>
                                 <i class="bi bi-people expert-icon"></i>
-                                <div class="small">20<br /><small>Students</small></div>
+                                <div class="small">95<br /><small>Students</small></div>
                             </div>
                             <div>
                                 <i class="bi bi-play-btn expert-icon"></i>
-                                <div class="small">20<br /><small>Courses</small></div>
+                                <div class="small">6<br /><small>Courses</small></div>
+                            </div>
+                            <div>
+                                <i class="bi bi-star expert-icon"></i>
+                                <div class="small">4.9<br /><small>Ratings</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+            <!-- Instructor Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow rounded-4 h-100"
+                    style="background-color: #f8f9fa; border-radius: 1.5rem">
+                    <div class="pt-4 pb-3"
+                        style="
+                  background-color: #002b3d;
+                  border-top-left-radius: 1.5rem;
+                  border-top-right-radius: 1.5rem;
+                ">
+                        <img src="{{ asset('frontend_assets/images/instructors/ms-maheen.jpg') }}"
+                            class="rounded-circle mx-auto d-block instructor-img border border-3 border-white"
+                            alt="Instructor" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="fw-bold">Ms Maheen</h5>
+                        <p class="text-muted small">
+                            English and Human Resources Expert
+                        </p>
+                        <div class="d-flex justify-content-around text-muted">
+                            <div>
+                                <i class="bi bi-people expert-icon"></i>
+                                <div class="small">150<br /><small>Students</small></div>
+                            </div>
+                            <div>
+                                <i class="bi bi-play-btn expert-icon"></i>
+                                <div class="small">2<br /><small>Courses</small></div>
+                            </div>
+                            <div>
+                                <i class="bi bi-star expert-icon"></i>
+                                <div class="small">4.3<br /><small>Ratings</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repeat the card 2 more times with different images -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow rounded-4 h-100"
+                    style="background-color: #f8f9fa; border-radius: 1.5rem">
+                    <div class="pt-4 pb-3"
+                        style="
+                  background-color: #002b3d;
+                  border-top-left-radius: 1.5rem;
+                  border-top-right-radius: 1.5rem;
+                ">
+                        <img src="{{ asset('frontend_assets/images/instructors/Muhammad-bilal-zulfiqar.jpg') }}"
+                            class="rounded-circle mx-auto d-block instructor-img border border-3 border-white"
+                            alt="Instructor" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="fw-bold">Mr. Bilal Zulfiqar </h5>
+                        <p class="text-muted small">
+                            Mobile Networking Expert
+                        </p>
+                        <div class="d-flex justify-content-around text-muted">
+                            <div>
+                                <i class="bi bi-people expert-icon"></i>
+                                <div class="small">80<br /><small>Students</small></div>
+                            </div>
+                            <div>
+                                <i class="bi bi-play-btn expert-icon"></i>
+                                <div class="small">4<br /><small>Courses</small></div>
+                            </div>
+                            <div>
+                                <i class="bi bi-star expert-icon"></i>
+                                <div class="small">4.7<br /><small>Ratings</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow rounded-4 h-100"
+                    style="background-color: #f8f9fa; border-radius: 1.5rem">
+                    <div class="pt-4 pb-3"
+                        style="
+                  background-color: #002b3d;
+                  border-top-left-radius: 1.5rem;
+                  border-top-right-radius: 1.5rem;
+                ">
+                        <img src="{{ asset('frontend_assets/images/instructors/Muhammad-shahbaz-ishaq.jpg') }}"
+                            class="rounded-circle mx-auto d-block instructor-img border border-3 border-white"
+                            alt="Instructor" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="fw-bold">Mr Shahbaz</h5>
+                        <p class="text-muted small">
+                            Accounts & Finance Expert
+                        </p>
+                        <div class="d-flex justify-content-around text-muted">
+                            <div>
+                                <i class="bi bi-people expert-icon"></i>
+                                <div class="small">97<br /><small>Students</small></div>
+                            </div>
+                            <div>
+                                <i class="bi bi-play-btn expert-icon"></i>
+                                <div class="small">3<br /><small>Courses</small></div>
                             </div>
                             <div>
                                 <i class="bi bi-star expert-icon"></i>
@@ -562,6 +675,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 
