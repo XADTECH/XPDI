@@ -499,8 +499,7 @@
 
                     <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2025</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
+                        Master modern React from beginner to advanced! Next.js, Context API, React Query...
                     </p>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
@@ -538,9 +537,9 @@
 
                     <h6 class="fw-bold mb-1 ps-0 ms-0">Introduction to Data Structure Course 2025</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
+                        Learn the fundamentals of data structures like arrays, linked lists...
                     </p>
+
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
                         <span class="text-orange fw-bold">Paid</span>
@@ -576,9 +575,8 @@
 
                     <h6 class="fw-bold mb-1 ps-0 ms-0">Node Js Learning Course</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
-                    </p>
+                        Master backend development with Node.js, Express, REST APIs, authentication...
+
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
                         <span class="text-orange fw-bold">Paid</span>
@@ -613,11 +611,11 @@
                         </div>
                     </div>
 
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">Laravel Development Course</h6>
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Laravel for Beginners: From Zero to Production</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
+                        Learn Laravel from scratch and build real-world applications with routing...
                     </p>
+
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
                         <span class="text-orange fw-bold">Paid</span>
@@ -654,8 +652,7 @@
 
                     <h6 class="fw-bold mb-1 ps-0 ms-0">Full Stack Development Course</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
+                        Become a full-stack developer by mastering HTML, CSS, JavaScript, React, Node.js...
                     </p>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
@@ -691,10 +688,9 @@
                         </div>
                     </div>
 
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">My Sql Database Course 2025</h6>
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">MySQL Database Course 2025</h6>
                     <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
+                        Learn how to design, query, and manage databases using MySQL. Covers normalization...
                     </p>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small">Beginner</span>
