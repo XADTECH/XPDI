@@ -1,3 +1,8 @@
+:root {
+    --primary-blue: #3e4b66;
+    --accent-orange: #f5810b;
+}
+
 .hero-section {
     position: relative;
     height: 180px; /* Adjusted height to better match your input image */
@@ -307,6 +312,12 @@ body {
     padding: 18px;
     color: white;
     width: 100%;
+}
+.btn-learn:hover {
+    background-color: var(--accent-orange);
+}
+.text-warning {
+    color: var(--accent-orange) !important;
 }
 /* Custom checkbox with orange background and white tick when checked */
 .form-check-input:checked {

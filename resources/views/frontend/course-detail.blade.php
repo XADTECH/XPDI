@@ -62,33 +62,43 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 mt-lg-0 mt-lg-43.4rem mt-md-0rem course-card-wrapper">
+            {{-- <div class="col-lg-4 mt-lg-0 mt-lg-43.4rem mt-md-0rem course-card-wrapper"> --}}
+            <div class="col-lg-4 mt-lg-19.4rem mt-md-0rem course-card-wrapper">
                 <div class="card course-card">
-                    <div class="video-player">
-                        <i class="fas fa-play-circle play-button"></i>
+                    <div class="video-player position-relative">
+                        <!-- Embedded YouTube Video -->
+                        <iframe width="100%" height="315"
+                            src="https://www.youtube.com/embed/pE9vg4mZZ20?si=FRHekvivETIrKPkZ"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
                     </div>
-                    <div class="price-section">
+
+                    <div class="price-section" style="text-align: center;">
                         <div class="price">Free</div>
-                        <a href="#" class="cta-button">Enroll for Free</a>
-                        <div class="text-center text-muted">Free lifetime access</div>
+                        <a href="{{ url('/register') }}" class="cta-button">Start Learning -></a>
                     </div>
+
                     <div class="course-includes">
-                        <p class="text-center mb-3">This course includes:</p>
-                        <div class="include-item">
+                        <p class="mb-3"><b>This course includes:</b></p>
+                        <div class="include-item mb-3">
                             <span>🎥 5.6 hours of video</span>
                         </div>
-                        <div class="include-item">
+                        <div class="include-item mb-3">
                             <span>📝 3 lessons</span>
                         </div>
-                        <div class="include-item">
+                        <div class="include-item mb-3">
                             <span>♾️ Lifetime access on mobile and TV</span>
                         </div>
-                        <div class="include-item">
+                        <div class="include-item mb-3">
                             <span>🏆 Certificate of completion</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </header>
@@ -125,7 +135,7 @@
             <!-- Requirements Section -->
             <section class="requirements-section">
                 <h3>Requirements</h3>
-                <ul class="requirements-list">
+                <ul class="requirements-list text-justify">
                     <li>JavaScript + HTML + CSS fundamentals are absolutely required</li>
                     <li>You DON'T need any React or other framework experience to take this course</li>
                     <li>You DON'T need extensive JavaScript knowledge, but basic ES6+ knowledge is helpful</li>
@@ -133,123 +143,576 @@
                     <li>No pre-knowledge required in any other tools, libraries or frameworks</li>
                 </ul>
             </section>
-
-            <!-- Course Content Section -->
-            <section class="content-section">
-                <h3>Course content</h3>
-                <p>42 sections • 152 lectures • 25h total length</p>
-
-                <div class="accordion content-accordion" id="courseContentAccordion">
-                    <!-- Getting Started Section -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Getting Started
-                                <span class="section-info">5 lectures • 42 min</span>
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#courseContentAccordion">
-                            <div class="accordion-body">
-                                <ul class="lecture-list">
-                                    <li class="lecture-item">
-                                        <div class="lecture-title">
-                                            <i class="far fa-play-circle lecture-icon"></i>
-                                            <span>Introduction to React.js</span>
-                                        </div>
-                                        <span class="lecture-duration">9:57</span>
-                                    </li>
-                                    <li class="lecture-item">
-                                        <div class="lecture-title">
-                                            <i class="far fa-play-circle lecture-icon"></i>
-                                            <span>Introduction to React 16</span>
-                                        </div>
-                                        <span class="lecture-duration">8:15</span>
-                                    </li>
-                                    <li class="lecture-item">
-                                        <div class="lecture-title">
-                                            <i class="far fa-play-circle lecture-icon"></i>
-                                            <span>Introduction to React 17</span>
-                                        </div>
-                                        <span class="lecture-duration">8:27</span>
-                                    </li>
-                                    <li class="lecture-item">
-                                        <div class="lecture-title">
-                                            <i class="far fa-play-circle lecture-icon"></i>
-                                            <span>Introduction to React 18</span>
-                                        </div>
-                                        <span class="lecture-duration">7:33</span>
-                                    </li>
-                                    <li class="lecture-item">
-                                        <div class="lecture-title">
-                                            <i class="far fa-play-circle lecture-icon"></i>
-                                            <span>Introduction to React.js</span>
-                                        </div>
-                                        <span class="lecture-duration">8:14</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- JavaScript Refresher Section -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                JavaScript Refresher
-                                <span class="section-info">11 lectures • 62 min</span>
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#courseContentAccordion">
-                            <div class="accordion-body">
-                                <!-- Content for JavaScript Refresher would go here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Instructor Section -->
-            <section class="instructor-section">
-                <h3>Course Instructor</h3>
-                <div class="instructor-profile">
-                    <img src="/api/placeholder/120/120" alt="Nabeel Javed" class="instructor-avatar">
-                    <div class="instructor-details">
-                        <h4>Nabeel Javed</h4>
-                        <p>JavaScript & React Developer</p>
-
-                        <div class="instructor-stats">
-                            <div class="instructor-stat">
-                                <i class="fas fa-star"></i>
-                                <span>4.8 Instructor Rating</span>
-                            </div>
-                            <div class="instructor-stat">
-                                <i class="fas fa-award"></i>
-                                <span>5,623 Reviews</span>
-                            </div>
-                            <div class="instructor-stat">
-                                <i class="fas fa-user-friends"></i>
-                                <span>172,594 Students</span>
-                            </div>
-                            <div class="instructor-stat">
-                                <i class="fas fa-play-circle"></i>
-                                <span>5 Courses</span>
-                            </div>
-                        </div>
-
-                        <p class="mt-3">
-                            Nabeel is an experienced developer specializing in JavaScript and React. He teaches
-                            students online, simplifying complex concepts into easy-to-understand lessons. With
-                            years of industry experience, he enjoys sharing his knowledge with others.
-                        </p>
-                    </div>
-                </div>
-            </section>
         </div>
     </div>
+
+
+    <!-- Course Content Section -->
+    <section class="content-section">
+        <h3>Course content</h3>
+        <p>42 sections • 152 lectures • 25h total length</p>
+
+        <div class="accordion content-accordion" id="courseContentAccordion">
+            <!-- Getting Started Section -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Getting Started
+                        <span class="section-info">5 lectures • 42 min</span>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#courseContentAccordion">
+                    <div class="accordion-body">
+                        <ul class="lecture-list">
+                            <li class="lecture-item">
+                                <div class="lecture-title">
+                                    <i class="far fa-play-circle lecture-icon"></i>
+                                    <span>Introduction to React.js</span>
+                                </div>
+                                <span class="lecture-duration">9:57</span>
+                            </li>
+                            <li class="lecture-item">
+                                <div class="lecture-title">
+                                    <i class="far fa-play-circle lecture-icon"></i>
+                                    <span>Introduction to React 16</span>
+                                </div>
+                                <span class="lecture-duration">8:15</span>
+                            </li>
+                            <li class="lecture-item">
+                                <div class="lecture-title">
+                                    <i class="far fa-play-circle lecture-icon"></i>
+                                    <span>Introduction to React 17</span>
+                                </div>
+                                <span class="lecture-duration">8:27</span>
+                            </li>
+                            <li class="lecture-item">
+                                <div class="lecture-title">
+                                    <i class="far fa-play-circle lecture-icon"></i>
+                                    <span>Introduction to React 18</span>
+                                </div>
+                                <span class="lecture-duration">7:33</span>
+                            </li>
+                            <li class="lecture-item">
+                                <div class="lecture-title">
+                                    <i class="far fa-play-circle lecture-icon"></i>
+                                    <span>Introduction to React.js</span>
+                                </div>
+                                <span class="lecture-duration">8:14</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JavaScript Refresher Section -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        JavaScript Refresher
+                        <span class="section-info">11 lectures • 62 min</span>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#courseContentAccordion">
+                    <div class="accordion-body">
+                        <!-- Content for JavaScript Refresher would go here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="instructor-card md-text-center">
+        <h1 class="instructor-heading">Course Instructor</h1>
+
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{ asset('frontend_assets/images/instructors/nabeel-javed.jpg') }}" width="300"
+                    alt="Instructor Profile" class="profile-img">
+            </div>
+            <div class="col-md-9 mt-3 mt-md-0 ps-md-5 instructor-ratings">
+                <h2 class="instructor-name">Nabeel Javed</h2>
+
+                <div class="instructor-stats d-flex align-items-center mb-3">
+                    <i class="bi bi-star-fill stat-icon"></i>
+                    <span class="stat-text">4.6 Instructor Rating</span>
+                </div>
+
+                <div class="instructor-stats d-flex align-items-center mb-3">
+                    <i class="bi bi-chat-left-text-fill stat-icon"></i>
+                    <span class="stat-text">2,533 Reviews</span>
+                </div>
+
+                <div class="instructor-stats d-flex align-items-center mb-3">
+                    <i class="bi bi-people-fill user-icon"></i>
+                    <span class="stat-text">3,267,999 Students</span>
+                </div>
+
+                <div class="instructor-stats d-flex align-items-center">
+                    <i class="bi bi-journal-bookmark-fill stat-icon"></i>
+                    <span class="stat-text">3 Courses</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <p class="instructor-bio mt-4" style="text-align: justify;">
+                    Java Python Android and C# Expert Developer - 878K+ students Lorem Ipsum is simply dummy
+                    text of the
+                    printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+                    ever
+                    since the 1500s... [trimmed for brevity]
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="reviews-section">
+        <h1 class="reviews-title">Reviews</h1>
+
+        <div class="row justify-content-start">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="review-summary">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="rating-number">4.7</div>
+                            <div class="star-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <div class="total-reviews">(578 Reviews)</div>
+                        </div>
+                        <div class="col-md-8 rating-details">
+                            <div class="row align-items-center mb-2">
+                                <div class="col-2 star-count">5 stars</div>
+                                <div class="col-8">
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                                <div class="col-2 count-number">488</div>
+                            </div>
+                            <div class="row align-items-center mb-2">
+                                <div class="col-2 star-count">4 stars</div>
+                                <div class="col-8">
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" style="width: 15%;"></div>
+                                    </div>
+                                </div>
+                                <div class="col-2 count-number">74</div>
+                            </div>
+                            <div class="row align-items-center mb-2">
+                                <div class="col-2 star-count">3 stars</div>
+                                <div class="col-8">
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" style="width: 5%;"></div>
+                                    </div>
+                                </div>
+                                <div class="col-2 count-number">14</div>
+                            </div>
+                            <div class="row align-items-center mb-2">
+                                <div class="col-2 star-count">2 stars</div>
+                                <div class="col-8">
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="col-2 count-number">0</div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-2 star-count">1 star</div>
+                                <div class="col-8">
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="col-2 count-number">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Review Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex align-items-center">
+                        <img src="https://i.pravatar.cc/120?img=1" alt="Ana Vitória" class="reviewer-img">
+                        <div class="ms-3">
+                            <h5 class="reviewer-name">Ana Vitória</h5>
+                            <p class="reviewer-title">Student</p>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="review-text">This course gave me practical tools for real-world success. The structure
+                        was perfect and helped build my confidence professionally and personally.</p>
+                </div>
+            </div>
+
+            <!-- Review Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex align-items-center">
+                        <img src="https://i.pravatar.cc/120?img=2" alt="Liam Harper" class="reviewer-img">
+                        <div class="ms-3">
+                            <h5 class="reviewer-name">Liam Harper</h5>
+                            <p class="reviewer-title">Student</p>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="review-text">This course gave me practical tools for real-world success. The structure
+                        was perfect and helped build my confidence professionally and personally.</p>
+                </div>
+            </div>
+
+            <!-- Review Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex align-items-center">
+                        <img src="https://i.pravatar.cc/120?img=3" alt="Sophie Kim" class="reviewer-img">
+                        <div class="ms-3">
+                            <h5 class="reviewer-name">Sophie Kim</h5>
+                            <p class="reviewer-title">Student</p>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="review-text">This course gave me practical tools for real-world success. The structure
+                        was perfect and helped build my confidence professionally and personally.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Review Card 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex align-items-center">
+                        <img src="https://i.pravatar.cc/120?img=4" alt="Ravi Patel" class="reviewer-img">
+                        <div class="ms-3">
+                            <h5 class="reviewer-name">Ravi Patel</h5>
+                            <p class="reviewer-title">Student</p>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="review-text">This course gave me practical tools for real-world success. The structure
+                        was perfect and helped build my confidence professionally and personally.</p>
+                </div>
+            </div>
+
+            <!-- Review Card 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex align-items-center">
+                        <img src="https://i.pravatar.cc/120?img=5" alt="Elena Cruz" class="reviewer-img">
+                        <div class="ms-3">
+                            <h5 class="reviewer-name">Elena Cruz</h5>
+                            <p class="reviewer-title">Student</p>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="review-text">This course gave me practical tools for real-world success. The structure
+                        was perfect and helped build my confidence professionally and personally.</p>
+                </div>
+            </div>
+
+            <!-- Review Card 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex align-items-center">
+                        <img src="https://i.pravatar.cc/120?img=6" alt="Mason Liu" class="reviewer-img">
+                        <div class="ms-3">
+                            <h5 class="reviewer-name">Mason Liu</h5>
+                            <p class="reviewer-title">Student</p>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="review-text">This course gave me practical tools for real-world success. The structure
+                        was perfect and helped build my confidence professionally and personally.</p>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- ////////////////////////////////////////////////// More Courses ////////////////////////////////////////////////////////// -->
+    <section>
+        <h2 class="fw-bold">More Courses by Nabeel javed</h2>
+        <div class="row g-4 justify-content-center mt-3">
+            <!-- Card 1 -->
+
+            <div class="col-md-6 col-lg-4">
+                <div class="course-card p-3">
+                    <div class="course-img-wrapper">
+                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                            alt="Course image" />
+                        <div class="course-badge">Software Development</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                                class="rounded-circle me-2" width="30" height="30" alt="Author">
+                            <span class="text-dark small fw-semibold">Mr. Nabeel Javed</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="text-warning small me-1">★★★★★</div>
+                            <strong class="me-1 small">5.0</strong>
+                            <small class="text-muted">(170)</small>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2025</h6>
+                    <p class="text-muted small mb-2 ps-0 ms-0">
+                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
+                        Tailwind, advanced patterns
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-info text-dark small">Beginner</span>
+                        <span class="text-orange fw-bold">Paid</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                        <span><i class="bi bi-people"></i> 180 Students</span>
+                        <span><i class="bi bi-clock"></i> 5 hrs</span>
+                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
+                    </div>
+                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="course-card p-3">
+                    <div class="course-img-wrapper">
+                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                            alt="Course image" />
+                        <div class="course-badge">Software Development</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                                class="rounded-circle me-2" width="30" height="30" alt="Author">
+                            <span class="text-dark small fw-semibold">Mr. Nabeel Javed</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="text-warning small me-1">★★★★★</div>
+                            <strong class="me-1 small">5.0</strong>
+                            <small class="text-muted">(170)</small>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Introduction to Data Structure Course 2025</h6>
+                    <p class="text-muted small mb-2 ps-0 ms-0">
+                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
+                        Tailwind, advanced patterns
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-info text-dark small">Beginner</span>
+                        <span class="text-orange fw-bold">Paid</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                        <span><i class="bi bi-people"></i> 180 Students</span>
+                        <span><i class="bi bi-clock"></i> 5 hrs</span>
+                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
+                    </div>
+                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="course-card p-3">
+                    <div class="course-img-wrapper">
+                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                            alt="Course image" />
+                        <div class="course-badge">Software Development</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                                class="rounded-circle me-2" width="30" height="30" alt="Author">
+                            <span class="text-dark small fw-semibold">Mr. Nabeel Javed</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="text-warning small me-1">★★★★★</div>
+                            <strong class="me-1 small">5.0</strong>
+                            <small class="text-muted">(170)</small>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Node Js Learning Course</h6>
+                    <p class="text-muted small mb-2 ps-0 ms-0">
+                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
+                        Tailwind, advanced patterns
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-info text-dark small">Beginner</span>
+                        <span class="text-orange fw-bold">Paid</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                        <span><i class="bi bi-people"></i> 180 Students</span>
+                        <span><i class="bi bi-clock"></i> 5 hrs</span>
+                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
+                    </div>
+                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="course-card p-3">
+                    <div class="course-img-wrapper">
+                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                            alt="Course image" />
+                        <div class="course-badge">Software Development</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                                class="rounded-circle me-2" width="30" height="30" alt="Author">
+                            <span class="text-dark small fw-semibold">Mr. Nabeel Javed</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="text-warning small me-1">★★★★★</div>
+                            <strong class="me-1 small">5.0</strong>
+                            <small class="text-muted">(170)</small>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Laravel Development Course</h6>
+                    <p class="text-muted small mb-2 ps-0 ms-0">
+                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
+                        Tailwind, advanced patterns
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-info text-dark small">Beginner</span>
+                        <span class="text-orange fw-bold">Paid</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                        <span><i class="bi bi-people"></i> 180 Students</span>
+                        <span><i class="bi bi-clock"></i> 5 hrs</span>
+                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
+                    </div>
+                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="course-card p-3">
+                    <div class="course-img-wrapper">
+                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                            alt="Course image" />
+                        <div class="course-badge">Software Development</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                                class="rounded-circle me-2" width="30" height="30" alt="Author">
+                            <span class="text-dark small fw-semibold">Mr. Nabeel Javed</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="text-warning small me-1">★★★★★</div>
+                            <strong class="me-1 small">5.0</strong>
+                            <small class="text-muted">(170)</small>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">Full Stack Development Course</h6>
+                    <p class="text-muted small mb-2 ps-0 ms-0">
+                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
+                        Tailwind, advanced patterns
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-info text-dark small">Beginner</span>
+                        <span class="text-orange fw-bold">Paid</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                        <span><i class="bi bi-people"></i> 180 Students</span>
+                        <span><i class="bi bi-clock"></i> 5 hrs</span>
+                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
+                    </div>
+                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="course-card p-3">
+                    <div class="course-img-wrapper">
+                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                            alt="Course image" />
+                        <div class="course-badge">Software Development</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                                class="rounded-circle me-2" width="30" height="30" alt="Author">
+                            <span class="text-dark small fw-semibold">Mr. Nabeel Javed</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="text-warning small me-1">★★★★★</div>
+                            <strong class="me-1 small">5.0</strong>
+                            <small class="text-muted">(170)</small>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-1 ps-0 ms-0">My Sql Database Course 2025</h6>
+                    <p class="text-muted small mb-2 ps-0 ms-0">
+                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
+                        Tailwind, advanced patterns
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-info text-dark small">Beginner</span>
+                        <span class="text-orange fw-bold">Paid</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                        <span><i class="bi bi-people"></i> 180 Students</span>
+                        <span><i class="bi bi-clock"></i> 5 hrs</span>
+                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
+                    </div>
+                    <a href="{{ url('/register') }}" class="btn btn-learn mt-3">START LEARNING →</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
 </main>
 
 @include('frontend_components.footer')

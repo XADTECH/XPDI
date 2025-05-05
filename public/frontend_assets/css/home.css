@@ -44,7 +44,7 @@ body {
 }
 
 .highlight-orange {
-    color: #f7941e;
+    color: #f5810b;
     font-weight: bold;
 }
 
@@ -163,6 +163,9 @@ body {
     background-color: #00698f;
     color: white;
     width: 100%;
+}
+.btn-learn:hover {
+    background-color: #f5810b;
 }
 /* /////////////////////////////////////////////////   Style for How XPDI Works ///////////////////////////////////////////////// */
 
@@ -342,7 +345,7 @@ body {
 /* ///////////////////////////////////////// style for Counters and Testimonials ////////////////////////////////////////////////// */
 
 .text-orange {
-    color: #ff7a00;
+    color: #f5810b;
 }
 .border-orange {
     border-color: #f7a900 !important;

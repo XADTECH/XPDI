@@ -46,7 +46,7 @@
             <a href="#" class="btn btn-info text-white fw-semibold px-4 py-2">
                 EXPLORE COURSES →
             </a>
-            <a href="#" class="btn btn-light border fw-semibold px-4 py-2">
+            <a href="{{ url('/register') }}" class="btn btn-light border fw-semibold px-4 py-2">
                 REGISTER NOW →
             </a>
         </div>
@@ -101,7 +101,8 @@
                         <span><i class="bi bi-clock"></i> 5 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 7 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
+                        →</a>
                 </div>
             </div>
 
@@ -139,7 +140,8 @@
                         <span><i class="bi bi-clock"></i> 5 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 3 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
+                        →</a>
                 </div>
             </div>
 
@@ -177,7 +179,8 @@
                         <span><i class="bi bi-clock"></i> 5.6 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 5 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
+                        →</a>
                 </div>
             </div>
 
@@ -215,7 +218,8 @@
                         <span><i class="bi bi-clock"></i> 4 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 6 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
+                        →</a>
                 </div>
             </div>
 
@@ -256,7 +260,8 @@
                         <span><i class="bi bi-clock"></i> 5.6 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 3 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
+                        →</a>
                 </div>
             </div>
 
@@ -295,7 +300,8 @@
                         <span><i class="bi bi-clock"></i> 6.6 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 9 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
+                        →</a>
                 </div>
             </div>
 

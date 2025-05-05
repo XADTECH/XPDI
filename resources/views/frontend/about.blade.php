@@ -88,7 +88,7 @@
                 or looking to grow your expertise, XPDI offers the tools and support to help you succeed — anytime,
                 anywhere.
             </p>
-            <a href="#" class="register-button">REGISTER NOW →</a>
+            <a href="{{ url('/register') }}" class="register-button">REGISTER NOW →</a>
         </div>
     </div>
 </section>
