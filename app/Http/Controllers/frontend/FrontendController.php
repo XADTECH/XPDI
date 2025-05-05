@@ -48,7 +48,7 @@ class FrontendController extends Controller
         return view('frontend.index', compact('course_category', 'categories', 'blogs', 'all_sliders', 'all_info', 'most_popular_courses', 'all_reviews', 'all_partner'));
     }
 
-    public function view($slug)
+    public function view_old($slug)
     {
         $course = Course::where('course_name_slug', $slug)->with('category', 'subcategory', 'user')->first();
         $course_content = CourseSection::where('course_id', $course->id)->with('lecture')->get();
@@ -93,6 +93,12 @@ class FrontendController extends Controller
         $more_course_instructor = Course::where('instructor_id', $course->instructor_id)->where('id', '!=', $course->id)->with('user')->get();
 
 
+        // return view('frontend.pages.course-details.index', compact('course', 'course_content', 'total_lecture', 'all_category', 'averageRating', 'count_ratings', 'unique_student', 'total_lecture_duration', 'similarCourses', 'ratingsCount', 'unique_student', 'totalRatings', 'ratings_data', 'more_course_instructor'));
+        return view('frontend.course-detail');
+    }
+
+    public function view($slug)
+    {
         // return view('frontend.pages.course-details.index', compact('course', 'course_content', 'total_lecture', 'all_category', 'averageRating', 'count_ratings', 'unique_student', 'total_lecture_duration', 'similarCourses', 'ratingsCount', 'unique_student', 'totalRatings', 'ratings_data', 'more_course_instructor'));
         return view('frontend.course-detail');
     }
