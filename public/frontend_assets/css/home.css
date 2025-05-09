@@ -360,3 +360,24 @@ body {
 .social-icon:hover {
     color: #ffffff;
 }
+
+/* //////////// */
+/* SCSS / CSS */
+.icon-img {
+    width: 2.5rem; /* ~40 px */
+    height: 2.5rem;
+    object-fit: contain; /* keeps SVG or PNG nicely centred */
+}
+
+/* bundles your glass-effect styling once */
+.glass-card {
+    background: rgba(240, 240, 240, 0.3);
+    backdrop-filter: blur(14px);
+    border-radius: 15px;
+}
+.icon-text {
+    font-family: "Roboto", sans-serif; /* Roboto Medium */
+    font-weight: 500; /* “Medium” weight */
+    font-size: 1.3rem;
+    line-height: 24px; /* 24 px */
+}

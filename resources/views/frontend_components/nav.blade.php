@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark py-3" style="background-color: #0c1a38; padding: 1rem 2rem">
     <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('frontend_assets/images/XPDI - white w trbg-83.png') }}" alt="XPDI Logo" height="60" />
         </a>
 

@@ -13,16 +13,6 @@
                     <a href="#" class="category-badge">Web Development</a>
                 </div>
 
-                {{-- <h1 class="course-title">React Fundamentals for Beginners React Fundamentals for Beginners</h1>
-                <p class="course-subtitle">Learn the basics of React and start building your first components Learn the
-                    basics of React and start building your first components</p>
-
-                <div class="instructor-info">
-                    <img src="{{ asset('frontend_assets/images/instructors/nabeel-javed.jpg') }}" alt="Instructor"
-                        height="100" width="100" class="instructor-photo">
-                    <span>By Nabeel Javed</span>
-                </div> --}}
-
                 <h1 class="course-title">Data Structures Fundamentals for Beginners</h1>
                 <p class="course-subtitle">
                     Understand core data structures such as arrays, linked lists, stacks, queues, trees, and graphs, and

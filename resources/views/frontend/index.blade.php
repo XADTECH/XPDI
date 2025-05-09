@@ -21,7 +21,7 @@
         </h1>
         <h5 class="display-5 fw-light">Real Skills That Matter.</h5>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 justify-content-center">
+        {{-- <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 justify-content-center">
             <div class="col">
                 <div class="feature-card">
                     <div class="feature-icon">📽️</div>
@@ -40,7 +40,35 @@
                     <div>Learn from expert instructors</div>
                 </div>
             </div>
+        </div> --}}
+
+
+        <!-- 1️⃣ wrapper row stays exactly the same -->
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 justify-content-center gap-5">
+
+            <!-- ✨ Card 1 -->
+            <div class="col-md-3 d-flex align-items-center p-5 glass-card">
+                <img src="{{ asset('frontend_assets/images/Hero section/Free-courses.svg') }}" class="icon-img me-3"
+                    alt="Display icon">
+                <span class="ps-2 icon-text">Free Courses</span>
+            </div>
+
+            <!-- ✨ Card 2 -->
+            <div class="col-md-3 d-flex align-items-center p-5 glass-card">
+                <img src="{{ asset('frontend_assets/images/Hero section/Flexible-learning.svg') }}"
+                    class="icon-img me-3" alt="Notebook icon">
+                <span class="ps-2 icon-text">Flexible Learning</span>
+            </div>
+
+            <!-- ✨ Card 3 -->
+            <div class="col-md-3 d-flex align-items-center p-5 glass-card">
+                <img src="{{ asset('frontend_assets/images/Hero section/expert-instructors.svg') }}"
+                    class="icon-img me-3" alt="Mortarboard icon">
+                <span class="ps-2 icon-text">Learn from expert instructors</span>
+            </div>
+
         </div>
+
 
         <div class="d-flex gap-5 justify-content-center flex-wrap mt-5">
             <a href="#" class="btn btn-info text-white fw-semibold px-4 py-2">
