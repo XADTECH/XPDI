@@ -1,0 +1,381 @@
+:root {
+    --sidebar-w: 240px;
+    --header-h: 70px;
+    --clr-accent: #186d8e;
+    --clr-bg-light: #eceae6;
+    --clr-sidebar: #ffffff;
+    --clr-text: #0f1a35;
+    --clr-purple: #e4e0ff;
+}
+
+body {
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--clr-text);
+}
+
+:root {
+    --primary-blue: #3e4b66;
+    --accent-orange: #f5810b;
+}
+
+.hero-section {
+    position: relative;
+    height: 180px; /* Adjusted height to better match your input image */
+    background: url("https://i.ibb.co/35dH74Hk/courses-slider.png") no-repeat
+        center center/cover;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+.hero-title {
+    /* Appearance */
+    opacity: 100%;
+    border-radius: 0px;
+
+    /* Typography */
+    font-family: "Roboto Slab", serif;
+    font-weight: 800; /* ExtraBold */
+    font-size: 70px;
+    line-height: auto; /* Auto line height */
+    letter-spacing: 0%;
+    text-align: left; /* Based on the selected alignment icon */
+
+    /* Fill */
+    color: #ffffff;
+}
+
+/* //////////////////////////////  style for courses //////////////////////////////////////////// */
+
+body {
+    background-color: #d2d2d2;
+    font-family: Arial, sans-serif;
+}
+
+.filter-section {
+    background-color: #f8f9fa; /* 60% usage implies this might be a background layer */
+    color: #707070; /* default text color (could be overwritten selectively) */
+    opacity: 55%; /* 100% */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.filter-option {
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    color: #004868;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.top-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.tabs-container {
+    display: flex;
+    border: 1px solid #707070;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #707070;
+    position: relative;
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 200; /* SemiBold */
+    font-size: 18px; /* Font size */
+    line-height: 20px; /* 100% line height */
+    letter-spacing: 0; /* No extra spacing */
+}
+
+.tab:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background-color: #707070;
+}
+
+.tab.active {
+    color: #f5810b;
+    font-weight: 500;
+}
+.explore-from {
+    color: #19213d;
+}
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .top-filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tabs-container {
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    .tab {
+        padding: 8px 12px;
+        font-size: 13px;
+        text-align: center;
+        flex: 1;
+        white-space: nowrap;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 576px) {
+    .tab {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+}
+
+.clear-btn {
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    font-weight: 600; /* "Medium" weight */
+    font-size: 23px; /* Font size */
+    letter-spacing: 0; /* 0% letter spacing */
+    color: #186d8e; /* Text color */
+    background-color: transparent; /* Assuming it's a text button */
+    border: none; /* No border if it's just text */
+    cursor: pointer;
+}
+
+#all-filters {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 20px; /* Font size */
+    line-height: 1; /* 100% line height */
+    letter-spacing: 0; /* No extra spacing */
+    color: #19213d; /* Text color */
+    margin: 0; /* Reset margin if needed */
+    padding: 0; /* Optional: adjust based on layout */
+}
+
+.explore-more-courses {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 25px; /* Font size */
+    line-height: 1; /* 100% line height */
+    letter-spacing: 0; /* No extra spacing */
+    color: #19213d; /* Text color */
+    margin: 0; /* Reset margin if needed */
+    padding: 0; /* Optional: adjust based on layout */
+}
+
+.meta-icon {
+    margin-right: 5px;
+    opacity: 0.7;
+}
+
+.filter-checkbox {
+    width: 18px;
+    height: 18px;
+}
+
+.filter-label {
+    font-size: 14px;
+    color: #444;
+    margin-left: 8px;
+}
+
+.count-label {
+    font-size: 13px;
+    color: #777;
+    margin-left: 4px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+}
+
+.skill-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #fff;
+    color: #0077aa;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.top-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.all-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.all-filters h5 {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.course-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #0d6efd;
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 0.5rem;
+}
+.course-card {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    overflow: hidden;
+    /* background: white; */
+    transition: transform 0.2s;
+    text-align: left;
+}
+
+.course-card {
+    /* Opacity and corner radius properties */
+    opacity: 100%;
+    border-radius: 10px;
+
+    /* Fill property */
+    background-color: #f8f9fa;
+
+    /* Selection colors shown in the image */
+    --text-color: #000000; /* TEXT COLOR shown in image */
+    --neutral-100: #f8f9fa; /* Neutral colors/100 */
+    --neutral-300: #dee2e6; /* Neutral colors/300 */
+    --accent-orange: #f5810b; /* Orange color */
+    --accent-teal: #186d8e; /* Teal color */
+    --accent-navy: #f1f3f7; /* Light blue-gray color */
+    --accent-blue: #358ff7; /* Blue color */
+    --accent-blue-light: rgba(53, 143, 247, 0.25); /* Blue at 25% opacity */
+    --accent-light: #eaf9ff; /* Very light blue color */
+}
+
+.course-card:hover {
+    transform: scale(1.01);
+}
+.course-img-wrapper {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+.course-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.rating-stars {
+    color: orange;
+}
+.btn-learn {
+    background-color: #186d8e;
+    padding: 18px;
+    color: white;
+    width: 100%;
+}
+.btn-learn:hover {
+    background-color: var(--accent-orange);
+}
+.text-warning {
+    color: var(--accent-orange) !important;
+}
+/* Custom checkbox with orange background and white tick when checked */
+.form-check-input:checked {
+    background-color: #f5810b !important;
+    border-color: #f5810b !important;
+}
+
+/* Ensure the white tick is visible */
+.form-check-input:checked::before {
+    color: white !important;
+}
+
+/* Optional: Smooth out checkbox border when focused */
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem rgba(245, 124, 0, 0.25);
+}
+.course-title {
+    /* Position */
+    position: relative;
+    left: 0;
+    top: 0;
+
+    /* Typography */
+    font-family: "Roboto Slab", serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0%;
+
+    /* Appearance */
+    color: #19213d; /* Fill color shown at bottom */
+    opacity: 100%;
+    border-radius: 0;
+
+    /* Layout */
+    width: fit-content; /* Fill (391) */
+    height: fit-content; /* Hug (37) */
+
+    /* Alignment */
+    text-align: left; /* Based on the alignment icons shown */
+}
+
+#popular,
+#recent {
+    display: none;
+}

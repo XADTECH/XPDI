@@ -20,7 +20,8 @@ class UserCourseController extends Controller
     {
         $user_id = Auth::user()->id;
         $courses = Order::where('user_id', $user_id)->with('course', 'instructor')->paginate('4');
-        return view('backend.user.course.index', compact('courses'));
+        // return view('backend.user.course.index', compact('courses'));
+        return view('backend.user.my-courses', compact('courses'));
     }
 
     /**

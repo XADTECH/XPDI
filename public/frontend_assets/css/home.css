@@ -362,13 +362,6 @@ body {
 }
 
 /* //////////// */
-/* SCSS / CSS */
-.icon-img {
-    width: 2.5rem; /* ~40 px */
-    height: 2.5rem;
-    object-fit: contain; /* keeps SVG or PNG nicely centred */
-}
-
 /* bundles your glass-effect styling once */
 .glass-card {
     background: rgba(240, 240, 240, 0.3);

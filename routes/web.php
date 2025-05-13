@@ -207,6 +207,7 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
 
 Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/lectures', [UserController::class, 'lectures'])->name('lectures');
     Route::post('/logout', [UserController::class, 'destroy'])
         ->name('logout');
 

@@ -22,7 +22,8 @@ class WishlistController extends Controller
     {
         $user_id = Auth::user()->id;
         // $wishlist = Wishlist::where('user_id', $user_id)->with('course', 'course.user')->get();
-        return view('backend.user.wishlist.index');
+        // return view('backend.user.wishlist.index');
+        return view('backend.user.wishlist');
     }
 
     public function getWishlist()

@@ -82,4 +82,10 @@ class UserController extends Controller
         $order_data = Order::where('user_id', $user_id)->with('course', 'user', 'instructor')->latest()->get();
         return view('backend.user.purchase-history.index', compact('order_data'));
     }
+
+
+    public function lectures(Request $request)
+    {
+        return view('backend.user.lectures');
+    }
 }
