@@ -23,7 +23,8 @@ class ChatController extends Controller
 
 
 
-        return view('backend.user.message.index', compact('messages', 'uniqueInstructors'));
+        // return view('backend.user.message.index', compact('messages', 'uniqueInstructors'));
+        return view('backend.user.chat');
     }
 
     public function getInstructorMessages(Request $request)

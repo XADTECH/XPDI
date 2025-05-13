@@ -57,7 +57,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('user/profile') ? 'active' : '' }}">
+            <a href="{{ url('user/profile') }}" class="nav-link {{ request()->is('user/profile') ? 'active' : '' }}">
                 <i class="bi bi-person"></i>My profile
             </a>
         </li>
@@ -75,7 +75,8 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('user/inbox') ? 'active' : '' }}">
+            <a href="{{ url('user/user-message') }}"
+                class="nav-link {{ request()->is('user/user-message') ? 'active' : '' }}">
                 <i class="bi bi-chat-dots"></i>Inbox
             </a>
         </li>

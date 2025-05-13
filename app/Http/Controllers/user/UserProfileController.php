@@ -22,7 +22,8 @@ class UserProfileController extends Controller
 
     public function index()
     {
-        return view('backend.user.profile.index');
+        // return view('backend.user.profile.index');
+        return view('backend.user.profile');
     }
 
     public function store(ProfileRequest $request)
@@ -38,11 +39,11 @@ class UserProfileController extends Controller
         return view('backend.instructor.profile.setting');
     }
 
-    public function passwordSetting(ProfilePasswordUpdateRequest $request){
+    public function passwordSetting(ProfilePasswordUpdateRequest $request)
+    {
 
         // Pass data and files to the service
         $this->passwordUpdateService->updatePassword($request->validated());
         return redirect()->back()->with('success', 'Password Updated successfully');
-
     }
 }
