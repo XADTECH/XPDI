@@ -62,8 +62,11 @@
                                     </div>
 
 
-                                    <a href="{{ url('/user/lectures') }}" class="btn btn-learn mt-3">Continue Learning
-                                        →</a>
+                                    {{-- <a href="{{ url('/user/lectures') }}" class="btn btn-learn mt-3">Continue Learning
+                                        →</a> --}}
+                                    <a href="{{ url('/user/lectures') }}"
+                                        class="btn btn-learn mt-3 start-learning-btn">Continue Learning →</a>
+
                                 </div>
                             </div>
 
@@ -99,8 +102,11 @@
                                     </div>
 
 
-                                    <a href="{{ url('/user/lectures') }}" class="btn btn-learn mt-3">Continue Learning
-                                        →</a>
+                                    {{-- <a href="{{ url('/user/lectures') }}" class="btn btn-learn mt-3">Continue Learning
+                                        →</a> --}}
+                                    <a href="{{ url('/user/lectures') }}"
+                                        class="btn btn-learn mt-3 start-learning-btn">Continue Learning →</a>
+
                                 </div>
                             </div>
 
@@ -136,8 +142,11 @@
                                     </div>
 
 
-                                    <a href="{{ url('/user/lectures') }}" class="btn btn-learn mt-3">Continue Learning
-                                        →</a>
+                                    {{-- <a href="{{ url('/user/lectures') }}" class="btn btn-learn mt-3">Continue Learning
+                                        →</a> --}}
+                                    <a href="{{ url('/user/lectures') }}"
+                                        class="btn btn-learn mt-3 start-learning-btn">Continue Learning →</a>
+
                                 </div>
                             </div>
 
