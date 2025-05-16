@@ -20,14 +20,15 @@
         <!--end breadcrumb-->
         <div class="container">
             <div class="main-body">
-                <div class="row">
+                <div class="row p-5" style="background: #F7F7FF;">
 
 
-                    @include('backend.instructor.profile.sidebar')
-                    <div class="col-lg-8">
+                    {{-- @include('backend.instructor.profile.sidebar') --}}
+                    <div class="col-lg-12">
 
                         <div class="card">
-                            <form method="post" enctype="multipart/form-data" action="{{ route('instructor.profile.store') }}">
+                            <form method="post" enctype="multipart/form-data"
+                                action="{{ route('instructor.profile.store') }}">
                                 @csrf
 
                                 <div class="card-body">
@@ -101,7 +102,7 @@
                                                 <option value="female">Female</option>
                                                 <option value="other">Other</option>
 
-                                              </select>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -111,7 +112,8 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input type="text" name="experience" class="form-control"
-                                                value="{{ auth()->user()->experience }}" placeholder="Example : Web Developer, Designer, and Teacher" />
+                                                value="{{ auth()->user()->experience }}"
+                                                placeholder="Example : Web Developer, Designer, and Teacher" />
                                         </div>
                                     </div>
 

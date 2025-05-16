@@ -12,15 +12,20 @@
 
     @include('backend.section.link')
 
+    <style>
+        .bg-custom-eceae6 {
+            background-color: #ECEAE6;
+        }
+    </style>
 
     <title>Learning Management System</title>
 </head>
 
 
 
-<body>
+<body style="background: #ECEAE6;">
     <!--wrapper-->
-    <div class="wrapper">
+    <div class="wrapper bg-custom-eceae6 h-30">
         @include('backend.instructor.section.sidebar')
 
         @include('backend.instructor.section.header')

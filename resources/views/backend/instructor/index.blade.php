@@ -70,6 +70,7 @@
                             <div>
                                 <p class="mb-0 text-secondary">Total Courses</p>
                                 <h4 class="my-1 text-warning">{{ $totalData['total_course'] }}</h4>
+                                <p class="mb-0 font-13">+{{ $lastWeekData['last_week_students'] }} from last week</p>
 
                             </div>
                             <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto">
@@ -80,118 +81,6 @@
                 </div>
             </div>
         </div><!--end row-->
-
-        <div class="row">
-
-            <div class="col-12 col-lg-6 d-flex">
-                <div class="card radius-10 w-100">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <h6 class="mb-0">Total Sales History</h6>
-                            </div>
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
-                                    data-bs-toggle="dropdown"><i
-                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="piechart"></div>
-
-                    <ul class="list-group list-group-flush">
-
-                        @foreach ($instructor_courses as $item)
-                            <li
-                                class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">
-                                {{ $item->course_name }}
-                                <span class="badge bg-success rounded-pill">
-                                    @php
-
-                                        $sale_number = \App\Models\Order::where('course_id', $item->id)
-                                            ->distinct('course_id')
-                                            ->count();
-
-                                    @endphp
-                                    {{ $sale_number }}
-                                </span>
-                            </li>
-                        @endforeach
-
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6 d-flex">
-
-                <div class="card radius-10">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <h6 class="mb-0">Recent Orders</h6>
-                            </div>
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
-                                    data-bs-toggle="dropdown"><i
-                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table align-middle mb-0">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Preview</th>
-                                        <th>Course Title</th>
-                                        <th>Price</th>
-                                        <th>Date</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    @foreach($recent_order as $item)
-
-
-                                    <tr>
-                                        <td><img src="{{ asset($item->course->course_image) }}"
-                                            class="product-img-2" alt="course img"></td>
-
-                                        <td>{{$item->course->course_name}}</td>
-
-                                        <td>${{$item->price}}</td>
-
-
-                                        <td>{{ $item->created_at->format('d M Y') }}</td>
-
-
-                                    </tr>
-                                    @endforeach
-
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div><!--end row-->
-
-
-
-
-
-
     </div>
 @endsection
 
@@ -224,3 +113,16 @@
         chart.draw(data, options);
     }
 </script>
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#sidebarCloseBtn').on('click', function() {
+                $('#sidebarWrapper').css('display', 'none');
+            });
+            $('.bx-menu').on('click', function() {
+                $('#sidebarWrapper').css('display', 'block');
+            });
+        });
+    </script>
+@endpush

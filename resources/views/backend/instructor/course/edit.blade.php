@@ -48,25 +48,27 @@
                             </div>
                         @endif
 
-                        <input type="hidden" name="instructor_id" value="{{auth()->user()->id}}" />
+                        <input type="hidden" name="instructor_id" value="{{ auth()->user()->id }}" />
 
 
 
                         <div class="col-md-6">
                             <label for="name" class="form-label">Course Name</label>
                             <input type="text" class="form-control" name="course_name" id="name"
-                                placeholder="Enter the course name" value="{{ old('course_name', $course->course_name) }}" >
+                                placeholder="Enter the course name" value="{{ old('course_name', $course->course_name) }}">
                         </div>
                         <div class="col-md-6">
                             <label for="slug" class="form-label">Slug</label>
                             <input type="text" class="form-control" name="course_name_slug" id="slug"
-                                placeholder="Enter the slug"  value="{{ old('course_name_slug', $course->course_name_slug) }}"  >
+                                placeholder="Enter the slug"
+                                value="{{ old('course_name_slug', $course->course_name_slug) }}">
                         </div>
 
                         <div class="col-md-12">
                             <label for="course_title" class="form-label">Course Title</label>
                             <input type="text" class="form-control" name="course_title" id="course_title"
-                                placeholder="Enter the course title" value="{{ old('course_title', $course->course_title) }}" >
+                                placeholder="Enter the course title"
+                                value="{{ old('course_title', $course->course_title) }}">
                         </div>
 
                         <div class="col-md-6">
@@ -75,7 +77,9 @@
                                 data-placeholder="Choose a category">
                                 <option value="" disabled selected>Select a category</option>
                                 @foreach ($all_categories as $item)
-                                    <option value="{{ $item->id }}"  {{$item->id == $course->category_id ? 'selected' : ''}}   >{{ $item->name }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ $item->id == $course->category_id ? 'selected' : '' }}>{{ $item->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -84,7 +88,8 @@
                             <label for="subcategory" class="form-label">Select SubCategory</label>
                             <select class="form-select" name="subcategory_id" id="subcategory"
                                 data-placeholder="Choose a subcategory">
-                                <option value="{{$course->subcategory_id}}"  selected>{{$course->subCategory['name']}}</option>
+                                <option value="{{ $course->subcategory_id }}" selected>{{ $course->subCategory['name'] }}
+                                </option>
                             </select>
                         </div>
 
@@ -96,7 +101,7 @@
                         <div class="col-md-2">
 
                             <img src="{{ asset($course->course_image) }}" id="photoPreview" width="60" height="60"
-                            style="margin-top: 15px; {{ $course->course_image ? '' : 'display: none;' }}">
+                                style="margin-top: 15px; {{ $course->course_image ? '' : 'display: none;' }}">
 
                         </div>
 
@@ -108,7 +113,8 @@
                         <div class="col-md-6">
                             <label for="video" class="form-label">Upload Video</label>
                             <input type="file" class="form-control" name="video" id="video" accept="video/*">
-                            <video id="videoPreview" src="{{ $course->video ? asset($course->video) : '' }}" controls style="{{!$course->video ? 'display:none;' : '' }}  width: 100%; margin-top: 10px;">
+                            <video id="videoPreview" src="{{ $course->video ? asset($course->video) : '' }}" controls
+                                style="{{ !$course->video ? 'display:none;' : '' }}  width: 100%; margin-top: 10px;">
 
                             </video>
                         </div>
@@ -121,9 +127,11 @@
 
                                 <option selected disabled>select</option>
 
-                                <option value="beginer" {{ $course->label== 'beginer' ? 'selected' : '' }}      >Beginer</option>
-                                <option value="medium"  {{ $course->label== 'medium' ? 'selected' : '' }}  >Medium</option>
-                                <option value="advance"  {{ $course->label== 'advance' ? 'selected' : '' }}    >Advance</option>
+                                <option value="beginer" {{ $course->label == 'beginer' ? 'selected' : '' }}>Beginer
+                                </option>
+                                <option value="medium" {{ $course->label == 'medium' ? 'selected' : '' }}>Medium</option>
+                                <option value="advance" {{ $course->label == 'advance' ? 'selected' : '' }}>Advance
+                                </option>
 
                             </select>
                         </div>
@@ -135,8 +143,8 @@
 
                                 <option selected disabled>select</option>
 
-                                <option value="yes" {{ $course->certificate == 'yes' ? 'selected' : '' }} >Yes</option>
-                                <option value="no" {{ $course->certificate == 'no' ? 'selected' : '' }} >No</option>
+                                <option value="yes" {{ $course->certificate == 'yes' ? 'selected' : '' }}>Yes</option>
+                                <option value="no" {{ $course->certificate == 'no' ? 'selected' : '' }}>No</option>
 
 
                             </select>
@@ -145,24 +153,28 @@
 
                         <div class="col-md-6">
                             <label for="duration" class="form-label">Course Duration</label>
-                            <input type="text" class="form-control" name="duration" id="duration" value="{{ old('duration', $course->duration) }}" >
+                            <input type="text" class="form-control" name="duration" id="duration"
+                                value="{{ old('duration', $course->duration) }}">
                         </div>
 
                         <div class="col-md-12">
                             <label for="resources" class="form-label">Resources</label>
-                            <input class="form-control" type="number" name="resources" id="resources" value="{{ old('resources', $course->resources) }}" />
+                            <input class="form-control" type="number" name="resources" id="resources"
+                                value="{{ old('resources', $course->resources) }}" />
                         </div>
 
                         <div class="col-md-6">
                             <label for="selling_price" class="form-label">Selling Price</label>
                             <input type="number" class="form-control" name="selling_price" id="selling_price"
-                                placeholder="Enter selling price" value="{{ old('selling_price', $course->selling_price) }}" />
+                                placeholder="Enter selling price"
+                                value="{{ old('selling_price', $course->selling_price) }}" />
                         </div>
 
                         <div class="col-md-6">
                             <label for="discount_price" class="form-label">Discount Price</label>
                             <input type="number" class="form-control" name="discount_price" id="discount_price"
-                                placeholder="Enter discount price" value="{{ old('discount_price', $course->discount_price) }}"  />
+                                placeholder="Enter discount price"
+                                value="{{ old('discount_price', $course->discount_price) }}" />
                         </div>
 
                         <div class="col-md-12">
@@ -171,21 +183,22 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="course_goal" class="form-label" style="display: flex; align-items:center; justify-content:space-between">
+                            <label for="course_goal" class="form-label"
+                                style="display: flex; align-items:center; justify-content:space-between">
                                 Course Goals
                                 <button type="button" id="addGoalInput" class="btn btn-primary">+</button>
                             </label>
                             <div id="goalContainer">
 
-                                @foreach($course_goals as $data)
-                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                @foreach ($course_goals as $data)
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
 
-                                    <input type="text" class="form-control" name="course_goals[]"
-                                        placeholder="Enter Course Goal" value="{{$data->goal_name}}" />
-                                    <button type="button" class="btn btn-danger removeGoalInput">-</button>
+                                        <input type="text" class="form-control" name="course_goals[]"
+                                            placeholder="Enter Course Goal" value="{{ $data->goal_name }}" />
+                                        <button type="button" class="btn btn-danger removeGoalInput">-</button>
 
 
-                                </div>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -196,21 +209,27 @@
 
                         <div class="d-flex align-items-center gap-3 mt-3">
                             <div class="form-check form-check-success">
-                                <input type="hidden" name="bestseller" value="no"> <!-- Hidden field for default value -->
+                                <input type="hidden" name="bestseller" value="no">
+                                <!-- Hidden field for default value -->
                                 <input class="form-check-input" name="bestseller" type="checkbox" id="flexCheckSuccess"
-                                    style="cursor: pointer" value="yes" {{ $course->bestseller == 'yes' ? 'checked' : '' }}>
+                                    style="cursor: pointer" value="yes"
+                                    {{ $course->bestseller == 'yes' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="flexCheckSuccess">bestseller</label>
                             </div>
                             <div class="form-check form-check-danger">
-                                <input type="hidden" name="featured" value="no"> <!-- Hidden field for default value -->
+                                <input type="hidden" name="featured" value="no">
+                                <!-- Hidden field for default value -->
                                 <input class="form-check-input" name="featured" type="checkbox" id="flexCheckDanger"
-                                    style="cursor: pointer" value="yes" {{ $course->featured == 'yes' ? 'checked' : '' }}>
+                                    style="cursor: pointer" value="yes"
+                                    {{ $course->featured == 'yes' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="flexCheckDanger">featured</label>
                             </div>
                             <div class="form-check form-check-warning">
-                                <input type="hidden" name="highestrated" value="no"> <!-- Hidden field for default value -->
-                                <input class="form-check-input" type="checkbox" name="highestrated" id="flexCheckWarning"
-                                    style="cursor: pointer" value="yes" {{ $course->highestrated == 'yes' ? 'checked' : '' }}>
+                                <input type="hidden" name="highestrated" value="no">
+                                <!-- Hidden field for default value -->
+                                <input class="form-check-input" type="checkbox" name="highestrated"
+                                    id="flexCheckWarning" style="cursor: pointer" value="yes"
+                                    {{ $course->highestrated == 'yes' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="flexCheckWarning">highestrated</label>
                             </div>
                         </div>
