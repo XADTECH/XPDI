@@ -15,6 +15,8 @@ use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class UserController extends Controller
 {
@@ -87,16 +89,33 @@ class UserController extends Controller
 
     public function lectures(Request $request, $course_id)
     {
+        // $course = Course::with([
+        //     'instructor:id,name',
+        //     'category:id,name',
+        //     'course_lecture',
+        //     'course_section.lecture'
+        // ])->find($course_id);
+
+        // $firstLecture = $course->course_section->flatMap->lecture->first();
+
+        // $videoUrl = $firstLecture->url; // original watch URL
+        // $embedUrl = Str::replace('watch?v=', 'embed/', $videoUrl);
 
         $course = Course::with([
             'instructor:id,name',
             'category:id,name',
             'course_lecture',
-            'course_section'
+            'course_section.lecture'
         ])->find($course_id);
 
-        // dd(json_decode($course));
+        // Safely get the first lecture (could be null)
+        $firstLecture = $course->course_section->flatMap->lecture->first();
 
-        return view('backend.user.lectures', compact('course'));
+        // Safely build embed URL or default to null
+        $videoUrl = $firstLecture?->url;
+        $embedUrl = $videoUrl ? Str::replace('watch?v=', 'embed/', $videoUrl) : null;
+
+
+        return view('backend.user.lectures', compact('course', 'firstLecture', 'embedUrl'));
     }
 }

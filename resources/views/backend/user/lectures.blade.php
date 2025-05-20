@@ -103,94 +103,105 @@
 
                 <!-- Accordion -->
                 <div class="accordion" id="lessonAccordion">
-                    <!-- Section 1 -->
-                    <div class="accordion-item border-0 mb-2 shadow-sm rounded-2">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button bg-white fw-semibold py-2 px-3" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
-                                Getting Started
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show">
-                            <div class="accordion-body px-3 pt-2 pb-3">
-                                <ol class="ps-3 mb-0">
-                                    <li class="mb-2">
-                                        <a href="#" class="lesson-link completed">Basics of English Language</a>
-                                    </li>
-                                    <li class="mb-2">
-                                        <a href="#" class="lesson-link active">Learn Noun</a>
-                                    </li>
-                                    <li class="mb-2">
-                                        <a href="#" class="lesson-link">Learn Sentences</a>
-                                    </li>
-                                    <li><a href="#" class="lesson-link">Learn writing</a></li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Section 2 -->
-                    <div class="accordion-item border-0 mb-2 shadow-sm rounded-2">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed bg-white fw-semibold py-2 px-3" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                Getting Started
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse">
-                            <div class="accordion-body px-3 pt-2 pb-3">
-                                <ol class="ps-3 mb-0">
-                                    <li class="mb-2"><a href="#" class="lesson-link">Basics of English
-                                            Language</a></li>
-                                    <li class="mb-2"><a href="#" class="lesson-link">Learn Noun</a></li>
-                                    <li class="mb-2"><a href="#" class="lesson-link">Learn Sentences</a></li>
-                                    <li><a href="#" class="lesson-link">Learn writing</a></li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
+                    @php $lectureIndex = 1; @endphp
 
-                    <!-- Section 3 -->
-                    <div class="accordion-item border-0 shadow-sm rounded-2">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed bg-white fw-semibold py-2 px-3" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                Getting Started
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse">
-                            <div class="accordion-body px-3 pt-2 pb-3">
-                                <ol class="ps-3 mb-0">
-                                    <li class="mb-2"><a href="#" class="lesson-link">Basics of English
-                                            Language</a></li>
-                                    <li class="mb-2"><a href="#" class="lesson-link">Learn Noun</a></li>
-                                    <li class="mb-2"><a href="#" class="lesson-link">Learn Sentences</a></li>
-                                    <li><a href="#" class="lesson-link">Learn writing</a></li>
-                                </ol>
+                    @foreach ($course->course_section as $index => $section)
+                        <div class="accordion-item border-0 mb-2 shadow-sm rounded-2">
+                            <h2 class="accordion-header" id="heading{{ $index }}">
+                                <button
+                                    class="accordion-button {{ $index === 0 ? '' : 'collapsed' }} bg-white fw-semibold py-2 px-3"
+                                    type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse{{ $index }}"
+                                    aria-expanded="{{ $index === 0 ? 'true' : 'false' }}"
+                                    aria-controls="collapse{{ $index }}">
+                                    {{ $section->section_title }}
+                                </button>
+                            </h2>
+
+                            <div id="collapse{{ $index }}"
+                                class="accordion-collapse collapse {{ $index === 0 ? 'show' : '' }}"
+                                aria-labelledby="heading{{ $index }}" data-bs-parent="#lessonAccordion">
+                                <div class="accordion-body px-3 pt-2 pb-3">
+                                    @if ($section->lecture?->count())
+                                        <ol class="ps-3 mb-0">
+                                            @foreach ($section->lecture as $lecture)
+                                                <li class="mb-2">
+                                                    <a href="#!" class="lesson-link"
+                                                        id="{{ $lectureIndex . '@' . $lecture->video_duration . '@' . $lecture->url }}">
+                                                        {{ Str::ucfirst($lecture->lecture_title ?? '') }}
+                                                    </a>
+                                                </li>
+                                                @php $lectureIndex++; @endphp
+                                            @endforeach
+                                        </ol>
+                                    @else
+                                        <p class="text-muted">No lectures in this section.</p>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
+
                 </div>
+
+
             </div>
+
+            <!-- Main Content -->
 
             <!-- Main Content -->
             <div class="col px-0 d-flex flex-column">
                 <!-- Top bar -->
+                {{-- <div class="topbar">
+                    <span>
+                        <span id="current_unit">Unit 1 </span>/{{ $course->course_section->flatMap->lecture->count() }}
+                    </span>
+                    <span class="text-muted"
+                        id="video_duration">{{ $firstLecture->video_duration . ' Minutes' ?? 'Unknown duration' }}</span>
+                </div> --}}
+
                 <div class="topbar">
-                    <span>Unit 2/4</span>
-                    <span class="text-muted">20 minutes</span>
+                    <span>
+                        <span id="current_unit">Unit 1</span> /
+                        {{ $course->course_section->flatMap->lecture->count() }}
+                    </span>
+                    <span class="text-muted" id="video_duration">
+                        {{ $firstLecture?->video_duration ? $firstLecture->video_duration . ' Minutes' : 'Unknown duration' }}
+                    </span>
                 </div>
+
 
                 <!-- Video area -->
                 <div class="video-wrapper my-3">
-                    <h5 class="mb-3">Learn Noun</h5>
-                    <div class="ratio ratio-16x9">
-                        <iframe width="90%" height="100"
-                            src="https://www.youtube.com/embed/pE9vg4mZZ20?si=FRHekvivETIrKPkZ"
+                    <h5 class="mb-3" id="lecture-title">
+                        {{ Str::ucfirst($firstLecture->lecture_title ?? 'Lecture Title') }}</h5>
+
+                    {{-- <div class="ratio ratio-16x9">
+                        <iframe width="560" height="315" src="{{ $embedUrl }}" id="lecture-video"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
+                    <input type="hidden" id="lecture_link" value="{{ $embedUrl }}"> --}}
+
+                    <div class="ratio ratio-16x9">
+                        @if ($embedUrl)
+                            <iframe width="560" height="315" src="{{ $embedUrl }}" id="lecture-video"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        @else
+                            <div class="d-flex align-items-center justify-content-center bg-light text-muted"
+                                style="height: 315px; border: 1px solid #ccc; border-radius: 4px;">
+                                <p class="mb-0">No lecture video available.</p>
+                            </div>
+                        @endif
+                    </div>
+
+                    <input type="hidden" id="lecture_link" value="{{ $embedUrl ?? '' }}">
+
+
                 </div>
             </div>
         </div>
@@ -198,6 +209,68 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll('.lesson-link');
+            const videoDurationSpan = document.getElementById('video_duration');
+
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const id = this.id; // format: "3@15"
+                    const [index, duration] = id.split('@');
+
+                    console.log("Index:", index);
+                    console.log("Duration:", duration);
+
+                    videoDurationSpan.textContent = duration ?
+                        `${duration} Minutes` :
+                        'Unknown duration';
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll('.lesson-link');
+            const video = document.getElementById("lecture-video");
+            const durationSpan = document.getElementById("video_duration");
+            const currentUnit = document.getElementById("current_unit");
+
+            links.forEach(link => {
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+
+                    // ID format: "3@15@https://www.youtube.com/watch?v=xyz"
+                    const parts = this.id.split('@');
+                    if (parts.length < 3) return;
+
+                    const index = parts[0];
+                    const duration = parts[1];
+                    const url = parts.slice(2).join('@'); // In case URL has "@" in it
+
+                    const embedUrl = url.replace("watch?v=", "embed/");
+
+                    video.src = embedUrl;
+                    durationSpan.textContent = duration ? `${duration} Minutes` :
+                        'Unknown duration';
+                    currentUnit.textContent = `Unit ${index}`;
+
+                    // Highlight active link
+                    links.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+
+
+
+
 </body>
 
 </html>
