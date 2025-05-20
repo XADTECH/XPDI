@@ -12,6 +12,7 @@ use App\Models\InfoBox;
 use App\Models\Order;
 use App\Models\Partner;
 use App\Models\Review;
+use App\Models\StudentCourse;
 use App\Models\Slider;
 use App\Models\SubCategory;
 use App\Models\Subscriber;
@@ -25,27 +26,8 @@ class FrontendController extends Controller
 {
     public function index()
     {
-
-
-        $course_category = Category::with('course', 'course.user', 'course.course_goal')->get();
-        $categories = Category::all();
-        $blogs = BlogPost::with('category')->get();
-        $all_sliders = Slider::all();
-        $all_info = InfoBox::all();
-
-        $most_popular_courses = Order::select('course_id', 'course_title', DB::raw('COUNT(*) as total_orders'))
-            ->groupBy('course_id', 'course_title') // Group by course_id and course_title
-            ->orderBy('total_orders', 'desc') // Order by total_orders in descending order
-            ->with('course', 'course.user')
-            ->take(6) // Limit to 6 courses
-            ->get();
-
-        $all_reviews = Review::latest()->with('user', 'course')->where('status', '1')->get();
-
-        $all_partner = Partner::all();
-
-
-        return view('frontend.index', compact('course_category', 'categories', 'blogs', 'all_sliders', 'all_info', 'most_popular_courses', 'all_reviews', 'all_partner'));
+        $popular_courses = Course::with(['instructor', 'category', 'review'])->withCount('course_lecture')->limit(6)->get();
+        return view('frontend.index', compact('popular_courses'));
     }
 
     public function view_old($slug)
@@ -99,8 +81,28 @@ class FrontendController extends Controller
 
     public function view($slug)
     {
-        // return view('frontend.pages.course-details.index', compact('course', 'course_content', 'total_lecture', 'all_category', 'averageRating', 'count_ratings', 'unique_student', 'total_lecture_duration', 'similarCourses', 'ratingsCount', 'unique_student', 'totalRatings', 'ratings_data', 'more_course_instructor'));
-        return view('frontend.course-detail');
+        $course = Course::with(['category', 'subCategory', 'instructor'])
+            ->withCount('course_lecture')
+            ->where('course_name_slug', $slug)
+            ->firstOrFail();
+
+
+        if (Auth::check()) {
+            $studentId = Auth::id();
+
+            $alreadyEnrolled = StudentCourse::where('student_id', $studentId)
+                ->where('course_id', $course->id)
+                ->exists();
+
+            if (!$alreadyEnrolled) {
+                StudentCourse::create([
+                    'student_id' => $studentId,
+                    'course_id' => $course->id,
+                ]);
+            }
+        }
+
+        return view('frontend.course-detail', compact('course'));
     }
 
     public function courseCategory($slug)
@@ -200,7 +202,8 @@ class FrontendController extends Controller
 
     public function courses(Request $request)
     {
-        return view('frontend.courses');
+        $courses = Course::with(['instructor', 'category', 'review'])->withCount('lessons')->limit(6)->get();
+        return view('frontend.courses', compact('courses'));
     }
 
 

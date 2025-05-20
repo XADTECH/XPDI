@@ -29,128 +29,9 @@
                     <!-- Completed Courses -->
                     <div class="tab-pane fade show active" id="tab-my-completed" role="tabpanel"
                         aria-labelledby="tab-my-completed-btn">
-                        <div class="row gap-5">
 
-                            <div class="col-md-6 col-lg-3">
-                                <div class="course-card p-3">
-                                    <div class="course-img-wrapper">
-                                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                            alt="Course image" />
-                                        <div class="course-badge">Software Development</div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                        <div class="d-flex align-items-center instructor-image">
-                                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                                class="rounded-circle me-2" width="30" height="30"
-                                                alt="Author">
-                                            <span class="text-dark small fw-semibold">Mr. Nabeel</span>
-                                        </div>
-                                    </div>
-
-                                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2025</h6>
-
-                                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                                        <span><i class="bi bi-clock"></i> 5 hrs</span>
-                                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
-                                    </div>
-                                    <div class="d-flex align-items-center mt-2" style="gap: 0.5rem;">
-                                        <div class="progress flex-grow-1" style="height: 6px;">
-                                            <div class="progress-bar" role="progressbar" style="width: 20%;"
-                                                aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <span class="small text-muted" style="position: relative; top: -8px;">20%</span>
-                                    </div>
-
-
-                                    {{-- <a href="{{ url('/user/lectures') }}" class="btn btn-learn mt-3">Continue Learning
-                                        →</a> --}}
-                                    <a href="{{ url('/user/lectures') }}"
-                                        class="btn btn-learn mt-3 start-learning-btn">Continue Learning →</a>
-
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-6 col-lg-3">
-                                <div class="course-card p-3">
-                                    <div class="course-img-wrapper">
-                                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                            alt="Course image" />
-                                        <div class="course-badge">Software Development</div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                        <div class="d-flex align-items-center instructor-image">
-                                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                                class="rounded-circle me-2" width="30" height="30"
-                                                alt="Author">
-                                            <span class="text-dark small fw-semibold">Mr. Nabeel</span>
-                                        </div>
-                                    </div>
-
-                                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2025</h6>
-
-                                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                                        <span><i class="bi bi-clock"></i> 5 hrs</span>
-                                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
-                                    </div>
-                                    <div class="d-flex align-items-center mt-2" style="gap: 0.5rem;">
-                                        <div class="progress flex-grow-1" style="height: 6px;">
-                                            <div class="progress-bar" role="progressbar" style="width: 20%;"
-                                                aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <span class="small text-muted" style="position: relative; top: -8px;">20%</span>
-                                    </div>
-
-
-                                    {{-- <a href="{{ url('/user/lectures') }}" class="btn btn-learn mt-3">Continue Learning
-                                        →</a> --}}
-                                    <a href="{{ url('/user/lectures') }}"
-                                        class="btn btn-learn mt-3 start-learning-btn">Continue Learning →</a>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-lg-3">
-                                <div class="course-card p-3">
-                                    <div class="course-img-wrapper">
-                                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                            alt="Course image" />
-                                        <div class="course-badge">Software Development</div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                        <div class="d-flex align-items-center instructor-image">
-                                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                                class="rounded-circle me-2" width="30" height="30"
-                                                alt="Author">
-                                            <span class="text-dark small fw-semibold">Mr. Nabeel</span>
-                                        </div>
-                                    </div>
-
-                                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2025</h6>
-
-                                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                                        <span><i class="bi bi-clock"></i> 5 hrs</span>
-                                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
-                                    </div>
-                                    <div class="d-flex align-items-center mt-2" style="gap: 0.5rem;">
-                                        <div class="progress flex-grow-1" style="height: 6px;">
-                                            <div class="progress-bar" role="progressbar" style="width: 20%;"
-                                                aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <span class="small text-muted"
-                                            style="position: relative; top: -8px;">20%</span>
-                                    </div>
-
-
-                                    {{-- <a href="{{ url('/user/lectures') }}" class="btn btn-learn mt-3">Continue Learning
-                                        →</a> --}}
-                                    <a href="{{ url('/user/lectures') }}"
-                                        class="btn btn-learn mt-3 start-learning-btn">Continue Learning →</a>
-
-                                </div>
-                            </div>
-
-
+                        <div id="course-list">
+                            @include('backend.user.course-cards', ['studentCourses' => $studentCourses])
                         </div>
                     </div>
                 </div>
@@ -169,6 +50,25 @@
                     tabEls.forEach(tab => tab.classList.remove('active'));
                     event.target.classList.add('active');
                 });
+            });
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).on('click', '#course-list .pagination a', function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(response) {
+                    $('#course-list').html($(response).find('#course-list').html());
+                },
+                error: function() {
+                    alert('Something went wrong. Please try again.');
+                }
             });
         });
     </script>

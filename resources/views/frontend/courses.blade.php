@@ -159,300 +159,169 @@
 
             <!-- recommended -->
             <div id="recommended">
-                <div class="row">
-                    <!-- Course Card 1 -->
-                    <div class="col-md-6 mb-4 pe-lg-5">
-                        <div class="course-card p-3">
-                            <div class="course-img-wrapper">
-                                <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                    alt="Course image" />
-                                <div class="course-badge">Software Development</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                        class="rounded-circle me-2" width="30" height="30" alt="Author">
-                                    <span class="text-dark small fw-semibold">Mr. Nabeel</span>
+                @foreach ($courses->chunk(2) as $chunk)
+                    <div class="row">
+                        @foreach ($chunk as $key => $course)
+                            <div class="col-md-6 mb-4 {{ $key % 2 === 0 ? 'pe-lg-5' : 'ps-lg-5' }}">
+                                <div class="course-card p-3">
+                                    <div class="course-img-wrapper">
+                                        <img src="{{ asset($course->course_image) }}" alt="Course image" />
+                                        <div class="course-badge">
+                                            {{ $course->category->name ?? 'Category' }}
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ asset($course->course_image) }}" class="rounded-circle me-2"
+                                                width="30" height="30" alt="Author">
+                                            <span class="text-dark small fw-semibold">
+                                                {{ isset($course->instructor->name) ? ucwords($course->instructor->name) : 'Instructor' }}
+                                            </span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-warning small me-1">★★★★★</div>
+                                            <strong class="me-1 small">5.0</strong>
+                                            <small class="text-muted">(170)</small>
+                                        </div>
+                                    </div>
+                                    <h6 class="fw-bold mb-1 course-title">
+                                        {{ Str::ucfirst(Str::limit($course->course_title, 40, '...')) }}
+                                    </h6>
+                                    <p class="text-muted small mb-2">
+                                        {{ Str::limit($course->description, 100, '...') }}
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span
+                                            class="badge bg-info text-dark small text-uppercase">{{ $course->label ?? 'Beginner' }}</span>
+                                        <span
+                                            class="text-orange fw-bold">{{ $course->is_paid ? 'Paid' : 'Free' }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                                        <span><i class="bi bi-people"></i> {{ $course->students_count ?? 0 }}
+                                            Students</span>
+                                        <span><i class="bi bi-clock"></i> {{ $course->duration ?? '0 hrs' }}</span>
+                                        <span><i class="bi bi-play-circle"></i> {{ $course->lessons_count }}
+                                            lessons</span>
+                                    </div>
+                                    <a href="{{ url('course-details/english-speaking' . $course->slug) }}"
+                                        class="btn btn-learn mt-3">START LEARNING →</a>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-warning small me-1">★★★★★</div>
-                                    <strong class="me-1 small">5.0</strong>
-                                    <small class="text-muted">(170)</small>
-                                </div>
                             </div>
-                            <h6 class="fw-bold mb-1 course-title">The Ultimate React Course 2025</h6>
-                            <p class="text-muted small mb-2">
-                                Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                                Tailwind, advanced patterns
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-info text-dark small">Beginner</span>
-                                <span class="text-orange fw-bold">Paid</span>
-                            </div>
-                            <div class="d-flex justify-content-between text-muted mt-2 small">
-                                <span><i class="bi bi-people"></i> 180 Students</span>
-                                <span><i class="bi bi-clock"></i> 5 hrs</span>
-                                <span><i class="bi bi-play-circle"></i> 7 lessons</span>
-                            </div>
-                            <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START
-                                LEARNING
-                                →</a>
-                        </div>
+                        @endforeach
                     </div>
+                @endforeach
 
-                    <!-- Course Card 2 -->
-                    <div class="col-md-6 mb-4 ps-lg-5">
-                        <div class="course-card p-3">
-                            <div class="course-img-wrapper">
-                                <img src="{{ asset('frontend_assets/images/Courses/english-british-england-language-education-concept_53876-133734.jpg') }}"
-                                    alt="Course image" />
-                                <div class="course-badge">Language and Office Skills</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset('frontend_assets/images/Courses/english-british-england-language-education-concept_53876-133734.jpg') }}"
-                                        class="rounded-circle me-2" width="30" height="30" alt="Author">
-                                    <span class="text-dark small fw-semibold">Ms. Alveena</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-warning small me-1">★★★★★</div>
-                                    <strong class="me-1 small">5.0</strong>
-                                    <small class="text-muted">(12)</small>
-                                </div>
-                            </div>
-                            <h6 class="fw-bold mb-1 course-title">Speak and Understand English with Confidence</h6>
-                            <p class="text-muted small mb-2">
-                                Build your English speaking, listening, and grammar skills step by step. This course
-                                focuses on everyday communication...
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-info text-dark small">Beginner</span>
-                                <span class="text-orange fw-bold">Free</span>
-                            </div>
-                            <div class="d-flex justify-content-between text-muted mt-2 small">
-                                <span><i class="bi bi-people"></i> 110 Students</span>
-                                <span><i class="bi bi-clock"></i> 5 hrs</span>
-                                <span><i class="bi bi-play-circle"></i> 3 lessons</span>
-                            </div>
-                            <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START
-                                LEARNING
-                                →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- Course Card 3 -->
-                    <div class="col-md-6 mb-4 pe-lg-5">
-                        <div class="course-card p-3">
-                            <div class="course-img-wrapper">
-                                <img src="{{ asset('frontend_assets/images/Courses/human-resource-hiring-recruiter-select-career-concept.jpg') }}"
-                                    alt="Course image" />
-                                <div class="course-badge">Language and Office Skills</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset('frontend_assets/images/Courses/human-resource-hiring-recruiter-select-career-concept.jpg') }}"
-                                        class="rounded-circle me-2" width="30" height="30" alt="Author">
-                                    <span class="text-dark small fw-semibold">Ms. Maheen</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-warning small me-1">★★★★</div>
-                                    <strong class="me-1 small">4.0</strong>
-                                    <small class="text-muted">(16)</small>
-                                </div>
-                            </div>
-                            <h6 class="fw-bold mb-1 course-title">Introduction to Human Resource Management</h6>
-                            <p class="text-muted small mb-2">
-                                Learn the essentials of HR, including recruitment, employee relations, training, and
-                                performance management...
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-info text-dark small">Advanced</span>
-                                <span class="text-orange fw-bold">Free</span>
-                            </div>
-                            <div class="d-flex justify-content-between text-muted mt-2 small">
-                                <span><i class="bi bi-people"></i> 50 Students</span>
-                                <span><i class="bi bi-clock"></i> 5.6 hrs</span>
-                                <span><i class="bi bi-play-circle"></i> 5 lessons</span>
-                            </div>
-                            <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START
-                                LEARNING
-                                →</a>
-                        </div>
-                    </div>
-
-                    <!-- Course Card 4 -->
-                    <div class="col-md-6 mb-4 ps-lg-5">
-                        <div class="course-card p-3">
-                            <div class="course-img-wrapper">
-                                <img src="{{ asset('frontend_assets/images/Courses/telecom.jpeg') }}"
-                                    alt="Course image" />
-                                <div class="course-badge">Telecom and Fixed Networks</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset('frontend_assets/images/Courses/telecom.jpeg') }}"
-                                        class="rounded-circle me-2" width="30" height="30" alt="Author">
-                                    <span class="text-dark small fw-semibold">Mr. Azhar Iqbal</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-warning small me-1">★★★★★</div>
-                                    <strong class="me-1 small">5.0</strong>
-                                    <small class="text-muted">(150)</small>
-                                </div>
-                            </div>
-                            <h6 class="fw-bold mb-1 course-title">Master of Modern Telecommunications</h6>
-                            <p class="text-muted small mb-2">
-                                Learn telecommunications from industry experts and gain hands-on skills to thrive in
-                                today’s connected world.
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-info text-dark small">Beginner</span>
-                                <span class="text-orange fw-bold">Paid</span>
-                            </div>
-                            <div class="d-flex justify-content-between text-muted mt-2 small">
-                                <span><i class="bi bi-people"></i> 160 Students</span>
-                                <span><i class="bi bi-clock"></i> 4 hrs</span>
-                                <span><i class="bi bi-play-circle"></i> 6 lessons</span>
-                            </div>
-                            <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START
-                                LEARNING
-                                →</a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- popular -->
             <div id="popular" style="display: none;">
-                <div class="row">
-                    <!-- Course Card 1 -->
-                    <div class="col-md-6 mb-4 pe-lg-5">
-                        <div class="course-card p-3">
-                            <div class="course-img-wrapper">
-                                <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                    alt="Course image" />
-                                <div class="course-badge">Software Development</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                        class="rounded-circle me-2" width="30" height="30" alt="Author">
-                                    <span class="text-dark small fw-semibold">Mr. Nabeel</span>
+                @foreach ($courses->chunk(2) as $chunk)
+                    <div class="row">
+                        @foreach ($chunk as $key => $course)
+                            <div class="col-md-6 mb-4 {{ $key % 2 === 0 ? 'pe-lg-5' : 'ps-lg-5' }}">
+                                <div class="course-card p-3">
+                                    <div class="course-img-wrapper">
+                                        <img src="{{ asset($course->course_image) }}" alt="Course image" />
+                                        <div class="course-badge">
+                                            {{ $course->category->name ?? 'Category' }}
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ asset($course->course_image) }}" class="rounded-circle me-2"
+                                                width="30" height="30" alt="Author">
+                                            <span class="text-dark small fw-semibold">
+                                                {{ isset($course->instructor->name) ? ucwords($course->instructor->name) : 'Instructor' }}
+                                            </span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-warning small me-1">★★★★★</div>
+                                            <strong class="me-1 small">5.0</strong>
+                                            <small class="text-muted">(170)</small>
+                                        </div>
+                                    </div>
+                                    <h6 class="fw-bold mb-1 course-title">
+                                        {{ Str::ucfirst(Str::limit($course->course_title, 40, '...')) }}
+                                    </h6>
+                                    <p class="text-muted small mb-2">
+                                        {{ Str::limit($course->description, 100, '...') }}
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span
+                                            class="badge bg-info text-dark small text-uppercase">{{ $course->label ?? 'Beginner' }}</span>
+                                        <span
+                                            class="text-orange fw-bold">{{ $course->is_paid ? 'Paid' : 'Free' }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                                        <span><i class="bi bi-people"></i> {{ $course->students_count ?? 0 }}
+                                            Students</span>
+                                        <span><i class="bi bi-clock"></i> {{ $course->duration ?? '0 hrs' }}</span>
+                                        <span><i class="bi bi-play-circle"></i> {{ $course->lessons_count }}
+                                            lessons</span>
+                                    </div>
+                                    <a href="{{ url('/course-details/' . $course->slug) }}"
+                                        class="btn btn-learn mt-3">START LEARNING →</a>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-warning small me-1">★★★★★</div>
-                                    <strong class="me-1 small">5.0</strong>
-                                    <small class="text-muted">(170)</small>
-                                </div>
                             </div>
-                            <h6 class="fw-bold mb-1 course-title">The Ultimate React Course 2025</h6>
-                            <p class="text-muted small mb-2">
-                                Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                                Tailwind, advanced patterns
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-info text-dark small">Beginner</span>
-                                <span class="text-orange fw-bold">Paid</span>
-                            </div>
-                            <div class="d-flex justify-content-between text-muted mt-2 small">
-                                <span><i class="bi bi-people"></i> 180 Students</span>
-                                <span><i class="bi bi-clock"></i> 5 hrs</span>
-                                <span><i class="bi bi-play-circle"></i> 7 lessons</span>
-                            </div>
-                            <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START
-                                LEARNING
-                                →</a>
-                        </div>
+                        @endforeach
                     </div>
-
-                    <!-- Course Card 2 -->
-                    <div class="col-md-6 mb-4 ps-lg-5">
-                        <div class="course-card p-3">
-                            <div class="course-img-wrapper">
-                                <img src="{{ asset('frontend_assets/images/Courses/english-british-england-language-education-concept_53876-133734.jpg') }}"
-                                    alt="Course image" />
-                                <div class="course-badge">Language and Office Skills</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset('frontend_assets/images/Courses/english-british-england-language-education-concept_53876-133734.jpg') }}"
-                                        class="rounded-circle me-2" width="30" height="30" alt="Author">
-                                    <span class="text-dark small fw-semibold">Ms. Alveena</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-warning small me-1">★★★★★</div>
-                                    <strong class="me-1 small">5.0</strong>
-                                    <small class="text-muted">(12)</small>
-                                </div>
-                            </div>
-                            <h6 class="fw-bold mb-1 course-title">Speak and Understand English with Confidence</h6>
-                            <p class="text-muted small mb-2">
-                                Build your English speaking, listening, and grammar skills step by step. This course
-                                focuses on everyday communication...
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-info text-dark small">Beginner</span>
-                                <span class="text-orange fw-bold">Free</span>
-                            </div>
-                            <div class="d-flex justify-content-between text-muted mt-2 small">
-                                <span><i class="bi bi-people"></i> 110 Students</span>
-                                <span><i class="bi bi-clock"></i> 5 hrs</span>
-                                <span><i class="bi bi-play-circle"></i> 3 lessons</span>
-                            </div>
-                            <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START
-                                LEARNING
-                                →</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
 
             </div>
 
             <div id="recent" style="display: none;">
-                <div class="row">
-                    <!-- Course Card 1 -->
-                    <div class="col-md-6 mb-4 pe-lg-5">
-                        <div class="course-card p-3">
-                            <div class="course-img-wrapper">
-                                <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                    alt="Course image" />
-                                <div class="course-badge">Software Development</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                        class="rounded-circle me-2" width="30" height="30" alt="Author">
-                                    <span class="text-dark small fw-semibold">Mr. Nabeel</span>
+                @foreach ($courses->chunk(2) as $chunk)
+                    <div class="row">
+                        @foreach ($chunk as $key => $course)
+                            <div class="col-md-6 mb-4 {{ $key % 2 === 0 ? 'pe-lg-5' : 'ps-lg-5' }}">
+                                <div class="course-card p-3">
+                                    <div class="course-img-wrapper">
+                                        <img src="{{ asset($course->course_image) }}" alt="Course image" />
+                                        <div class="course-badge">
+                                            {{ $course->category->name ?? 'Category' }}
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ asset($course->course_image) }}" class="rounded-circle me-2"
+                                                width="30" height="30" alt="Author">
+                                            <span class="text-dark small fw-semibold">
+                                                {{ isset($course->instructor->name) ? ucwords($course->instructor->name) : 'Instructor' }}
+                                            </span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-warning small me-1">★★★★★</div>
+                                            <strong class="me-1 small">5.0</strong>
+                                            <small class="text-muted">(170)</small>
+                                        </div>
+                                    </div>
+                                    <h6 class="fw-bold mb-1 course-title">
+                                        {{ Str::ucfirst(Str::limit($course->course_title, 40, '...')) }}
+                                    </h6>
+                                    <p class="text-muted small mb-2">
+                                        {{ Str::limit($course->description, 100, '...') }}
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span
+                                            class="badge bg-info text-dark small text-uppercase">{{ $course->label ?? 'Beginner' }}</span>
+                                        <span
+                                            class="text-orange fw-bold">{{ $course->is_paid ? 'Paid' : 'Free' }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between text-muted mt-2 small">
+                                        <span><i class="bi bi-people"></i> {{ $course->students_count ?? 0 }}
+                                            Students</span>
+                                        <span><i class="bi bi-clock"></i> {{ $course->duration ?? '0 hrs' }}</span>
+                                        <span><i class="bi bi-play-circle"></i> {{ $course->lessons_count }}
+                                            lessons</span>
+                                    </div>
+                                    <a href="{{ url('/course-details/' . $course->slug) }}"
+                                        class="btn btn-learn mt-3">START LEARNING →</a>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-warning small me-1">★★★★★</div>
-                                    <strong class="me-1 small">5.0</strong>
-                                    <small class="text-muted">(170)</small>
-                                </div>
                             </div>
-                            <h6 class="fw-bold mb-1 course-title">The Ultimate React Course 2025</h6>
-                            <p class="text-muted small mb-2">
-                                Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                                Tailwind, advanced patterns
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-info text-dark small">Beginner</span>
-                                <span class="text-orange fw-bold">Paid</span>
-                            </div>
-                            <div class="d-flex justify-content-between text-muted mt-2 small">
-                                <span><i class="bi bi-people"></i> 180 Students</span>
-                                <span><i class="bi bi-clock"></i> 5 hrs</span>
-                                <span><i class="bi bi-play-circle"></i> 7 lessons</span>
-                            </div>
-                            <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START
-                                LEARNING
-                                →</a>
-                        </div>
+                        @endforeach
                     </div>
-                </div>
+                @endforeach
             </div>
 
 

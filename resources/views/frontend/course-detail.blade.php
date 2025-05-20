@@ -9,20 +9,24 @@
         <div class="row course-header-content">
             <div class="col-lg-8">
                 <div class="d-flex mb-2">
-                    <a href="#" class="category-badge">Development</a>
-                    <a href="#" class="category-badge">Web Development</a>
+                    <a href="#" class="category-badge">
+                        {{ Str::title($course->category->name ?? '') }}
+                    </a>
+
+                    <a href="#" class="category-badge">
+                        {{ Str::title($course->subCategory->name ?? '') }}
+                    </a>
                 </div>
 
-                <h1 class="course-title">Data Structures Fundamentals for Beginners</h1>
+                <h1 class="course-title">{{ Str::title($course->title ?? '') }}</h1>
                 <p class="course-subtitle">
-                    Understand core data structures such as arrays, linked lists, stacks, queues, trees, and graphs, and
-                    learn how to apply them in real-world problems.
+                    {{ Str::title($course->description ?? '') }}
                 </p>
 
                 <div class="instructor-info">
-                    <img src="{{ asset('frontend_assets/images/instructors/nabeel-javed.jpg') }}" alt="Instructor"
-                        height="100" width="100" class="instructor-photo">
-                    <span>By Nabeel Javed</span>
+                    <img src="{{ asset($course->instructor->photo) }}" alt="Instructor" height="100" width="100"
+                        class="instructor-photo">
+                    <span>{{ Str::title($course->instructor->name ?? '') }}</span>
                 </div>
 
 
@@ -34,7 +38,7 @@
                         <span>⏱️ 5.6 hours</span>
                     </div>
                     <div class="stat-item">
-                        <span>🎬 3 lessons</span>
+                        <span>🎬 {{ $course->course_lecture_count }}</span>
                     </div>
 
                 </div>
@@ -68,11 +72,11 @@
                 <div class="card course-card">
                     <div class="video-player position-relative">
                         <!-- Embedded YouTube Video -->
-                        <iframe width="100%" height="315"
-                            src="https://www.youtube.com/embed/pE9vg4mZZ20?si=FRHekvivETIrKPkZ"
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ $course->video }}"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
 
                     </div>
 

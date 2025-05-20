@@ -69,251 +69,64 @@
         <div class="row g-4 justify-content-center">
             <!-- Card 1 -->
 
-            <div class="col-md-6 col-lg-4">
-                <div class="course-card p-3">
-                    <div class="course-img-wrapper">
-                        <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                            alt="Course image" />
-                        <div class="course-badge">Software Development</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
-                                class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">Mr. Nabeel</span>
+            @foreach ($popular_courses as $course)
+                <div class="col-md-6 col-lg-4">
+                    <div class="course-card p-3">
+                        <div class="course-img-wrapper">
+                            <img src="{{ asset($course->course_image) }}" alt="Course image" />
+                            <div class="course-badge">
+                                {{ isset($course->category->name) ? $course->category->name : '' }}
+                            </div>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <div class="text-warning small me-1">★★★★★</div>
-                            <strong class="me-1 small">5.0</strong>
-                            <small class="text-muted">(170)</small>
+                        <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                                    class="rounded-circle me-2" width="30" height="30" alt="Author">
+                                <span class="text-dark small fw-semibold">
+                                    {{ isset($course->instructor->name) ? ucwords($course->instructor->name) : '' }}
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="text-warning small me-1">★★★★★</div>
+                                <strong class="me-1 small">5.0</strong>
+                                <small class="text-muted">(170)</small>
+                            </div>
                         </div>
-                    </div>
 
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">The Ultimate React Course 2025</h6>
-                    <p class="text-muted small mb-2 ps-0 ms-0">
-                        Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux,
-                        Tailwind, advanced patterns
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-info text-dark small">Beginner</span>
-                        <span class="text-orange fw-bold">Paid</span>
+                        <h6 class="fw-bold mb-1 ps-0 ms-0">
+                            {{ isset($course->course_title) ? Str::ucfirst(Str::limit($course->course_title, 40, '...')) : '' }}
+                        </h6>
+
+                        <p class="text-muted small mb-2 ps-0 ms-0">
+                            {!! Str::limit($course->description, 100, '...') !!}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-info text-dark small" style="text-transform: uppercase;">
+                                {{ isset($course->label) ? $course->label : '' }}
+                            </span>
+                            <span class="text-orange fw-bold">Free</span>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted mt-2 small">
+                            <span><i class="bi bi-people"></i> 180 Students</span>
+                            <span><i class="bi bi-clock"></i> {{ isset($course->duration) ? $course->duration : '' }}
+                                minutes</span>
+                            <span><i class="bi bi-play-circle"></i> {{ $course->course_lecture_count }} lessons</span>
+
+                        </div>
+                        <a href="{{ url('/course-details/' . $course->course_name_slug) }}"
+                            class="btn btn-learn mt-3">START
+                            LEARNING
+                            →</a>
                     </div>
-                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 180 Students</span>
-                        <span><i class="bi bi-clock"></i> 5 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 7 lessons</span>
-                    </div>
-                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
-                        →</a>
                 </div>
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-                <div class="course-card p-3">
-                    <div class="course-img-wrapper">
-                        <img src="{{ asset('frontend_assets/images/Courses/english-british-england-language-education-concept_53876-133734.jpg') }}"
-                            alt="Course image" />
-                        <div class="course-badge">Language and Office skills</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('frontend_assets/images/Courses/english-british-england-language-education-concept_53876-133734.jpg') }}"
-                                class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">Ms Alveena</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="text-warning small me-1">★★★★★</div>
-                            <strong class="me-1 small">5.0</strong>
-                            <small class="text-muted">(12)</small>
-                        </div>
-                    </div>
-
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">Speak and Understand English with Confidence</h6>
-                    <p class="text-muted small mb-2 ps-0 ms-0">
-                        Build your english speaking, listening and grammer skills, step by step. This course focuses on
-                        everyday... </p>
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-info text-dark small">Beginner</span>
-                        <span class="text-orange fw-bold">Free</span>
-                    </div>
-                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 110 Students</span>
-                        <span><i class="bi bi-clock"></i> 5 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 3 lessons</span>
-                    </div>
-                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
-                        →</a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="course-card p-3">
-                    <div class="course-img-wrapper">
-                        <img src="{{ asset('frontend_assets/images/Courses/human-resource-hiring-recruiter-select-career-concept.jpg') }}"
-                            alt="Course image" />
-                        <div class="course-badge">Language and Office skills</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('frontend_assets/images/Courses/human-resource-hiring-recruiter-select-career-concept.jpg') }}"
-                                class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">Ms Maheen</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="text-warning small me-1">★★★★</div>
-                            <strong class="me-1 small">4.0</strong>
-                            <small class="text-muted">(16)</small>
-                        </div>
-                    </div>
-
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">Introduction to Human Resource Management</h6>
-                    <p class="text-muted small mb-2 ps-0 ms-0">
-                        Learn the essentials of HR, including recruitment, employee relations, training and performace
-                        management...
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-info text-dark small">Advanced</span>
-                        <span class="text-orange fw-bold">Free</span>
-                    </div>
-                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 50 Students</span>
-                        <span><i class="bi bi-clock"></i> 5.6 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 5 lessons</span>
-                    </div>
-                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
-                        →</a>
-                </div>
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-                <div class="course-card p-3">
-                    <div class="course-img-wrapper">
-                        <img src="{{ asset('frontend_assets/images/Courses/telecom.jpeg') }}" alt="Course image" />
-                        <div class="course-badge">Telecom and Fixed Networks</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('frontend_assets/images/Courses/telecom.jpeg') }}"
-                                class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">Mr. Azhar Iqbal</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="text-warning small me-1">★★★★★</div>
-                            <strong class="me-1 small">5.0</strong>
-                            <small class="text-muted">(150)</small>
-                        </div>
-                    </div>
-
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">Master of modern telecommunications</h6>
-                    <p class="text-muted small mb-2 ps-0 ms-0">
-                        Learn telecommunications from industry experts and gain hands-on skills to thrive in today’s
-                        connected world
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-info text-dark small">Beginner</span>
-                        <span class="text-orange fw-bold">Paid</span>
-                    </div>
-                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 160 Students</span>
-                        <span><i class="bi bi-clock"></i> 4 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 6 lessons</span>
-                    </div>
-                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
-                        →</a>
-                </div>
-            </div>
-
-
-
-
-            <div class="col-md-6 col-lg-4">
-                <div class="course-card p-3">
-                    <div class="course-img-wrapper">
-                        <img src="{{ asset('frontend_assets/images/Courses/shopping-banking-accounting-webpage-text-search-concept.jpg') }}"
-                            alt="Course image" />
-                        <div class="course-badge">Accounts & Finance</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('frontend_assets/images/Courses/shopping-banking-accounting-webpage-text-search-concept.jpg') }}"
-                                class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">Mr. Shahbaz</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="text-warning small me-1">★★★★★</div>
-                            <strong class="me-1 small">5.0</strong>
-                            <small class="text-muted">(12)</small>
-                        </div>
-                    </div>
-
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">Basic Accounts and Finance for Everyday Use</h6>
-                    <p class="text-muted small mb-2 ps-0 ms-0">
-                        Understand the fundamentals of accounting, budgeting and money management. This course is ideal
-                        for students,...
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-info text-dark small">Beginner</span>
-                        <span class="text-orange fw-bold">Free</span>
-                    </div>
-                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 1 Students</span>
-                        <span><i class="bi bi-clock"></i> 5.6 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 3 lessons</span>
-                    </div>
-                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
-                        →</a>
-                </div>
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-                <div class="course-card p-3">
-                    <div class="course-img-wrapper">
-                        <img src="{{ asset('frontend_assets/images/Courses/young-adult-reusing-fabric-material.jpg') }}"
-                            alt="Course image" />
-                        <div class="course-badge">Stitching and Embridory</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('frontend_assets/images/Courses/young-adult-reusing-fabric-material.jpg') }}"
-                                class="rounded-circle me-2" width="30" height="30" alt="Author">
-                            <span class="text-dark small fw-semibold">Ms Shahana</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="text-warning small me-1">★★★★</div>
-                            <strong class="me-1 small">4.0</strong>
-                            <small class="text-muted">(65)</small>
-                        </div>
-                    </div>
-
-                    <h6 class="fw-bold mb-1 ps-0 ms-0">Learn Stitching and Embridory Step by Step </h6>
-                    <p class="text-muted small mb-2 ps-0 ms-0">
-                        Discover the art of stitching and embridory with easy-to-follow lessons. From basic hand
-                        stitches to...
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-info text-dark small">Beginner</span>
-                        <span class="text-orange fw-bold">Paid</span>
-                    </div>
-                    <div class="d-flex justify-content-between text-muted mt-2 small">
-                        <span><i class="bi bi-people"></i> 70 Students</span>
-                        <span><i class="bi bi-clock"></i> 6.6 hrs</span>
-                        <span><i class="bi bi-play-circle"></i> 9 lessons</span>
-                    </div>
-                    <a href="{{ url('/course-details/english-speaking') }}" class="btn btn-learn mt-3">START LEARNING
-                        →</a>
-                </div>
-            </div>
-
+            @endforeach
             <!-- Repeat similar cards for Card 2 and Card 3 -->
             <!-- Just change the badge (Beginner/Medium), image URL, and text content accordingly -->
         </div>
     </div>
 
     <div class="text-center mt-4">
-        <a href="#" class="text-orange fw-semibold text-decoration-none">
+        <a href="{{ url('/courses') }}" class="text-orange fw-semibold text-decoration-none">
             BROWSE ALL →
         </a>
     </div>

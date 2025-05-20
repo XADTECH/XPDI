@@ -38,15 +38,23 @@ class Course extends Model
         return $this->hasMany(Order::class, 'course_id', 'id');
     }
 
-    public function review(){
+    public function review()
+    {
         return $this->hasMany(Review::class, 'course_id', 'id');
     }
 
-    public function course_lecture(){
+    public function course_lecture()
+    {
         return $this->hasMany(CourseLecture::class, 'course_id', 'id');
     }
 
-    public function instructor(){
+    public function instructor()
+    {
         return $this->belongsTo(User::class, 'instructor_id', 'id');
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
     }
 }

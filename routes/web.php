@@ -168,6 +168,8 @@ Route::get('/instructor/register', [InstructorController::class, 'register'])->n
 Route::post('/instructor/register', [InstructorController::class, 'store'])->name('instructor.register.store');
 
 Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')->name('instructor.')->group(function () {
+    Route::post('add-lecture', [LectureController::class, 'addLecture'])->name('add.lecture');
+
     Route::get('/dashboard', [InstructorController::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [InstructorController::class, 'destroy'])
         ->name('logout');
@@ -182,6 +184,7 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
 
     Route::resource('course-section', CourseSectionController::class);
     Route::resource('lecture', LectureController::class);
+
 
     // Route::get('/course-section/{id}', [CourseSectionController::class, 'index'])->name('course-section');
 
@@ -207,7 +210,7 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
 
 Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-    Route::get('/lectures', [UserController::class, 'lectures'])->name('lectures');
+    Route::get('/lectures/{course_id}', [UserController::class, 'lectures'])->name('lectures');
     Route::post('/logout', [UserController::class, 'destroy'])
         ->name('logout');
 

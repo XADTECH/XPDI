@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Wishlist;
 use App\Models\User;
+use App\Models\Course;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -84,8 +85,18 @@ class UserController extends Controller
     }
 
 
-    public function lectures(Request $request)
+    public function lectures(Request $request, $course_id)
     {
-        return view('backend.user.lectures');
+
+        $course = Course::with([
+            'instructor:id,name',
+            'category:id,name',
+            'course_lecture',
+            'course_section'
+        ])->find($course_id);
+
+        // dd(json_decode($course));
+
+        return view('backend.user.lectures', compact('course'));
     }
 }

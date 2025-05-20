@@ -7,6 +7,7 @@ use App\Http\Requests\QuestionRequest;
 use App\Models\Course;
 use App\Models\Order;
 use App\Models\Question;
+use App\Models\StudentCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use FFMpeg\FFProbe;
@@ -16,13 +17,39 @@ class UserCourseController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     $student_id = Auth::user()->id;
+
+    //     $studentCourses = StudentCourse::where('student_id', $student_id)
+    //         ->with([
+    //             'course.instructor:id,name',
+    //             'course.category:id,name',
+    //             'course' => function ($query) {
+    //                 $query->withCount('course_lecture'); // Changed from 'course_lecture' to likely 'lectures'
+    //             }
+    //         ])->get();
+
+    //     return view('backend.user.my-courses', compact('studentCourses'));
+    // }
+
     public function index()
     {
-        $user_id = Auth::user()->id;
-        $courses = Order::where('user_id', $user_id)->with('course', 'instructor')->paginate('4');
-        // return view('backend.user.course.index', compact('courses'));
-        return view('backend.user.my-courses', compact('courses'));
+        $student_id = Auth::user()->id;
+
+        $studentCourses = StudentCourse::where('student_id', $student_id)
+            ->with([
+                'course.instructor:id,name',
+                'course.category:id,name',
+                'course' => function ($query) {
+                    $query->withCount('course_lecture');
+                }
+            ])
+            ->paginate(3); // ✅ Paginate 3 records per page
+
+        return view('backend.user.my-courses', compact('studentCourses'));
     }
+
 
     /**
      * Show the form for creating a new resource.

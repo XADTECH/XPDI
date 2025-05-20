@@ -12,7 +12,8 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-    public function instructor_message(){
+    public function instructor_message()
+    {
         return $this->hasMany(InstructorMessage::class, 'user_message_id', 'id');
     }
 
@@ -20,6 +21,4 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'instructor_id', 'id');
     }
-
-
 }

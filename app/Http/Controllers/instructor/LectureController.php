@@ -35,15 +35,34 @@ class LectureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(LectureRequest $request)
+
+
+    public function addLecture(Request $request)
     {
-        $validatedData = $request->validated();
+        $validatedData = $request->validate([
+            'course_id'       => 'required|integer|exists:courses,id',
+            'section_id'      => 'required|integer|exists:course_sections,id',
+            'lecture_title'   => 'required|string|max:255',
+            'video_duration'   => 'required',
+            'url'              => 'required',
+            'content'              => 'required',
+        ]);
 
-        $this->lectureService->createLecture($validatedData, $request->file('video'));
+        // Handle storing the lecture (assuming you have a lectureService for that)
+        $this->lectureService->createLecture($validatedData);
 
-
-        return back()->with('success', 'Course created successfully!');
+        return back()->with('success', 'Lecture created successfully!');
     }
+
+    // public function store(LectureRequest $request)
+    // {
+    //     $validatedData = $request->validated();
+
+    //     $this->lectureService->createLecture($validatedData, $request->file('video'));
+
+
+    //     return back()->with('success', 'Course created successfully!');
+    // }
 
     /**
      * Display the specified resource.

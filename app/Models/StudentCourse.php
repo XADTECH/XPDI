@@ -4,10 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CourseLecture extends Model
+class StudentCourse extends Model
 {
+    protected $table = 'students_courses';
+
     protected $guarded = [];
 
+    public function students()
+    {
+        return $this->belongsTo(User::class, 'student_id', 'id');
+    }
 
     public function course()
     {

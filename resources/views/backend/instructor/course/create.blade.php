@@ -46,7 +46,7 @@
                             </div>
                         @endif
 
-                        <input type="hidden" name="instructor_id" value="{{auth()->user()->id}}" />
+                        <input type="hidden" name="instructor_id" value="{{ auth()->user()->id }}" />
 
 
 
@@ -58,7 +58,7 @@
                         <div class="col-md-6">
                             <label for="slug" class="form-label">Slug</label>
                             <input type="text" class="form-control" name="course_name_slug" id="slug"
-                                placeholder="Enter the slug"  value="{{ old('course_name_slug') }}" required >
+                                placeholder="Enter the slug" value="{{ old('course_name_slug') }}" required>
                         </div>
 
                         <div class="col-md-12">
@@ -103,12 +103,21 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="video" class="form-label">Upload Video</label>
+                            {{-- <label for="video" class="form-label">Upload Video</label>
                             <input type="file" class="form-control" name="video" id="video" accept="video/*">
-                            <video id="videoPreview" controls style="display: none; width: 100%; margin-top: 10px;"></video>
+                            <video id="videoPreview" controls style="display: none; width: 100%; margin-top: 10px;"></video> --}}
+
+
+                            <label for="youtubeLink" class="form-label">Attach YouTube video course link</label>
+                            <input type="url" class="form-control" name="video" id="youtubeLink"
+                                placeholder="https://www.youtube.com/watch?v=example">
+
+                            <!-- Preview area -->
+                            <div id="youtubePreview" style="display: none; margin-top: 10px;">
+                                <iframe width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
                         </div>
-
-
                         <div class="col-md-6">
                             <label for="label" class="form-label">Course Label</label>
                             <select class="form-select" name="label" id="label"
@@ -140,12 +149,14 @@
 
                         <div class="col-md-6">
                             <label for="duration" class="form-label">Course Duration</label>
-                            <input type="text" class="form-control" name="duration" id="duration" value="{{ old('duration') }}" >
+                            <input type="text" class="form-control" name="duration" id="duration"
+                                value="{{ old('duration') }}">
                         </div>
 
                         <div class="col-md-12">
                             <label for="resources" class="form-label">Resources</label>
-                            <input class="form-control" type="number" name="resources" id="resources" value="{{ old('resources') }}" />
+                            <input class="form-control" type="number" name="resources" id="resources"
+                                value="{{ old('resources') }}" />
                         </div>
 
                         <div class="col-md-6">
@@ -157,7 +168,7 @@
                         <div class="col-md-6">
                             <label for="discount_price" class="form-label">Discount Price</label>
                             <input type="number" class="form-control" name="discount_price" id="discount_price"
-                                placeholder="Enter discount price" value="{{ old('discount_price') }}"  />
+                                placeholder="Enter discount price" value="{{ old('discount_price') }}" />
                         </div>
 
                         <div class="col-md-12">
@@ -203,15 +214,7 @@
                                 </label>
                             </div>
 
-
-
-
                         </div>
-
-
-
-
-
 
                         <div class="col-md-12">
                             <div class="d-md-flex d-grid align-items-center gap-3">
@@ -233,7 +236,25 @@
 @endsection
 
 @push('scripts')
-
-
     <script src="{{ asset('customjs/instructor/course.js') }}"></script>
+
+
+    <script>
+        document.getElementById('youtubeLink').addEventListener('input', function() {
+            const url = this.value;
+            const match = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
+
+            const previewDiv = document.getElementById('youtubePreview');
+            const iframe = previewDiv.querySelector('iframe');
+
+            if (match && match[1]) {
+                const videoId = match[1];
+                iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                previewDiv.style.display = 'block';
+            } else {
+                iframe.src = '';
+                previewDiv.style.display = 'none';
+            }
+        });
+    </script>
 @endpush

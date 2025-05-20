@@ -16,37 +16,28 @@ class LectureRepository
 
     public function createLecture($data, $video)
     {
-       $lecture = new CourseLecture();
-
-
+        $lecture = new CourseLecture();
 
         if ($video) {
             $data['video'] = $this->uploadFile($video, 'video', $lecture->video);
         }
 
-
-         return CourseLecture::create($data);
-
+        return CourseLecture::create($data);
     }
 
 
 
     public function updateLecture($data, $video, $id)
     {
-       $lecture = CourseLecture::find($id);
+        $lecture = CourseLecture::find($id);
 
 
         if ($video) {
             $data['video'] = $this->uploadFile($video, 'video', $lecture->video);
         }
 
-         $lecture->update($data);
+        $lecture->update($data);
 
-         return $lecture->fresh();
-
-
+        return $lecture->fresh();
     }
-
 }
-
-
