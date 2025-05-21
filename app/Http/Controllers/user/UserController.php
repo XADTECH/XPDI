@@ -89,18 +89,6 @@ class UserController extends Controller
 
     public function lectures(Request $request, $course_id)
     {
-        // $course = Course::with([
-        //     'instructor:id,name',
-        //     'category:id,name',
-        //     'course_lecture',
-        //     'course_section.lecture'
-        // ])->find($course_id);
-
-        // $firstLecture = $course->course_section->flatMap->lecture->first();
-
-        // $videoUrl = $firstLecture->url; // original watch URL
-        // $embedUrl = Str::replace('watch?v=', 'embed/', $videoUrl);
-
         $course = Course::with([
             'instructor:id,name',
             'category:id,name',
@@ -110,6 +98,8 @@ class UserController extends Controller
 
         // Safely get the first lecture (could be null)
         $firstLecture = $course->course_section->flatMap->lecture->first();
+
+        // dd(json_decode($firstLecture));
 
         // Safely build embed URL or default to null
         $videoUrl = $firstLecture?->url;
