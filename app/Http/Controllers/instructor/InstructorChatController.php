@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Auth;
 
 class InstructorChatController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $instructor_id = Auth::user()->id;
         $unique_students = Order::where('instructor_id', $instructor_id)->select('user_id')->distinct()->with('user')->get();
         return view('backend.instructor.chat.index', compact('unique_students'));
     }
 
-    public function userMessage(Request $request){
+    public function userMessage(Request $request)
+    {
         $user_id = $request->user_id;
         $instructor_id = Auth::user()->id;
 
@@ -40,8 +42,8 @@ class InstructorChatController extends Controller
 
         $user_last_message = Message::where('user_id', $request->user_id)->where('instructor_id', $instructor_id)->orderBy('created_at', 'desc')->first();
 
-          // Check if the last message exists and get the ID or set it to null
-         $user_message_id = $user_last_message ? $user_last_message->id : 1;
+        // Check if the last message exists and get the ID or set it to null
+        $user_message_id = $user_last_message ? $user_last_message->id : 1;
 
 
 

@@ -19,6 +19,31 @@
         </div>
         <!--end breadcrumb-->
 
+        <!-- Button to trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade modal-lg" tabindex="-1" role="dialog" id="guide-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Following is the example as guide for which url you need to copy and paste
+                            <br>
+                            <p>For the given example we need to copy </p>
+                            <b>https://www.youtube.com/embed/ENqRPOuHpm8?si=eNs5nA1pgiIb-ePW</b> <br> without double quotes
+                            ("")
+                        </h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{ asset('backend-assets/images/instuctor/instructor_guide.png') }}" class="w-100"
+                            alt="Guide-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="card col-md-12">
 
@@ -102,15 +127,17 @@
                             <textarea class="form-control editor" name="description" id="description" required> {{ old('description') }} </textarea>
                         </div>
 
-                        <div class="col-md-6">
-                            {{-- <label for="video" class="form-label">Upload Video</label>
-                            <input type="file" class="form-control" name="video" id="video" accept="video/*">
-                            <video id="videoPreview" controls style="display: none; width: 100%; margin-top: 10px;"></video> --}}
-
-
-                            <label for="youtubeLink" class="form-label">Attach YouTube video course link</label>
+                        <div class="col-md-12">
+                            <label for="youtubeLink" class="form-label"><b>Attach YouTube video course link</b></label>
+                            <br>
+                            <span style="color: blue;">After uploading video to youtube please click on share option and
+                                then select embed
+                                option and copy the url start from http in src and paste here <a href="#!"
+                                    id="view-guide-image">click here to get
+                                    example screen shot of how to copy url </a>
+                            </span>
                             <input type="url" class="form-control" name="video" id="youtubeLink"
-                                placeholder="https://www.youtube.com/watch?v=example">
+                                placeholder="https://www.youtube.com/embed/ENqRPOuHpm8?si=090-9">
 
                             <!-- Preview area -->
                             <div id="youtubePreview" style="display: none; margin-top: 10px;">
@@ -118,7 +145,7 @@
                             </div>
 
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label for="label" class="form-label">Course Label</label>
                             <select class="form-select" name="label" id="label"
                                 data-placeholder="Choose one thing">
@@ -255,6 +282,25 @@
                 iframe.src = '';
                 previewDiv.style.display = 'none';
             }
+        });
+    </script>
+
+
+    {{-- <script>
+        document.getElementById('view-guide-image').addEventListener('click', function() {
+            var myModal = new bootstrap.Modal(document.getElementById('guide-modal'));
+            myModal.show();
+        });
+        document.getElementById('close-guide-modal').addEventListener('click', function() {
+            var myModal = new bootstrap.Modal(document.getElementById('guide-modal'));
+            myModal.hide();
+        });
+    </script> --}}
+
+    <script>
+        document.getElementById('view-guide-image').addEventListener('click', function() {
+            var myModal = new bootstrap.Modal(document.getElementById('guide-modal'));
+            myModal.show();
         });
     </script>
 @endpush
