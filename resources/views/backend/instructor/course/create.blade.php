@@ -112,8 +112,8 @@
                         </div>
 
 
-                        <div class="col-md-10">
-                            <label for="image" class="form-label">Image</label>
+                        <div class="col-md-12">
+                            <label for="image" class="form-label">Image (Course Thumbnail)</label>
                             <input type="file" class="form-control" name="image" id="Photo" accept="image/*">
                         </div>
                         <div class="col-md-2">
@@ -132,12 +132,12 @@
                             <br>
                             <span style="color: blue;">After uploading video to youtube please click on share option and
                                 then select embed
-                                option and copy the url start from http in src and paste here <a href="#!"
-                                    id="view-guide-image">click here to get
+                                option and copy the url start from http in src and paste it in the below input field. <a
+                                    href="#!" id="view-guide-image">Click here to get
                                     example screen shot of how to copy url </a>
                             </span>
                             <input type="url" class="form-control" name="video" id="youtubeLink"
-                                placeholder="https://www.youtube.com/embed/ENqRPOuHpm8?si=090-9">
+                                placeholder="https://www.youtube.com/embed/ENqRPOuHpm8?si">
 
                             <!-- Preview area -->
                             <div id="youtubePreview" style="display: none; margin-top: 10px;">
