@@ -56,6 +56,8 @@ Route::get('/dashboard', function () {
 /*  Google Route  */
 
 Route::get('/auth/google', [SocialController::class, 'googleLogin'])->name('auth.google');
+Route::get('/send-event', [ChatController::class, 'sendEvent'])->name('send.event');
+Route::get('/send-private-message', [ChatController::class, 'privateMessage'])->name('send.private.message');
 Route::get('/auth/google-callback', [SocialController::class, 'googleAuthentication'])->name('auth.google-callback');
 
 
@@ -205,7 +207,12 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
 
     Route::get('/chat', [InstructorChatController::class, 'index'])->name('chat.index');
     Route::post('/user/messages', [InstructorChatController::class, 'userMessage']);
-    Route::post('/send-message', [InstructorChatController::class, 'sendMessage']);
+    Route::post('/send-message', [InstructorChatController::class, 'sendMessage'])->name('message.send');
+
+
+    // routes/web.php
+    Route::get('/search-students', [InstructorChatController::class, 'searchStudents'])->name('search.students');
+    Route::get('/conversations/{student}', [InstructorChatController::class, 'getConversation'])->name('conversation');
 });
 
 Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user.')->group(function () {
@@ -245,7 +252,9 @@ Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user
 
     // Route::get('/send-pusher', [ChatController::class, 'sendPusher']);
 
-
+    // routes/web.php
+    Route::get('/search-instructors', [ChatController::class, 'searchInstructors'])->name('search.instructors');
+    Route::get('/conversations/{instructor}', [ChatController::class, 'getConversation'])->name('conversation');
 });
 
 /*  All Frontend Route */
