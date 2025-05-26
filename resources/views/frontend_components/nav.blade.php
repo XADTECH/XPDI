@@ -41,8 +41,12 @@
                     <a class="nav-link" href="{{ url('/about-us') }}">ABOUT</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/courses') }}">Courses</a>
+                </li>
+
                 <!-- Courses Dropdown -->
-                <li class="nav-item dropdown position-static">
+                {{-- <li class="nav-item dropdown position-static">
                     <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         COURSES
@@ -80,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link" href="#!">BLOGS</a>
@@ -123,8 +127,7 @@
                 <span class="input-group-text bg-white border-end-0">
                     <i class="bi bi-search"></i>
                 </span>
-                <input type="search" class="form-control border-start-0" placeholder="Search"
-                    aria-label="Search" />
+                <input type="search" class="form-control border-start-0" placeholder="Search" aria-label="Search" />
             </div>
         </form>
 
@@ -136,7 +139,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/about-us') }}">ABOUT</a>
             </li>
-            <li class="nav-item dropdown position-static">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/courses') }}">Courses</a>
+            </li>
+            {{-- <li class="nav-item dropdown position-static">
                 <a class="nav-link dropdown-toggle" href="#" id="scrollCoursesDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     COURSES
@@ -174,7 +180,7 @@
                         </div>
                     </div>
                 </div>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link" href="#!">BLOGS</a>
             </li>
