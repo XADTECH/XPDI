@@ -507,21 +507,21 @@
     <div class="container py-5">
         <div class="row text-orange fw-bold text-center">
             <div class="col border-end border-1 border-secondary pe-4">
-                <h1 class="counter" data-target="50">0</h1>
+                <h1 class="counter" data-target="10">0</h1>
                 <div class="text-muted fs-6 fw-normal text-dark">
                     Expert Teachers
                 </div>
             </div>
             <div class="col border-end border-1 border-secondary px-4">
-                <h1 class="counter" data-target="54252">0</h1>
+                <h1 class="counter" data-target="20">0</h1>
                 <div class="text-muted fs-6 fw-normal">Foreign Followers</div>
             </div>
             <div class="col border-end border-1 border-secondary px-4">
-                <h1 class="counter" data-target="97220">0</h1>
+                <h1 class="counter" data-target="1112">0</h1>
                 <div class="text-muted fs-6 fw-normal">Students Enrolled</div>
             </div>
             <div class="col ps-4">
-                <h1 class="counter" data-target="20">0</h1>
+                <h1 class="counter" data-target="2">0</h1>
                 <div class="text-muted fs-6 fw-normal">Years of Experience</div>
             </div>
         </div>
@@ -538,57 +538,67 @@
                         <!-- Card 1 -->
                         <div class="card p-4" style="width: 25rem">
                             <div class="d-flex align-items-center mb-2">
-                                <img src="https://i.pravatar.cc/120?img=1" class="rounded-circle me-3" width="100"
-                                    height="100" />
+                                <img src="{{ asset('frontend_assets/images/students/zeeshan_tariq.jpg') }}"
+                                    class="rounded-circle me-3" width="100" height="100" />
                                 <div class="text-start">
-                                    <h6 class="mb-0 fw-bold">Ana Vitória</h6>
+                                    <h6 class="mb-0 fw-bold">Zeeshan Tariq</h6>
                                     <small class="text-muted">Student</small>
                                 </div>
                             </div>
                             <div class="text-start text-warning mb-2 fs-5">★★★★★</div>
                             <p class="text-start small text-secondary">
-                                XPDI gave me the confidence to switch careers... XPDI gave
-                                me the confidence to switch careers... XPDI gave me the
-                                confidence to switch careers... XPDI gave me the confidence
-                                to switch careers...
+                                I recently discovered XPDI and I’m really glad I did. They provide free online courses
+                                in Computer skills, HR, and Business English, and the content is honestly impressive.
+
+                                All sessions are conducted live through Zoom, which creates a real classroom feel. The
+                                instructors are knowledgeable and supportive — they explain things clearly and are
+                                always open to questions, making the whole experience very interactive.
+
+                                It’s rare to find such high-quality education for free. If you’re looking to improve
+                                your skills without any cost, I definitely recommend XPDI.
+                                Absolutely worth it! ⭐⭐⭐⭐⭐
                             </p>
                         </div>
 
                         <!-- Card 2 -->
                         <div class="card p-4" style="width: 22rem">
                             <div class="d-flex align-items-center mb-2">
-                                <img src="https://i.pravatar.cc/120?img=2" class="rounded-circle me-3" width="100"
-                                    height="100" />
+                                <img src="{{ asset('frontend_assets/images/students/hammad-alam.jpg') }}"
+                                    class="rounded-circle me-3" width="100" height="100" />
                                 <div class="text-start">
-                                    <h6 class="mb-0 fw-bold">Carlos Silva</h6>
+                                    <h6 class="mb-0 fw-bold">Hammad Aalam</h6>
                                     <small class="text-muted">Student</small>
                                 </div>
                             </div>
                             <div class="text-start text-warning mb-2 fs-5">★★★★★</div>
                             <p class="text-start small text-secondary">
-                                The sessions were practical and insightful... XPDI gave me
-                                the confidence to switch careers... XPDI gave me the
-                                confidence to switch careers... XPDI gave me the confidence
-                                to switch careers...
+                                I am a student of XPDI Courses & i have attented 6 of their courses including ( Human
+                                Resource, English L1, English L2, English Business, Computer, Customer Services ).
+                                Alhamdulillah, i have completed all of them.
+                                1st of all i would like to thank Sir Khaled ( CEO ) of ( XAD Technologies ) & founder of
+                                ( XPDI ) for taking this great initiative. Then, i would like to say that the
+                                environment of XPDI is fantastic, The trainers are expert & qualified in their
+                                respective fields.
                             </p>
                         </div>
 
                         <!-- Card 3 -->
                         <div class="card p-4" style="width: 22rem">
                             <div class="d-flex align-items-center mb-2">
-                                <img src="https://i.pravatar.cc/120?img=3" class="rounded-circle me-3" width="100"
+                                <img src="https://i.pravatar.cc/120?img=5" class="rounded-circle me-3" width="100"
                                     height="100" />
                                 <div class="text-start">
-                                    <h6 class="mb-0 fw-bold">Maria Fernanda</h6>
+                                    <h6 class="mb-0 fw-bold">Iqra sultana</h6>
                                     <small class="text-muted">Student</small>
                                 </div>
                             </div>
                             <div class="text-start text-warning mb-2 fs-5">★★★★★</div>
                             <p class="text-start small text-secondary">
-                                Instructors really care about your progress... XPDI gave me
-                                the confidence to switch careers... XPDI gave me the
-                                confidence to switch careers... XPDI gave me the confidence
-                                to switch careers...
+                                I am the student of the first batch and I would like to sincerely thank the XPDI team
+                                and specially sir Khalid for launching such an impactful initiative. By offering their
+                                courses free of cost, they are not only making quality education accessible but also
+                                creating valuable opportunities for professional growth. Thank you so much
+                                all of you. You are all remained in my special prayers in Sha Allah.
                             </p>
                         </div>
                     </div>
@@ -600,19 +610,18 @@
                         <!-- Card 4 -->
                         <div class="card p-4" style="width: 22rem">
                             <div class="d-flex align-items-center mb-2">
-                                <img src="https://i.pravatar.cc/120?img=4" class="rounded-circle me-3" width="100"
-                                    height="100" />
+                                <img src="{{ asset('frontend_assets/images/students/m-sultan.jpg') }}"
+                                    class="rounded-circle me-3" width="100" height="100" />
                                 <div class="text-start">
-                                    <h6 class="mb-0 fw-bold">Lucas Mendes</h6>
+                                    <h6 class="mb-0 fw-bold">Muhammad Sultan</h6>
                                     <small class="text-muted">Student</small>
                                 </div>
                             </div>
                             <div class="text-start text-warning mb-2 fs-5">★★★★★</div>
                             <p class="text-start small text-secondary">
-                                XPDI gave me the confidence to switch careers... XPDI gave
-                                me the confidence to switch careers... XPDI gave me the
-                                confidence to switch careers... XPDI gave me the confidence
-                                to switch careers...
+                                I highly recommend to all that join xpdi and get start with your new skills which build
+                                this platform in very effective way. They offers the opportunity for your growth as
+                                well.
                             </p>
                         </div>
 
@@ -622,35 +631,39 @@
                                 <img src="https://i.pravatar.cc/120?img=5" class="rounded-circle me-3" width="100"
                                     height="100" />
                                 <div class="text-start">
-                                    <h6 class="mb-0 fw-bold">Julia Costa</h6>
+                                    <h6 class="mb-0 fw-bold">Farah Taj</h6>
                                     <small class="text-muted">Student</small>
                                 </div>
                             </div>
                             <div class="text-start text-warning mb-2 fs-5">★★★★★</div>
                             <p class="text-start small text-secondary">
-                                XPDI gave me the confidence to switch careers... XPDI gave
-                                me the confidence to switch careers... XPDI gave me the
-                                confidence to switch careers... XPDI gave me the confidence
-                                to switch careers...
+                                BS (Hons.) Computer Science + B. Ed
+                                HR, Customer Services, all except one
+                                It was overall great experience, learned alot from this platform, amazing lecturers,
+                                accurate timing, gained lot of confidence and knowledge
+                                Amazing platform to learn and get exposure from. Amazing and very supportive staff
+                                members. Would recommed everyone.
                             </p>
                         </div>
 
                         <!-- Card 6 -->
                         <div class="card p-4" style="width: 22rem">
                             <div class="d-flex align-items-center mb-2">
-                                <img src="https://i.pravatar.cc/120?img=6" class="rounded-circle me-3" width="100"
-                                    height="100" />
+                                <img src="{{ asset('frontend_assets/images/students/raja-ahmed.jpg') }}"
+                                    class="rounded-circle me-3" width="100" height="100" />
                                 <div class="text-start">
-                                    <h6 class="mb-0 fw-bold">Pedro Henrique</h6>
+                                    <h6 class="mb-0 fw-bold">Raja Ahmed</h6>
                                     <small class="text-muted">Student</small>
                                 </div>
                             </div>
                             <div class="text-start text-warning mb-2 fs-5">★★★★★</div>
                             <p class="text-start small text-secondary">
-                                XPDI gave me the confidence to switch careers... XPDI gave
-                                me the confidence to switch careers... XPDI gave me the
-                                confidence to switch careers... XPDI gave me the confidence
-                                to switch careers...
+                                "Discover the Power of Free Learning with XPDI! 🌟 I'm thrilled to share my experience
+                                with XPDI, an excellent platform offering top-notch online courses in computer skills,
+                                HR, and business English at no cost! Their live sessions via Zoom create an immersive
+                                learning environment, and the instructors are knowledgeable, approachable, and always
+                                ready to answer questions. If you're looking to upskill without breaking the bank, XPDI
+                                is a must-try! Highly recommended! ⭐⭐⭐⭐⭐"
                             </p>
                         </div>
                     </div>
