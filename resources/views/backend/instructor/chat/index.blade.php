@@ -354,15 +354,6 @@
                 </div>
                 <div class="chat-messages"></div>
                 <div class="chat-input">
-                    {{-- <div class="input-wrapper">
-                            <textarea rows="3" placeholder="Send a message…"></textarea>
-                            <div class="input-actions">
-                                <input type="file" id="chatFileInput" style="display:none;" accept="image/*">
-                                <button class="action-btn" id="attachFileBtn"><i class="bi bi-paperclip"></i></button>
-                                <button class="action-btn emoji-btn"><i class="bi bi-emoji-smile"></i></button>
-                                <button class="send-btn">Send <i class="bi bi-send-fill"></i></button>
-                            </div>
-                        </div> --}}
 
                     <div class="input-wrapper">
                         <!-- File preview container -->
@@ -565,46 +556,6 @@
             $('#chatFileInput').click();
         });
 
-        // $('.send-btn').on('click', function() {
-        //     const message = $('.chat-input textarea').val().trim();
-        //     const studentId = $('.contact-header').attr('data-student-id');
-
-        //     if (!studentId) return alert('Please select a student to chat with.');
-        //     if (message === '') return alert('Please enter a message.');
-
-        //     $.ajax({
-        //         url: "{{ route('instructor.message.send') }}",
-        //         method: 'POST',
-        //         data: {
-        //             _token: '{{ csrf_token() }}',
-        //             message,
-        //             student_id: studentId
-        //         },
-        //         success: function(response) {
-        //             if (response.success) {
-        //                 const safeMessage = escapeHtml(response.data.message);
-        //                 const time = new Date(response.data.created_at).toLocaleTimeString(
-        //                     [], {
-        //                         hour: '2-digit',
-        //                         minute: '2-digit',
-        //                         hour12: true
-        //                     });
-        //                 const msgHtml = `
-        //                     <div class="bubble bubble-out">
-        //                         ${safeMessage}
-        //                         <div class="bubble-meta">${time} <i class="bi bi-check2-all ms-1"></i></div>
-        //                     </div>`;
-        //                 $('.chat-messages').append(msgHtml);
-        //                 $('.chat-input textarea').val('');
-        //                 $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
-        //             }
-        //         },
-        //         error: function(xhr) {
-        //             console.error(xhr.responseText);
-        //             alert('Error sending message.');
-        //         }
-        //     });
-        // });
 
         $('.send-btn').on('click', function() {
             const message = $('.chat-input textarea').val().trim();
