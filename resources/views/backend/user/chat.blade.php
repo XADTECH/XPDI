@@ -506,8 +506,12 @@
                         let lastDate = '';
 
                         response.messages.forEach(msg => {
-                            const bubbleClass = (msg.sender_id === userId) ? 'bubble-out' :
-                                'bubble-in';
+                            // const bubbleClass = (msg.sender_id === userId) ? 'bubble-out' :
+                            //     'bubble-in';
+
+                            const bubbleClass = (Number(msg.sender_id) === Number(
+                                instructorId)) ? 'bubble-out' : 'bubble-in';
+
                             const safeMessage = escapeHtml(msg.message);
                             const msgDate = new Date(msg.created_at);
                             const time = msgDate.toLocaleTimeString([], {
@@ -664,40 +668,7 @@
         });
     </script>
 
-    {{-- <script>
-        Pusher.logToConsole = true;
-        const userId = {{ auth()->id() }};
 
-        const pusher = new Pusher('93e8957bc898481fec5a', {
-            cluster: 'ap2',
-            authEndpoint: '/broadcasting/auth',
-            auth: {
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                }
-            }
-        });
-
-        const channel = pusher.subscribe('private-chat.' + userId);
-
-        channel.bind('private.message.sent', function(data) {
-            const safeMessage = $('<div>').text(data.message.message).html();
-            const time = new Date(data.message.created_at).toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            });
-
-            const msgHtml = `
-            <div class="bubble bubble-in">
-                ${safeMessage}
-                <div class="bubble-meta">${time} <i class="bi bi-check2-all ms-1"></i></div>
-            </div>`;
-
-            $('.chat-messages').append(msgHtml);
-            $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
-        });
-    </script> --}}
     <script>
         Pusher.logToConsole = true;
         const userId = {{ auth()->id() }};

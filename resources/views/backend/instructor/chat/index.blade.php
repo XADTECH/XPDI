@@ -477,8 +477,12 @@
                                 lastDate = msgDateStr;
                             }
 
-                            const bubbleClass = (msg.sender_id === instructorId) ?
-                                'bubble-out' : 'bubble-in';
+                            // const bubbleClass = (msg.sender_id === instructorId) ?
+                            //     'bubble-out' : 'bubble-in';
+
+                            const bubbleClass = (Number(msg.sender_id) === Number(
+                                instructorId)) ? 'bubble-out' : 'bubble-in';
+
                             const safeMessage = escapeHtml(msg.message);
                             const time = dateObj.toLocaleTimeString([], {
                                 hour: '2-digit',
