@@ -32,7 +32,8 @@
              </a>
          </li>
          <li class="mb-3">
-             <a href="#" class="d-flex align-items-center px-3 py-2 text-decoration-none">
+             <a href="{{ route('instructor.review.index') }}"
+                 class="d-flex align-items-center px-3 py-2 text-decoration-none">
                  <i class="bi bi-heart me-2"></i>
                  <span>Manage Reviews</span>
              </a>

@@ -54,4 +54,10 @@ class User extends Authenticatable
     {
         return $this->last_login_at ? $this->last_login_at->diffForHumans() : 'Never';
     }
+
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'instructor_id', 'id');
+    }
 }

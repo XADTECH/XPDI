@@ -82,7 +82,7 @@
 
                     <div class="price-section" style="text-align: center;">
                         <div class="price">Free</div>
-                        <a href="{{ url('/register') }}" class="cta-button">Start Learning -></a>
+                        <a href="{{ url('/register') }}" class="cta-button">Enroll Now -></a>
                     </div>
 
                     <div class="course-includes">
@@ -515,7 +515,7 @@
                         <span><i class="bi bi-clock"></i> 5 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 7 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <button class="btn btn-learn mt-3">Enroll Now →</button>
                 </div>
             </div>
 
@@ -554,7 +554,7 @@
                         <span><i class="bi bi-clock"></i> 5 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 7 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <button class="btn btn-learn mt-3">Enroll Now →</button>
                 </div>
             </div>
 
@@ -591,7 +591,7 @@
                         <span><i class="bi bi-clock"></i> 5 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 7 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <button class="btn btn-learn mt-3">Enroll Now →</button>
                 </div>
             </div>
 
@@ -630,7 +630,7 @@
                         <span><i class="bi bi-clock"></i> 5 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 7 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <button class="btn btn-learn mt-3">Enroll Now →</button>
                 </div>
             </div>
 
@@ -668,7 +668,7 @@
                         <span><i class="bi bi-clock"></i> 5 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 7 lessons</span>
                     </div>
-                    <button class="btn btn-learn mt-3">START LEARNING →</button>
+                    <button class="btn btn-learn mt-3">Enroll Now →</button>
                 </div>
             </div>
 
@@ -706,7 +706,7 @@
                         <span><i class="bi bi-clock"></i> 5 hrs</span>
                         <span><i class="bi bi-play-circle"></i> 7 lessons</span>
                     </div>
-                    <a href="{{ url('/register') }}" class="btn btn-learn mt-3">START LEARNING →</a>
+                    <a href="{{ url('/register') }}" class="btn btn-learn mt-3">Enroll Now →</a>
                 </div>
             </div>
 

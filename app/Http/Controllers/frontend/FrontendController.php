@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseLecture;
 use App\Models\CourseSection;
+use App\Models\EnrollmentRequest;
 use App\Models\InfoBox;
 use App\Models\Order;
 use App\Models\Partner;
@@ -77,6 +78,64 @@ class FrontendController extends Controller
 
         // return view('frontend.pages.course-details.index', compact('course', 'course_content', 'total_lecture', 'all_category', 'averageRating', 'count_ratings', 'unique_student', 'total_lecture_duration', 'similarCourses', 'ratingsCount', 'unique_student', 'totalRatings', 'ratings_data', 'more_course_instructor'));
         return view('frontend.course-detail');
+    }
+
+    public function requirementsGathering($slug)
+    {
+        $course = Course::with(['category', 'subCategory', 'instructor'])
+            ->withCount('course_lecture')
+            ->where('course_name_slug', $slug)
+            ->firstOrFail();
+
+        return view('frontend.requirement_gathering', compact('course'));
+    }
+
+    public function saveRequirements(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'enrollment_purpose' => 'required|string|max:500',
+            'qualification' => 'required|string|max:255',
+            'area_of_interest' => 'nullable|string|max:255',
+            'address' => 'required|string|max:500',
+        ]);
+
+        Order::create([
+            'user_id' => Auth::id(),
+            'course_id' => $request->course_id,
+            'instructor_id' => $request->instructor_id,
+            'course_title' => $request->course_title,
+            'enrollment_purpose' => $request->enrollment_purpose,
+            'qualification' => $request->qualification,
+            'area_of_interest' => $request->area_of_interest,
+            'address' => $request->address,
+
+        ]);
+
+        if (Auth::check()) {
+            $studentId = Auth::id();
+            return redirect()->route('user.dashboard')->with('success', 'Your request has been submitted successfully!');
+        } else {
+            $studentId = 0;
+            $slug = $request->input('slug'); // make sure you pass this in the form or fetch it
+            return redirect()->route('course-details', ['slug' => $request->course_slug])->with('success', 'Your request has been submitted successfully!');
+        }
+
+
+        $studentId = Auth::id();
+
+        $alreadyEnrolled = Order::where('user_id', $studentId)
+            ->where('course_id', $course->id)
+            ->exists();
+
+        if (!$alreadyEnrolled) {
+            StudentCourse::create([
+                'user_id' => $studentId,
+                'course_id' => $course->id,
+                'instructor_id' => $course->id,
+            ]);
+        }
     }
 
     public function view($slug)
@@ -199,12 +258,110 @@ class FrontendController extends Controller
             'html' => $html,
         ]);
     }
-
     public function courses(Request $request)
     {
-        $courses = Course::with(['instructor', 'category', 'review'])->withCount('lessons')->limit(6)->get();
-        return view('frontend.courses', compact('courses'));
+        $query = Course::with(['instructor', 'category'])
+            ->withCount('lessons')
+            ->withCount('review')
+            ->withAvg('review', 'rating');
+
+        // Categories filter
+        if ($request->has('categories')) {
+            $query->whereIn('category_id', $request->categories);
+        }
+
+        // Instructors filter
+        if ($request->has('instructors')) {
+            $query->whereIn('instructor_id', $request->instructors);
+        }
+
+        // Level filter
+        if ($request->has('levels')) {
+            $query->whereIn('label', $request->levels);  // assuming label stores level like 'Beginner'
+        }
+
+        // Ratings filter
+        if ($request->has('ratings')) {
+            $query->whereHas('review', function ($q) use ($request) {
+                $q->whereIn(DB::raw('FLOOR(rating)'), $request->ratings);
+            });
+        }
+
+        // Durations filter
+        if ($request->has('durations')) {
+            $minDuration = min($request->durations);
+            $query->where('duration', '>=', $minDuration);
+        }
+
+        // Sorting by tab (Recommended, Popular, Recent)
+        if ($request->has('sort_by')) {
+            if ($request->sort_by === 'popular') {
+                $query->withCount('students')->orderByDesc('students_count');
+            } elseif ($request->sort_by === 'recent') {
+                $query->orderByDesc('created_at');
+            } else {  // Recommended (default)
+                $query->orderByDesc('review_avg_rating');
+            }
+        }
+
+        // Load more (pagination)
+        $courses = $query->paginate(4);
+
+        // Supporting data
+        $categories = Category::withCount('course')->get();
+        $instructors = User::where('role', 'instructor')->withCount('courses')->get();
+
+        $ratingCounts = [
+            5 => Course::select('courses.id')
+                ->join('reviews', 'courses.id', '=', 'reviews.course_id')
+                ->groupBy('courses.id')
+                ->havingRaw('AVG(reviews.rating) = 5')
+                ->get()
+                ->count(),
+
+            4 => Course::select('courses.id')
+                ->join('reviews', 'courses.id', '=', 'reviews.course_id')
+                ->groupBy('courses.id')
+                ->havingRaw('AVG(reviews.rating) >= 4')
+                ->get()
+                ->count(),
+
+            3 => Course::select('courses.id')
+                ->join('reviews', 'courses.id', '=', 'reviews.course_id')
+                ->groupBy('courses.id')
+                ->havingRaw('AVG(reviews.rating) >= 3')
+                ->get()
+                ->count(),
+
+            2 => Course::select('courses.id')
+                ->join('reviews', 'courses.id', '=', 'reviews.course_id')
+                ->groupBy('courses.id')
+                ->havingRaw('AVG(reviews.rating) >= 2')
+                ->get()
+                ->count(),
+
+            1 => Course::select('courses.id')
+                ->join('reviews', 'courses.id', '=', 'reviews.course_id')
+                ->groupBy('courses.id')
+                ->havingRaw('AVG(reviews.rating) >= 1')
+                ->get()
+                ->count(),
+        ];
+
+        $durationCounts = [
+            120 => Course::where('duration', '>=', 120)->count(),
+            300 => Course::where('duration', '>=', 300)->count(),
+            600 => Course::where('duration', '>=', 600)->count(),
+            960 => Course::where('duration', '>=', 960)->count(),
+        ];
+
+        if ($request->ajax()) {
+            return view('frontend.partials.course-list', compact('courses'))->render();
+        }
+
+        return view('frontend.courses', compact('courses', 'categories', 'instructors', 'ratingCounts', 'durationCounts'));
     }
+
 
 
     public function courseFilter(Request $request)

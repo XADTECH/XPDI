@@ -161,6 +161,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     Route::resource('page-setting', PageSettingController::class);
 
     Route::get('/contact/view/{id}', [AdminController::class, 'contactView'])->name('contact.view');
+    Route::get('/approve/enrollment/{id}', [AdminCourseController::class, 'approveEnrollment'])->name('approve.enrollment');
 });
 
 /*   Instructor Route  */
@@ -270,7 +271,8 @@ Route::get('/course/all', [FrontendController::class, 'courseAll']);
 
 /* ajax pagination */
 
-Route::get('/courses', [FrontendController::class, 'courses']);
+Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
+
 
 Route::get('/all-course/filter', [FrontendController::class, 'courseFilter']);
 
@@ -279,6 +281,8 @@ Route::post('/user-subscribe', [FrontendController::class, 'userSubscribe'])->na
 
 /*  frontend course route  */
 
+Route::get('/requirement-gathering/{slug}', [FrontendController::class, 'requirementsGathering'])->name('requirement-gathering');
+Route::post('/requirement_gathering', [FrontendController::class, 'saveRequirements'])->name('requirement.gathering');
 Route::get('/course-details/{slug}', [FrontendController::class, 'view'])->name('course-details');
 Route::get('/category/{slug}', [FrontendController::class, 'courseCategory'])->name('course-category');
 

@@ -113,10 +113,15 @@
                             <span><i class="bi bi-play-circle"></i> {{ $course->course_lecture_count }} lessons</span>
 
                         </div>
-                        <a href="{{ url('/course-details/' . $course->course_name_slug) }}"
-                            class="btn btn-learn mt-3">START
-                            LEARNING
-                            →</a>
+
+                        @if (Auth::check() && Auth::user()->role === 'user')
+                            <a href="{{ url('/requirement-gathering/' . $course->course_name_slug) }}"
+                                class="btn btn-learn mt-3">Enroll now →</a>
+                        @else
+                            <a href="{{ url('/course-details/' . $course->course_name_slug) }}"
+                                class="btn btn-learn mt-3">Enroll now →</a>
+                        @endif
+
                     </div>
                 </div>
             @endforeach

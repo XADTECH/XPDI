@@ -99,7 +99,7 @@ class UserController extends Controller
         // Safely get the first lecture (could be null)
         $firstLecture = $course->course_section->flatMap->lecture->first();
 
-        // dd(json_decode($firstLecture));
+        // dd(json_decode($course));
 
         // Safely build embed URL or default to null
         $videoUrl = $firstLecture?->url;

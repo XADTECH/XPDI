@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Order;
+use App\Models\StudentCourse;
 use Illuminate\Http\Request;
 
 class AdminCourseController extends Controller
@@ -78,5 +80,28 @@ class AdminCourseController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function approveEnrollment($id)
+    {
+        $order = Order::with('course', 'user')->find($id);
+
+        $studentId = isset($order->user->id) ? $order->user->id : 0;
+        $courseId = isset($order->course->id) ? $order->course->id : 0;
+
+        $alreadyEnrolled = StudentCourse::where('student_id', $studentId)
+            ->where('course_id', $courseId)
+            ->exists();
+
+        if (!$alreadyEnrolled) {
+            StudentCourse::create([
+                'student_id' => $studentId,
+                'course_id' => $courseId,
+            ]);
+        }
+
+        $order->update(['status' => 1]);
+
+        return redirect()->back()->with('success', 'Enrollment approved successfully!');
     }
 }

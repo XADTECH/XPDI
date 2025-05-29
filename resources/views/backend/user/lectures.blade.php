@@ -81,9 +81,83 @@
             }
         }
     </style>
+
+    <style>
+        .star-rating {
+            direction: rtl;
+            display: inline-flex;
+        }
+
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+        }
+
+        .star-rating input[type="radio"]:checked~label,
+        .star-rating label:hover,
+        .star-rating label:hover~label {
+            color: #ffc107;
+        }
+    </style>
+
 </head>
 
 <body>
+
+    <div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="ratingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="ratingModalLabel">Submit Your Review</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{ route('rating.store') }}">
+                        @csrf
+                        <input type="hidden" name="course_id" value="{{ $course->id }}" />
+                        <input type="hidden" name="user_id" value="{{ auth()->check() ? auth()->user()->id : '' }}" />
+                        <input type="hidden" name="instructor_id" value="{{ $course->instructor_id }}" />
+
+                        <!-- Star Rating -->
+                        <div class="mb-4 text-center">
+                            <label class="form-label d-block mb-2">Your Rating</label>
+                            <div class="star-rating justify-content-center">
+                                <input type="radio" name="rating" id="star5" value="5">
+                                <label for="star5">★</label>
+                                <input type="radio" name="rating" id="star4" value="4">
+                                <label for="star4">★</label>
+                                <input type="radio" name="rating" id="star3" value="3">
+                                <label for="star3">★</label>
+                                <input type="radio" name="rating" id="star2" value="2">
+                                <label for="star2">★</label>
+                                <input type="radio" name="rating" id="star1" value="1">
+                                <label for="star1">★</label>
+                            </div>
+                        </div>
+
+                        <!-- Comment -->
+                        <div class="mb-3">
+                            <label for="comment" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Write your feedback here..."
+                                required></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Submit Review</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid px-0">
         <div class="row g-0 flex-md-nowrap">
             <!-- Sidebar (Mobile stacked, Desktop left-aligned) -->
@@ -166,6 +240,7 @@
                         <span id="current_unit">Unit 1</span> /
                         {{ $course->course_section->flatMap->lecture->count() }}
                     </span>
+                    <button id="openRatingModal" class="btn btn-primary">Leave a Review</button>
                     <span class="text-muted" id="video_duration">
                         {{ $firstLecture?->video_duration ? $firstLecture->video_duration . ' Minutes' : 'Unknown duration' }}
                     </span>
@@ -267,7 +342,14 @@
         });
     </script>
 
+    <script>
+        const openRatingModal = document.getElementById('openRatingModal');
+        const ratingModal = new bootstrap.Modal(document.getElementById('ratingModal'));
 
+        openRatingModal.addEventListener('click', function() {
+            ratingModal.show();
+        });
+    </script>
 
 
 

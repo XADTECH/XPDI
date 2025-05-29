@@ -26,7 +26,7 @@ class InstructorOrderController extends Controller
 
     public function show(string $id)
     {
-        $order_info = Order::where('id', $id)->with('course','user', 'instructor', 'payment')->first();
+        $order_info = Order::where('id', $id)->with('course', 'user', 'instructor', 'payment')->first();
 
         return view('backend.instructor.order.show', compact('order_info'));
     }
@@ -45,7 +45,4 @@ class InstructorOrderController extends Controller
         $pdf = Pdf::loadView('pdf.order', compact('data'));
         return $pdf->download('order.pdf');
     }
-
-
-
 }

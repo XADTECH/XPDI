@@ -39,46 +39,47 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($all_reviews as $index=>$item)
-                            <tr>
-                                <td>{{$index+1}}</td>
-                                <td>
-                                    <a href="{{route('course-details', $item->course->course_name_slug)}}" target="_blank">
-                                        {{$item->course->course_name}}
-                                    </a>
+                            @foreach ($all_reviews as $index => $item)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>
+                                        <a href="{{ route('course-details', $item->course->course_name_slug) }}"
+                                            target="_blank">
+                                            {{ $item->course->course_name }}
+                                        </a>
 
-                                </td>
-                                <td>{{$item->user->name}}</td>
-                                <td>{{$item->comment}}</td>
-                                <td>
+                                    </td>
+                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->comment }}</td>
+                                    <td>
 
-                                    @php
-                                        $fullStars = floor($item->rating); // Full stars
-                                        $emptyStars = 5 - $fullStars; // Remaining stars (empty)
-                                    @endphp
+                                        @php
+                                            $fullStars = floor($item->rating); // Full stars
+                                            $emptyStars = 5 - $fullStars; // Remaining stars (empty)
+                                        @endphp
 
-                                    {{-- Display full stars --}}
-                                    @for ($i = 0; $i < $fullStars; $i++)
-                                        <i class="bx bxs-star text-warning"></i>
-                                    @endfor
+                                        {{-- Display full stars --}}
+                                        @for ($i = 0; $i < $fullStars; $i++)
+                                            <i class="bx bxs-star text-warning"></i>
+                                        @endfor
 
-                                    {{-- Display empty stars --}}
-                                    @for ($i = 0; $i < $emptyStars; $i++)
-                                        <i class="bx bxs-star text-secondary"></i>
-                                    @endfor
-                                </td>
+                                        {{-- Display empty stars --}}
+                                        @for ($i = 0; $i < $emptyStars; $i++)
+                                            <i class="bx bxs-star text-secondary"></i>
+                                        @endfor
+                                    </td>
 
 
-                                <td>
-                                    <div class="form-check form-switch" >
-                                        <input class="form-check-input" style="cursor: pointer" type="checkbox" role="switch"
-                                            id="flexSwitchCheckDefault{{ $item->id }}"
-                                            data-review-id="{{ $item->id }}"
-                                            {{ $item->status == 1 ? 'checked' : '' }}>
-                                    </div>
-                                </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" style="cursor: pointer" type="checkbox"
+                                                role="switch" id="flexSwitchCheckDefault{{ $item->id }}"
+                                                data-review-id="{{ $item->id }}"
+                                                {{ $item->status == 1 ? 'checked' : '' }}>
+                                        </div>
+                                    </td>
 
-                            </tr>
+                                </tr>
                             @endforeach
                         </tbody>
 
