@@ -75,44 +75,57 @@
                         <div class="course-img-wrapper">
                             <img src="{{ asset($course->course_image) }}" alt="Course image" />
                             <div class="course-badge">
-                                {{ isset($course->category->name) ? $course->category->name : '' }}
+                                {{ $course->category->name ?? '' }}
                             </div>
                         </div>
+
                         <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
                             <div class="d-flex align-items-center">
                                 <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
                                     class="rounded-circle me-2" width="30" height="30" alt="Author">
                                 <span class="text-dark small fw-semibold">
-                                    {{ isset($course->instructor->name) ? ucwords($course->instructor->name) : '' }}
+                                    {{ $course->instructor->name ? ucwords($course->instructor->name) : '' }}
                                 </span>
                             </div>
                             <div class="d-flex align-items-center">
-                                <div class="text-warning small me-1">★★★★★</div>
-                                <strong class="me-1 small">5.0</strong>
-                                <small class="text-muted">(170)</small>
+                                <div class="text-warning small me-1">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= round($course->review_avg_rating ?? 0))
+                                            ★
+                                        @else
+                                            ☆
+                                        @endif
+                                    @endfor
+                                </div>
+                                <strong class="me-1 small">
+                                    {{ number_format($course->review_avg_rating ?? 0, 1) }}
+                                </strong>
+                                <small class="text-muted">
+                                    ({{ $course->review_count }} Reviews)
+                                </small>
                             </div>
+
                         </div>
 
                         <h6 class="fw-bold mb-1 ps-0 ms-0">
-                            {{ isset($course->course_title) ? Str::ucfirst(Str::limit($course->course_title, 40, '...')) : '' }}
+                            {{ $course->course_title ? Str::ucfirst(Str::limit($course->course_title, 40, '...')) : '' }}
                         </h6>
 
                         <p class="text-muted small mb-2 ps-0 ms-0">
                             {!! Str::limit(strip_tags($course->description), 100, '...') !!}
-
                         </p>
+
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="badge bg-info text-dark small" style="text-transform: uppercase;">
-                                {{ isset($course->label) ? $course->label : '' }}
+                                {{ $course->label ?? '' }}
                             </span>
                             <span class="text-orange fw-bold">Free</span>
                         </div>
-                        <div class="d-flex justify-content-between text-muted mt-2 small">
-                            <span><i class="bi bi-people"></i> 10 Students</span>
-                            <span><i class="bi bi-clock"></i> {{ isset($course->duration) ? $course->duration : '' }}
-                                minutes</span>
-                            <span><i class="bi bi-play-circle"></i> {{ $course->course_lecture_count }} lessons</span>
 
+                        <div class="d-flex justify-content-between text-muted mt-2 small">
+                            <span><i class="bi bi-people"></i> {{ $course->students_count }} Students</span>
+                            <span><i class="bi bi-clock"></i> {{ $course->duration ?? '' }} minutes</span>
+                            <span><i class="bi bi-play-circle"></i> {{ $course->course_lecture_count }} Lessons</span>
                         </div>
 
                         @if (Auth::check() && Auth::user()->role === 'user')
@@ -122,10 +135,10 @@
                             <a href="{{ url('/course-details/' . $course->course_name_slug) }}"
                                 class="btn btn-learn mt-3">Enroll now →</a>
                         @endif
-
                     </div>
                 </div>
             @endforeach
+
             <!-- Repeat similar cards for Card 2 and Card 3 -->
             <!-- Just change the badge (Beginner/Medium), image URL, and text content accordingly -->
         </div>

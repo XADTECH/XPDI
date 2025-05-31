@@ -27,7 +27,23 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $popular_courses = Course::with(['instructor', 'category', 'review'])->withCount('course_lecture')->limit(6)->get();
+        // $popular_courses = Course::with(['instructor', 'category', 'review'])->withCount('course_lecture')->limit(6)->get();
+
+        // $popular_courses = Course::with(['instructor', 'category', 'review'])
+        //     ->withCount(['students', 'course_lecture']) // add both counts
+        //     ->orderByDesc('students_count') // sort by most enrolled
+        //     ->limit(6)
+        //     ->get();
+
+
+        $popular_courses = Course::with(['instructor', 'category', 'review'])
+            ->withCount(['students', 'course_lecture', 'review']) // count reviews
+            ->withAvg('review', 'rating') // average rating
+            ->orderByDesc('students_count')
+            ->limit(6)
+            ->get();
+
+
         return view('frontend.index', compact('popular_courses'));
     }
 
