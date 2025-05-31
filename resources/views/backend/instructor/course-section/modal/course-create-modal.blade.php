@@ -42,7 +42,7 @@
 
                     <div class="col-md-12 mt-3">
                         <label for="content" class="form-label">Content <span class="text-danger">*</span></label>
-                        <textarea class="form-control summernote" name="content" required>{!! $lecture->content !!}</textarea>
+                        <textarea class="form-control summernote" name="content" required> </textarea>
                         <span class="text-danger">Content field required</span>
                     </div>
 

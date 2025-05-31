@@ -98,7 +98,8 @@
                         </h6>
 
                         <p class="text-muted small mb-2 ps-0 ms-0">
-                            {!! Str::limit($course->description, 100, '...') !!}
+                            {!! Str::limit(strip_tags($course->description), 100, '...') !!}
+
                         </p>
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="badge bg-info text-dark small" style="text-transform: uppercase;">
@@ -107,7 +108,7 @@
                             <span class="text-orange fw-bold">Free</span>
                         </div>
                         <div class="d-flex justify-content-between text-muted mt-2 small">
-                            <span><i class="bi bi-people"></i> 180 Students</span>
+                            <span><i class="bi bi-people"></i> 10 Students</span>
                             <span><i class="bi bi-clock"></i> {{ isset($course->duration) ? $course->duration : '' }}
                                 minutes</span>
                             <span><i class="bi bi-play-circle"></i> {{ $course->course_lecture_count }} lessons</span>

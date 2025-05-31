@@ -182,7 +182,16 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
     Route::get('/setting', [InstructorProfileController::class, 'setting'])->name('setting');
     Route::post('/password/setting', [InstructorProfileController::class, 'passwordSetting'])->name('passwordSetting');
 
-    Route::resource('course', CourseController::class);
+    // Route::resource('course', CourseController::class);
+
+    // Route::resource('course', CourseController::class);
+    Route::get('/course', [CourseController::class, 'index'])->name('course.index');
+    Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');
+    Route::post('/course/store', [CourseController::class, 'store'])->name('course.store');
+    Route::get('/course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
+    Route::post('/course/update', [CourseController::class, 'update2'])->name('course.update');
+    Route::get('/course/destroy', [CourseController::class, 'update'])->name('course.destroy');
+
     Route::get('/get-subcategories/{categoryId}', [CategoryController::class, 'getSubcategories']);
 
     Route::resource('course-section', CourseSectionController::class);

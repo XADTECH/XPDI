@@ -11,8 +11,9 @@ body {
 }
 
 .course-header {
-    background: url("https://i.ibb.co/M578HN6s/english-british-england-language-education-concept-53876-133734.jpg")
-        no-repeat center center/cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
     color: white;
     padding: 2rem 0;
     position: relative;
@@ -222,6 +223,17 @@ body {
     margin: 2rem 0 1rem;
     font-family: Roboto;
 } */
+
+.requirement-container,
+.requirement-container * {
+    background-color: #d2d2d2 !important;
+    text-align: justify;
+}
+.course-subtitle,
+.course-subtitle * {
+    background-color: transparent !important;
+    text-align: justify;
+}
 
 .learn-list,
 .requirements-list {

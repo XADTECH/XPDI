@@ -4,7 +4,8 @@
 <!-- Main Navbar -->
 @include('frontend_components.nav')
 <!-- Course Header -->
-<header class="course-header">
+<header class="course-header" style="background-image: url('{{ url('/' . $course->course_image) }}');">
+
     <div class="container">
         <div class="row course-header-content">
             <div class="col-lg-8">
@@ -20,8 +21,10 @@
 
                 <h1 class="course-title">{{ Str::title($course->title ?? '') }}</h1>
                 <p class="course-subtitle">
-                    {{ Str::title($course->description ?? '') }}
+                    {!! html_entity_decode($course->description) !!}
                 </p>
+
+
 
                 <div class="instructor-info">
                     <img src="{{ asset($course->instructor->photo) }}" alt="Instructor" height="100" width="100"
@@ -72,11 +75,12 @@
                 <div class="card course-card">
                     <div class="video-player position-relative">
                         <!-- Embedded YouTube Video -->
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ $course->video }}"
-                            title="YouTube video player" frameborder="0"
+                        <iframe width="100%" height="315" src="{{ $course->video }}" title="YouTube video player"
+                            frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
+
 
                     </div>
 
@@ -140,13 +144,10 @@
             <!-- Requirements Section -->
             <section class="requirements-section">
                 <h3>Requirements</h3>
-                <ul class="requirements-list text-justify">
-                    <li>JavaScript + HTML + CSS fundamentals are absolutely required</li>
-                    <li>You DON'T need any React or other framework experience to take this course</li>
-                    <li>You DON'T need extensive JavaScript knowledge, but basic ES6+ knowledge is helpful</li>
-                    <li>Basic JavaScript knowledge is beneficial but not a must-have</li>
-                    <li>No pre-knowledge required in any other tools, libraries or frameworks</li>
-                </ul>
+                <div class="requirement-container" style="background-color: #D2D2D2;">
+                    {!! $course->prerequisites !!}
+                </div>
+
             </section>
         </div>
     </div>

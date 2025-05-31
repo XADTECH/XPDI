@@ -32,11 +32,13 @@
 
                     </div>
 
-                    <form class="row g-3" method="post" action="{{ route('instructor.course.update', $course->id) }}"
+                    {{-- <form class="row g-3" method="post" action="{{ route('instructor.course.update', $course->id) }}"
+                        enctype="multipart/form-data"> --}}
+                    <form class="row g-3" method="post" action="{{ route('instructor.course.update') }}"
                         enctype="multipart/form-data">
                         @csrf
 
-                        @method('PUT')
+                        @method('POST')
 
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -49,6 +51,7 @@
                         @endif
 
                         <input type="hidden" name="instructor_id" value="{{ auth()->user()->id }}" />
+                        <input type="hidden" name="course_id" value="{{ $course->id }}" />
 
 
 
@@ -110,13 +113,32 @@
                             <textarea class="form-control editor" name="description" id="description"> {{ old('description', $course->description) }} </textarea>
                         </div>
 
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <label for="video" class="form-label">Upload Video</label>
                             <input type="file" class="form-control" name="video" id="video" accept="video/*">
                             <video id="videoPreview" src="{{ $course->video ? asset($course->video) : '' }}" controls
                                 style="{{ !$course->video ? 'display:none;' : '' }}  width: 100%; margin-top: 10px;">
 
                             </video>
+                        </div> --}}
+
+                        <div class="col-md-12">
+                            <label for="youtubeLink" class="form-label"><b>Attach YouTube video course link</b></label>
+                            <br>
+                            <span style="color: blue;">After uploading video to youtube please click on share option and
+                                then select embed
+                                option and copy the url start from http in src and paste it in the below input field. <a
+                                    href="#!" id="view-guide-image">Click here to get
+                                    example screen shot of how to copy url </a>
+                            </span>
+                            <input type="url" class="form-control" name="video" id="youtubeLink"
+                                value="{{ $course->video }}">
+
+                            <!-- Preview area -->
+                            <div id="youtubePreview" style="display: none; margin-top: 10px;">
+                                <iframe width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
                         </div>
 
 
@@ -161,20 +183,6 @@
                             <label for="resources" class="form-label">Resources</label>
                             <input class="form-control" type="number" name="resources" id="resources"
                                 value="{{ old('resources', $course->resources) }}" />
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="selling_price" class="form-label">Selling Price</label>
-                            <input type="number" class="form-control" name="selling_price" id="selling_price"
-                                placeholder="Enter selling price"
-                                value="{{ old('selling_price', $course->selling_price) }}" />
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="discount_price" class="form-label">Discount Price</label>
-                            <input type="number" class="form-control" name="discount_price" id="discount_price"
-                                placeholder="Enter discount price"
-                                value="{{ old('discount_price', $course->discount_price) }}" />
                         </div>
 
                         <div class="col-md-12">
@@ -233,11 +241,6 @@
                                 <label class="form-check-label" for="flexCheckWarning">highestrated</label>
                             </div>
                         </div>
-
-
-
-
-
 
                         <div class="col-md-12">
                             <div class="d-md-flex d-grid align-items-center gap-3">

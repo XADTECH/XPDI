@@ -36,7 +36,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-       $all_categories = Category::all();
+        $all_categories = Category::all();
 
         return view('backend.instructor.course.create', compact('all_categories'));
     }
@@ -44,13 +44,13 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CourseRequest $request)
+    public function store(Request $request)
     {
 
-        $validatedData = $request->validated();
+        $validatedData = $request->all();
 
 
-        $course = $this->courseService->createCourse($validatedData, $request->file('image'), $request->file('video'));
+        $course = $this->courseService->createCourse($validatedData, $request->file('course_image'));
 
         //Manage Course Goal
         if (!empty($validatedData['course_goals'])) {
@@ -82,13 +82,14 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CourseRequest $request, string $id)
+    public function update2(Request $request)
     {
 
-        $validatedData = $request->validated();
+
+        $validatedData = $request->all();
 
 
-        $course = $this->courseService->updateCourse($validatedData, $request->file('image'), $request->file('video'), $id);
+        $course = $this->courseService->updateCourse($validatedData, $request->file('image'), $request->file('video'), $request->id);
 
         //Manage Course Goal
 

@@ -40,7 +40,9 @@
                         {{ Str::ucfirst(Str::limit($course->course_title, 40, '...')) }}
                     </h6>
                     <p class="text-muted small mb-2">
-                        {{ Str::limit($course->description, 100, '...') }}
+                        {{-- {!! Str::limit($course->description, 100, '...') !!} --}}
+                        {!! Str::limit(strip_tags($course->description), 100, '...') !!}
+
                     </p>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge bg-info text-dark small text-uppercase">

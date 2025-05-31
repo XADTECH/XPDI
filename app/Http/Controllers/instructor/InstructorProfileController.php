@@ -39,13 +39,11 @@ class InstructorProfileController extends Controller
         return view('backend.instructor.profile.setting');
     }
 
-    public function passwordSetting(ProfilePasswordUpdateRequest $request){
+    public function passwordSetting(ProfilePasswordUpdateRequest $request)
+    {
 
         // Pass data and files to the service
         $this->passwordUpdateService->updatePassword($request->validated());
         return redirect()->back()->with('success', 'Password Updated successfully');
-
     }
-
-
 }

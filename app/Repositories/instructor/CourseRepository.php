@@ -13,28 +13,23 @@ class CourseRepository
 
 
 
-    public function createCourse($data, $photo, $video)
+    public function createCourse($data, $photo)
     {
-       $course = new Course();
+        $course = new Course();
 
         // Remove 'course_goals' from the data
-       unset($data['course_goals']);
+        unset($data['course_goals']);
 
         // Handle file uploads manually
         if ($photo) {
             $data['course_image'] = $this->uploadFile($photo, 'course', $course->course_image);
         }
 
-        if ($video) {
-            $data['video'] = $this->uploadFile($video, 'video', $course->video);
-        }
-
-
-         return Course::create($data);
-
+        return Course::create($data);
     }
 
-    public function createCourseGoals($courseId, array $goals){
+    public function createCourseGoals($courseId, array $goals)
+    {
         foreach ($goals as $goal) {
             if ($goal) { // শুধু নন-নাল ভ্যালু ইনসার্ট করুন
                 CourseGoal::create([
@@ -52,7 +47,7 @@ class CourseRepository
 
     public function updateCourse($data, $photo, $video, $id)
     {
-       $course = Course::find($id);
+        $course = Course::find($id);
 
         // Remove 'course_goals' from the data
         unset($data['course_goals']);
@@ -62,18 +57,17 @@ class CourseRepository
             $data['course_image'] = $this->uploadFile($photo, 'course', $course->course_image);
         }
 
-        if ($video) {
-            $data['video'] = $this->uploadFile($video, 'video', $course->video);
-        }
+        // if ($video) {
+        //     $data['video'] = $this->uploadFile($video, 'video', $course->video);
+        // }
 
-         $course->update($data);
+        $course->update($data);
 
-         return $course->fresh();
-
-
+        return $course->fresh();
     }
 
-    public function updateCourseGoals($courseId, array $goals){
+    public function updateCourseGoals($courseId, array $goals)
+    {
 
         CourseGoal::where('course_id', $courseId)->delete();
 
@@ -87,5 +81,3 @@ class CourseRepository
         }
     }
 }
-
-

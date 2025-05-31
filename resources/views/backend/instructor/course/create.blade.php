@@ -114,7 +114,7 @@
 
                         <div class="col-md-12">
                             <label for="image" class="form-label">Image (Course Thumbnail)</label>
-                            <input type="file" class="form-control" name="image" id="Photo" accept="image/*">
+                            <input type="file" class="form-control" name="course_image" id="Photo" accept="image/*">
                         </div>
                         <div class="col-md-2">
 
@@ -186,17 +186,6 @@
                                 value="{{ old('resources') }}" />
                         </div>
 
-                        <div class="col-md-6">
-                            <label for="selling_price" class="form-label">Selling Price</label>
-                            <input type="number" class="form-control" name="selling_price" id="selling_price"
-                                placeholder="Enter selling price" value="{{ old('selling_price') }}" />
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="discount_price" class="form-label">Discount Price</label>
-                            <input type="number" class="form-control" name="discount_price" id="discount_price"
-                                placeholder="Enter discount price" value="{{ old('discount_price') }}" />
-                        </div>
 
                         <div class="col-md-12">
                             <label for="prerequisites" class="form-label">Course Prerequisites</label>

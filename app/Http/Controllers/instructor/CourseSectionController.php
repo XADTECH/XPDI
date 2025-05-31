@@ -46,8 +46,6 @@ class CourseSectionController extends Controller
     public function show(string $id)
     {
         $course = Course::find($id);
-        // $all_course_section = CourseSection::where('course_id', $id)->get();
-        // $all_lecture = CourseLecture::where('course_id', $id)->get();
 
         $course_wise_lecture = CourseSection::with('lecture')->where('course_id', $id)->get();
 

@@ -16,9 +16,9 @@ class CourseService
     }
 
 
-    public function createCourse(array $data, $photo = null, $video = null)
+    public function createCourse(array $data, $photo = null)
     {
-        return $this->courseRepository->createCourse($data, $photo, $video);
+        return $this->courseRepository->createCourse($data, $photo);
     }
 
     public function createCourseGoals($courseId, array $goals)
@@ -31,7 +31,6 @@ class CourseService
     {
 
         return $this->courseRepository->updateCourse($data, $photo, $video, $id);
-
     }
 
     public function updateCourseGoals($courseId, array $goals)
