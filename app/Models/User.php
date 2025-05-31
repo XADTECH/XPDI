@@ -60,4 +60,22 @@ class User extends Authenticatable
     {
         return $this->hasMany(Course::class, 'instructor_id', 'id');
     }
+
+
+    public function reviews()
+    {
+        return $this->hasManyThrough(Review::class, Course::class, 'instructor_id', 'course_id', 'id', 'id');
+    }
+
+    public function students()
+    {
+        return $this->hasManyThrough(
+            StudentCourse::class, // the pivot model
+            Course::class,        // through the course
+            'instructor_id',      // foreign key on Course
+            'course_id',          // foreign key on StudentCourse
+            'id',                 // local key on User (instructor)
+            'id'                  // local key on Course
+        );
+    }
 }

@@ -148,7 +148,7 @@
                         <div class="col-md-12">
                             <label for="label" class="form-label">Course Label</label>
                             <select class="form-select" name="label" id="label"
-                                data-placeholder="Choose one thing">
+                                data-placeholder="Choose one thing" required>
 
                                 <option selected disabled>select</option>
 
@@ -175,9 +175,9 @@
 
 
                         <div class="col-md-6">
-                            <label for="duration" class="form-label">Course Duration</label>
+                            <label for="duration" class="form-label">Course Duration (Minutes)</label>
                             <input type="text" class="form-control" name="duration" id="duration"
-                                value="{{ old('duration') }}">
+                                value="{{ old('duration') }}" required>
                         </div>
 
                         <div class="col-md-12">

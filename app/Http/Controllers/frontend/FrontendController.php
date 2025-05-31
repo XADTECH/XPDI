@@ -27,15 +27,6 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        // $popular_courses = Course::with(['instructor', 'category', 'review'])->withCount('course_lecture')->limit(6)->get();
-
-        // $popular_courses = Course::with(['instructor', 'category', 'review'])
-        //     ->withCount(['students', 'course_lecture']) // add both counts
-        //     ->orderByDesc('students_count') // sort by most enrolled
-        //     ->limit(6)
-        //     ->get();
-
-
         $popular_courses = Course::with(['instructor', 'category', 'review'])
             ->withCount(['students', 'course_lecture', 'review']) // count reviews
             ->withAvg('review', 'rating') // average rating
@@ -154,13 +145,68 @@ class FrontendController extends Controller
         }
     }
 
+
+
+    // public function view($slug)
+    // {
+    //     $course = Course::with([
+    //         'category',
+    //         'subCategory',
+    //         'instructor' => function ($q) {
+    //             $q->withCount(['courses', 'reviews'])
+    //                 ->withAvg('reviews', 'rating');
+    //         },
+    //         'course_section.lecture',
+    //         'reviews.user'
+    //     ])
+    //         ->withCount(['course_lecture', 'students', 'review'])
+    //         ->withAvg('review', 'rating')
+    //         ->where('course_name_slug', $slug)
+    //         ->firstOrFail();
+
+
+    //     if (Auth::check()) {
+    //         $studentId = Auth::id();
+
+    //         $alreadyEnrolled = StudentCourse::where('student_id', $studentId)
+    //             ->where('course_id', $course->id)
+    //             ->exists();
+
+    //         if (!$alreadyEnrolled) {
+    //             StudentCourse::create([
+    //                 'student_id' => $studentId,
+    //                 'course_id' => $course->id,
+    //             ]);
+    //         }
+    //     }
+
+    //     return view('frontend.course-detail', compact('course'));
+    // }
+
     public function view($slug)
     {
-        $course = Course::with(['category', 'subCategory', 'instructor'])
-            ->withCount('course_lecture')
+        $course = Course::with([
+            'category',
+            'subCategory',
+            'instructor' => function ($q) {
+                $q->withCount(['courses', 'reviews'])
+                    ->withAvg('reviews', 'rating');
+            },
+            'course_section.lecture',
+            'reviews.user'
+        ])
+            ->withCount(['course_lecture', 'students', 'review'])
+            ->withAvg('review', 'rating')
             ->where('course_name_slug', $slug)
             ->firstOrFail();
 
+        // Get other courses by the same instructor (exclude current)
+        $moreCourses = Course::withCount(['students', 'course_lecture', 'review'])
+            ->withAvg('review', 'rating')
+            ->where('instructor_id', $course->instructor->id)
+            ->where('id', '!=', $course->id)
+            ->limit(6)
+            ->get();
 
         if (Auth::check()) {
             $studentId = Auth::id();
@@ -177,8 +223,9 @@ class FrontendController extends Controller
             }
         }
 
-        return view('frontend.course-detail', compact('course'));
+        return view('frontend.course-detail', compact('course', 'moreCourses'));
     }
+
 
     public function courseCategory($slug)
     {

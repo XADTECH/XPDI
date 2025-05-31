@@ -35,10 +35,10 @@
 
                 <div class="course-stats">
                     <div class="stat-item">
-                        <span>👤 1 student</span>
+                        <span>👤 {{ $course->students_count }} student</span>
                     </div>
                     <div class="stat-item">
-                        <span>⏱️ 5.6 hours</span>
+                        <span>⏱️ {{ $course->duration . ' Minutes' }}</span>
                     </div>
                     <div class="stat-item">
                         <span>🎬 {{ $course->course_lecture_count }}</span>
@@ -48,14 +48,24 @@
 
                 <div class="action-buttons mt-3">
                     <div class="stat-item flex">
-                        <span>📚 Beginner</span>
+                        <span>📚 {{ $course->label }}</span>
 
                         <span> </span>
 
-                        <div class="star-rating">
-                            ★★★★★
+                        <div class="star-rating text-warning">
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= round($course->review_avg_rating ?? 0))
+                                    ★
+                                @else
+                                    ☆
+                                @endif
+                            @endfor
                         </div>
-                        <span>5.0 (12 ratings)</span>
+                        <span>
+                            {{ number_format($course->review_avg_rating ?? 0, 1) }}
+                            ({{ $course->review_count }} ratings)
+                        </span>
+
 
                     </div>
 
@@ -92,13 +102,13 @@
                     <div class="course-includes">
                         <p class="mb-3"><b>This course includes:</b></p>
                         <div class="include-item mb-3">
-                            <span>🎥 5.6 hours of video</span>
+                            <span>🎥 {{ $course->duration . ' Minutes' }} of video</span>
                         </div>
                         <div class="include-item mb-3">
-                            <span>📝 3 lessons</span>
+                            <span>📝 {{ $course->course_section->count() }} Sections</span>
                         </div>
                         <div class="include-item mb-3">
-                            <span>♾️ Lifetime access on mobile and TV</span>
+                            <span>📝 {{ $course->course_lecture_count }} lectures</span>
                         </div>
                         <div class="include-item mb-3">
                             <span>🏆 Certificate of completion</span>
@@ -154,7 +164,7 @@
 
 
     <!-- Course Content Section -->
-    <section class="content-section">
+    {{-- <section class="content-section">
         <h3>Course content</h3>
         <p>42 sections • 152 lectures • 25h total length</p>
 
@@ -229,121 +239,158 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
+    <section class="content-section">
+        <h3>Course content</h3>
+        <p>
+            {{ $course->course_section->count() }} sections •
+            {{ $course->course_lecture_count }} lectures •
+            {{ $course->duration . ' Minutes' ?? 'Total time not set' }}
+        </p>
+
+        <div class="accordion content-accordion" id="courseContentAccordion">
+            @foreach ($course->course_section as $index => $section)
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading{{ $index }}">
+                        <button class="accordion-button {{ $index !== 0 ? 'collapsed' : '' }}" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapse{{ $index }}"
+                            aria-expanded="{{ $index === 0 ? 'true' : 'false' }}"
+                            aria-controls="collapse{{ $index }}">
+                            {{ $section->section_title }}
+                            <span class="section-info">
+                                {{ $section->lecture->count() }} lectures
+                                <!-- Optional: total section time if available -->
+                            </span>
+                        </button>
+                    </h2>
+                    <div id="collapse{{ $index }}"
+                        class="accordion-collapse collapse {{ $index === 0 ? 'show' : '' }}"
+                        aria-labelledby="heading{{ $index }}" data-bs-parent="#courseContentAccordion">
+                        <div class="accordion-body">
+                            <ul class="lecture-list">
+                                @foreach ($section->lecture as $lecture)
+                                    <li class="lecture-item d-flex justify-content-between">
+                                        <div class="lecture-title">
+                                            <i class="far fa-play-circle lecture-icon"></i>
+                                            <span>{{ $lecture->lecture_title }}</span>
+                                        </div>
+                                        <span class="lecture-duration">
+                                            {{ $lecture->video_duration . ' Minutes' ?? '--:--' }}
+                                        </span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
 
     <div class="instructor-card md-text-center">
         <h1 class="instructor-heading">Course Instructor</h1>
 
         <div class="row">
             <div class="col-md-3">
-                <img src="{{ asset('frontend_assets/images/instructors/nabeel-javed.jpg') }}" width="300"
-                    alt="Instructor Profile" class="profile-img">
+                <img src="{{ $course->instructor->photo ? asset($course->instructor->photo) : asset('frontend_assets/images/default-instructor.jpg') }}"
+                    width="300" alt="Instructor Profile" class="profile-img">
             </div>
+
             <div class="col-md-9 mt-3 mt-md-0 ps-md-5 instructor-ratings">
-                <h2 class="instructor-name">Nabeel Javed</h2>
+                <h2 class="instructor-name">
+                    {{ isset($course->instructor->name) ? Str::title($course->instructor->name) : '' }}
+                </h2>
 
                 <div class="instructor-stats d-flex align-items-center mb-3">
                     <i class="bi bi-star-fill stat-icon"></i>
-                    <span class="stat-text">4.6 Instructor Rating</span>
+                    <span class="stat-text">
+                        {{ number_format($course->instructor->average_rating ?? 0, 1) }} Instructor Rating
+                    </span>
                 </div>
 
                 <div class="instructor-stats d-flex align-items-center mb-3">
                     <i class="bi bi-chat-left-text-fill stat-icon"></i>
-                    <span class="stat-text">2,533 Reviews</span>
+                    <span class="stat-text">
+                        {{ $course->instructor->reviews_count ?? 0 }} Reviews
+                    </span>
                 </div>
 
                 <div class="instructor-stats d-flex align-items-center mb-3">
                     <i class="bi bi-people-fill user-icon"></i>
-                    <span class="stat-text">3,267,999 Students</span>
+                    <span class="stat-text">
+                        {{ $course->instructor->students_count ?? 0 }} Students
+                    </span>
                 </div>
 
                 <div class="instructor-stats d-flex align-items-center">
                     <i class="bi bi-journal-bookmark-fill stat-icon"></i>
-                    <span class="stat-text">3 Courses</span>
+                    <span class="stat-text">
+                        {{ $course->instructor->courses_count ?? 0 }} Courses
+                    </span>
                 </div>
             </div>
-
         </div>
 
         <div class="row">
             <div class="col-12">
                 <p class="instructor-bio mt-4" style="text-align: justify;">
-                    Java Python Android and C# Expert Developer - 878K+ students Lorem Ipsum is simply dummy
-                    text of the
-                    printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                    ever
-                    since the 1500s... [trimmed for brevity]
+                    {{ $course->instructor->bio ?? 'No instructor bio available.' }}
                 </p>
             </div>
         </div>
-
     </div>
+
 
     <section class="reviews-section">
         <h1 class="reviews-title">Reviews</h1>
+
+        @php
+            $totalReviews = $course->review_count;
+            $averageRating = $course->review_avg_rating ?? 0;
+
+            $starCounts = [
+                5 => $course->reviews->where('rating', 5)->count(),
+                4 => $course->reviews->where('rating', 4)->count(),
+                3 => $course->reviews->where('rating', 3)->count(),
+                2 => $course->reviews->where('rating', 2)->count(),
+                1 => $course->reviews->where('rating', 1)->count(),
+            ];
+        @endphp
 
         <div class="row justify-content-start">
             <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="review-summary">
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="rating-number">4.7</div>
+                            <div class="rating-number">{{ number_format($averageRating, 1) }}</div>
                             <div class="star-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= round($averageRating))
+                                        <i class="bi bi-star-fill"></i>
+                                    @else
+                                        <i class="bi bi-star"></i>
+                                    @endif
+                                @endfor
                             </div>
-                            <div class="total-reviews">(578 Reviews)</div>
+                            <div class="total-reviews">({{ $totalReviews }} Reviews)</div>
                         </div>
                         <div class="col-md-8 rating-details">
-                            <div class="row align-items-center mb-2">
-                                <div class="col-2 star-count">5 stars</div>
-                                <div class="col-8">
-                                    <div class="rating-bar">
-                                        <div class="rating-fill" style="width: 85%;"></div>
+                            @foreach ($starCounts as $star => $count)
+                                @php
+                                    $percentage = $totalReviews > 0 ? ($count / $totalReviews) * 100 : 0;
+                                @endphp
+                                <div class="row align-items-center mb-2">
+                                    <div class="col-2 star-count">{{ $star }} star{{ $star > 1 ? 's' : '' }}
                                     </div>
-                                </div>
-                                <div class="col-2 count-number">488</div>
-                            </div>
-                            <div class="row align-items-center mb-2">
-                                <div class="col-2 star-count">4 stars</div>
-                                <div class="col-8">
-                                    <div class="rating-bar">
-                                        <div class="rating-fill" style="width: 15%;"></div>
+                                    <div class="col-8">
+                                        <div class="rating-bar">
+                                            <div class="rating-fill" style="width: {{ $percentage }}%;"></div>
+                                        </div>
                                     </div>
+                                    <div class="col-2 count-number">{{ $count }}</div>
                                 </div>
-                                <div class="col-2 count-number">74</div>
-                            </div>
-                            <div class="row align-items-center mb-2">
-                                <div class="col-2 star-count">3 stars</div>
-                                <div class="col-8">
-                                    <div class="rating-bar">
-                                        <div class="rating-fill" style="width: 5%;"></div>
-                                    </div>
-                                </div>
-                                <div class="col-2 count-number">14</div>
-                            </div>
-                            <div class="row align-items-center mb-2">
-                                <div class="col-2 star-count">2 stars</div>
-                                <div class="col-8">
-                                    <div class="rating-bar">
-                                        <div class="rating-fill" style="width: 0%;"></div>
-                                    </div>
-                                </div>
-                                <div class="col-2 count-number">0</div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-2 star-count">1 star</div>
-                                <div class="col-8">
-                                    <div class="rating-bar">
-                                        <div class="rating-fill" style="width: 0%;"></div>
-                                    </div>
-                                </div>
-                                <div class="col-2 count-number">0</div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -351,134 +398,38 @@
         </div>
 
         <div class="row">
-            <!-- Review Card 1 -->
-            <div class="col-md-4 mb-4">
-                <div class="review-card">
-                    <div class="d-flex align-items-center">
-                        <img src="https://i.pravatar.cc/120?img=1" alt="Ana Vitória" class="reviewer-img">
-                        <div class="ms-3">
-                            <h5 class="reviewer-name">Ana Vitória</h5>
-                            <p class="reviewer-title">Student</p>
+            @foreach ($course->reviews as $review)
+                <div class="col-md-4 mb-4">
+                    <div class="review-card">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset($review->user->photo) ?? 'https://i.pravatar.cc/120' }}"
+                                alt="{{ $review->user->name }}" class="reviewer-img">
+                            <div class="ms-3">
+                                <h5 class="reviewer-name">{{ $review->user->name }}</h5>
+                                <p class="reviewer-title">Student</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="review-stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p class="review-text">This course gave me practical tools for real-world success. The structure
-                        was perfect and helped build my confidence professionally and personally.</p>
-                </div>
-            </div>
-
-            <!-- Review Card 2 -->
-            <div class="col-md-4 mb-4">
-                <div class="review-card">
-                    <div class="d-flex align-items-center">
-                        <img src="https://i.pravatar.cc/120?img=2" alt="Liam Harper" class="reviewer-img">
-                        <div class="ms-3">
-                            <h5 class="reviewer-name">Liam Harper</h5>
-                            <p class="reviewer-title">Student</p>
+                        <div class="review-stars">
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= $review->rating)
+                                    <i class="bi bi-star-fill"></i>
+                                @else
+                                    <i class="bi bi-star"></i>
+                                @endif
+                            @endfor
                         </div>
+                        <p class="review-text">
+                            {{ $review->comment ?? 'No comment provided.' }}
+                        </p>
                     </div>
-                    <div class="review-stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p class="review-text">This course gave me practical tools for real-world success. The structure
-                        was perfect and helped build my confidence professionally and personally.</p>
                 </div>
-            </div>
-
-            <!-- Review Card 3 -->
-            <div class="col-md-4 mb-4">
-                <div class="review-card">
-                    <div class="d-flex align-items-center">
-                        <img src="https://i.pravatar.cc/120?img=3" alt="Sophie Kim" class="reviewer-img">
-                        <div class="ms-3">
-                            <h5 class="reviewer-name">Sophie Kim</h5>
-                            <p class="reviewer-title">Student</p>
-                        </div>
-                    </div>
-                    <div class="review-stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p class="review-text">This course gave me practical tools for real-world success. The structure
-                        was perfect and helped build my confidence professionally and personally.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
-
-        <div class="row">
-            <!-- Review Card 4 -->
-            <div class="col-md-4 mb-4">
-                <div class="review-card">
-                    <div class="d-flex align-items-center">
-                        <img src="https://i.pravatar.cc/120?img=4" alt="Ravi Patel" class="reviewer-img">
-                        <div class="ms-3">
-                            <h5 class="reviewer-name">Ravi Patel</h5>
-                            <p class="reviewer-title">Student</p>
-                        </div>
-                    </div>
-                    <div class="review-stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p class="review-text">This course gave me practical tools for real-world success. The structure
-                        was perfect and helped build my confidence professionally and personally.</p>
-                </div>
-            </div>
-
-            <!-- Review Card 5 -->
-            <div class="col-md-4 mb-4">
-                <div class="review-card">
-                    <div class="d-flex align-items-center">
-                        <img src="https://i.pravatar.cc/120?img=5" alt="Elena Cruz" class="reviewer-img">
-                        <div class="ms-3">
-                            <h5 class="reviewer-name">Elena Cruz</h5>
-                            <p class="reviewer-title">Student</p>
-                        </div>
-                    </div>
-                    <div class="review-stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p class="review-text">This course gave me practical tools for real-world success. The structure
-                        was perfect and helped build my confidence professionally and personally.</p>
-                </div>
-            </div>
-
-            <!-- Review Card 6 -->
-            <div class="col-md-4 mb-4">
-                <div class="review-card">
-                    <div class="d-flex align-items-center">
-                        <img src="https://i.pravatar.cc/120?img=6" alt="Mason Liu" class="reviewer-img">
-                        <div class="ms-3">
-                            <h5 class="reviewer-name">Mason Liu</h5>
-                            <p class="reviewer-title">Student</p>
-                        </div>
-                    </div>
-                    <div class="review-stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p class="review-text">This course gave me practical tools for real-world success. The structure
-                        was perfect and helped build my confidence professionally and personally.</p>
-                </div>
-            </div>
-        </div>
-
-
     </section>
 
+
     <!-- ////////////////////////////////////////////////// More Courses ////////////////////////////////////////////////////////// -->
-    <section>
+    {{-- <section>
         <h2 class="fw-bold">More Courses by Nabeel javed</h2>
         <div class="row g-4 justify-content-center mt-3">
             <!-- Card 1 -->
@@ -713,7 +664,81 @@
 
         </div>
 
+    </section> --}}
+
+    <section>
+        <h2 class="fw-bold">More Courses by {{ Str::title($course->instructor->name) }}</h2>
+        <div class="row g-4  mt-3">
+            @forelse ($moreCourses as $moreCourse)
+                <div class="col-md-6 col-lg-4">
+                    <div class="course-card p-3">
+                        <div class="course-img-wrapper">
+                            <img src="{{ asset($moreCourse->course_image) }}" alt="Course image" />
+                            <div class="course-badge">
+                                {{ $moreCourse->category->name ?? 'Uncategorized' }}
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ $course->instructor->profile_image ?? 'https://i.pravatar.cc/120' }}"
+                                    class="rounded-circle me-2" width="30" height="30" alt="Author">
+                                <span class="text-dark small fw-semibold">
+                                    {{ Str::title($course->instructor->name) }}
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="text-warning small me-1">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= round($moreCourse->review_avg_rating ?? 0))
+                                            ★
+                                        @else
+                                            ☆
+                                        @endif
+                                    @endfor
+                                </div>
+                                <strong class="me-1 small">
+                                    {{ number_format($moreCourse->review_avg_rating ?? 0, 1) }}
+                                </strong>
+                                <small class="text-muted">
+                                    ({{ $moreCourse->review_count }} reviews)
+                                </small>
+                            </div>
+                        </div>
+
+                        <h6 class="fw-bold mb-1 ps-0 ms-0">
+                            {{ Str::limit($moreCourse->course_title, 50) }}
+                        </h6>
+                        <p class="text-muted small mb-2 ps-0 ms-0">
+                            {{ Str::limit(strip_tags($moreCourse->description), 100) }}
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-info text-dark small">
+                                {{ $moreCourse->label ?? 'General' }}
+                            </span>
+                            <span class="text-orange fw-bold">
+                                {{ $moreCourse->selling_price > 0 ? 'Paid' : 'Free' }}
+                            </span>
+                        </div>
+
+                        <div class="d-flex justify-content-between text-muted mt-2 small">
+                            <span><i class="bi bi-people"></i> {{ $moreCourse->students_count }} Students</span>
+                            <span><i class="bi bi-clock"></i> {{ $moreCourse->duration ?? '—' }} hrs</span>
+                            <span><i class="bi bi-play-circle"></i> {{ $moreCourse->course_lecture_count }}
+                                lessons</span>
+                        </div>
+
+                        <a href="{{ url('/course-details/' . $moreCourse->course_name_slug) }}"
+                            class="btn btn-learn mt-3">Enroll Now →</a>
+                    </div>
+                </div>
+            @empty
+                <p class="text-muted">No other courses available by this instructor yet.</p>
+            @endforelse
+        </div>
     </section>
+
 
 </main>
 
