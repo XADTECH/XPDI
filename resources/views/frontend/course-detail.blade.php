@@ -21,7 +21,8 @@
 
                 <h1 class="course-title">{{ Str::title($course->title ?? '') }}</h1>
                 <p class="course-subtitle">
-                    {!! html_entity_decode($course->description) !!}
+                    {{-- {!! html_entity_decode($course->description) !!} --}}
+                    {!! Str::limit(strip_tags($course->description), 300, '...') !!}
                 </p>
 
 
@@ -48,7 +49,7 @@
 
                 <div class="action-buttons mt-3">
                     <div class="stat-item flex">
-                        <span>📚 {{ $course->label }}</span>
+                        <span>📚 {{ Str::ucfirst($course->label) }}</span>
 
                         <span> </span>
 
@@ -130,24 +131,15 @@
             <section class="learn-section">
                 <h3>What you will Learn?</h3>
                 <ul class="learn-list">
-                    <li>Learn React from the ground up and build beautiful React apps as an advanced React developer
-                    </li>
-                    <li>Become job-ready by learning React + modern JavaScript, plus tools like ES6+, npm, Parcel,
-                        Babel</li>
-                    <li>Learn React from a professional developer who has worked with React in a professional
-                        setting</li>
-                    <li>Build 3 beautiful, real-world projects with React, including an advanced app with multiple
-                        pages</li>
-                    <li>Learn all about React Hooks and modern React function components</li>
-                    <li>Master advanced React concepts like state management, useReducer, Context API, and
-                        performance optimization</li>
-                    <li>Learn to fetch data with React Query (useQuery, useMutation, and more)</li>
-                    <li>Understand the newest React Router from the ground up</li>
-                    <li>Learn to use Tailwind CSS in React applications</li>
-                    <li>Advanced React patterns: Compound Components, Higher-Order Components, Render Props, Context
-                        API</li>
-                    <li>Optional: Learn Redux, Redux Toolkit and thunks for fetching with Redux</li>
-                    <li>Optional: Learn Node.js, Express, and MongoDB</li>
+                    @forelse ($course->course_section as $section)
+                        @foreach ($section->lecture as $lecture)
+                            <li>
+                                {{ $lecture->lecture_title }}
+                            </li>
+                        @endforeach
+                    @empty
+                        <li>No lectures available yet for this course.</li>
+                    @endforelse
                 </ul>
             </section>
 
@@ -157,10 +149,10 @@
                 <div class="requirement-container" style="background-color: #D2D2D2;">
                     {!! $course->prerequisites !!}
                 </div>
-
             </section>
         </div>
     </div>
+
 
 
     <!-- Course Content Section -->

@@ -38,7 +38,7 @@
 </style>
 @include('frontend_components.nav')
 <!-- Course Header -->
-<header class="course-header">
+<header class="course-header" style="background-image: url('{{ url('/' . $course->course_image) }}');">
     <div class="container">
         <div class="row course-header-content">
             <div class="col-lg-8">
@@ -54,7 +54,7 @@
 
                 <h1 class="course-title">{{ Str::title($course->title ?? '') }}</h1>
                 <p class="course-subtitle">
-                    {{ Str::title($course->description ?? '') }}
+                    {!! Str::limit(strip_tags($course->description), 300, '...') !!}
                 </p>
 
                 <div class="instructor-info">
@@ -66,10 +66,10 @@
 
                 <div class="course-stats">
                     <div class="stat-item">
-                        <span>👤 1 student</span>
+                        <span>👤 {{ $course->students_count }} student</span>
                     </div>
                     <div class="stat-item">
-                        <span>⏱️ 5.6 hours</span>
+                        <span>⏱️ {{ $course->duration . ' Minutes' }}</span>
                     </div>
                     <div class="stat-item">
                         <span>🎬 {{ $course->course_lecture_count }}</span>
@@ -79,14 +79,23 @@
 
                 <div class="action-buttons mt-3">
                     <div class="stat-item flex">
-                        <span>📚 Beginner</span>
-
+                        <span>📚 {{ Str::ucfirst($course->label) }}</span>
                         <span> </span>
 
-                        <div class="star-rating">
-                            ★★★★★
+                        <div class="star-rating text-warning">
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= round($course->review_avg_rating ?? 0))
+                                    ★
+                                @else
+                                    ☆
+                                @endif
+                            @endfor
                         </div>
-                        <span>5.0 (12 ratings)</span>
+                        <span>
+                            {{ number_format($course->review_avg_rating ?? 0, 1) }}
+                            ({{ $course->review_count }} ratings)
+                        </span>
+
 
                     </div>
 

@@ -87,14 +87,57 @@ class FrontendController extends Controller
         return view('frontend.course-detail');
     }
 
+    // public function requirementsGathering($slug)
+    // {
+    //     $course = Course::with(['category', 'subCategory', 'instructor'])
+    //         ->withCount('course_lecture', 'students')
+    //         ->where('course_name_slug', $slug)
+    //         ->firstOrFail();
+
+    //     return view('frontend.requirement_gathering', compact('course'));
+    // }
+
     public function requirementsGathering($slug)
     {
-        $course = Course::with(['category', 'subCategory', 'instructor'])
-            ->withCount('course_lecture')
+        $course = Course::with([
+            'category',
+            'subCategory',
+            'instructor' => function ($q) {
+                $q->withCount(['courses', 'reviews'])
+                    ->withAvg('reviews', 'rating');
+            },
+            'course_section.lecture',
+            'reviews.user'
+        ])
+            ->withCount(['course_lecture', 'students', 'review'])
+            ->withAvg('review', 'rating')
             ->where('course_name_slug', $slug)
             ->firstOrFail();
 
-        return view('frontend.requirement_gathering', compact('course'));
+        // Get other courses by the same instructor (exclude current)
+        $moreCourses = Course::withCount(['students', 'course_lecture', 'review'])
+            ->withAvg('review', 'rating')
+            ->where('instructor_id', $course->instructor->id)
+            ->where('id', '!=', $course->id)
+            ->limit(6)
+            ->get();
+
+        if (Auth::check()) {
+            $studentId = Auth::id();
+
+            $alreadyEnrolled = StudentCourse::where('student_id', $studentId)
+                ->where('course_id', $course->id)
+                ->exists();
+
+            if (!$alreadyEnrolled) {
+                StudentCourse::create([
+                    'student_id' => $studentId,
+                    'course_id' => $course->id,
+                ]);
+            }
+        }
+
+        return view('frontend.requirement_gathering', compact('course', 'moreCourses'));
     }
 
     public function saveRequirements(Request $request)
@@ -144,44 +187,6 @@ class FrontendController extends Controller
             ]);
         }
     }
-
-
-
-    // public function view($slug)
-    // {
-    //     $course = Course::with([
-    //         'category',
-    //         'subCategory',
-    //         'instructor' => function ($q) {
-    //             $q->withCount(['courses', 'reviews'])
-    //                 ->withAvg('reviews', 'rating');
-    //         },
-    //         'course_section.lecture',
-    //         'reviews.user'
-    //     ])
-    //         ->withCount(['course_lecture', 'students', 'review'])
-    //         ->withAvg('review', 'rating')
-    //         ->where('course_name_slug', $slug)
-    //         ->firstOrFail();
-
-
-    //     if (Auth::check()) {
-    //         $studentId = Auth::id();
-
-    //         $alreadyEnrolled = StudentCourse::where('student_id', $studentId)
-    //             ->where('course_id', $course->id)
-    //             ->exists();
-
-    //         if (!$alreadyEnrolled) {
-    //             StudentCourse::create([
-    //                 'student_id' => $studentId,
-    //                 'course_id' => $course->id,
-    //             ]);
-    //         }
-    //     }
-
-    //     return view('frontend.course-detail', compact('course'));
-    // }
 
     public function view($slug)
     {
