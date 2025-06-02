@@ -60,16 +60,17 @@
             <div class="filter-section mb-2">
                 <h6 class="fw-bold mb-3">Level</h6>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="level1">
-                    <label class="form-check-label" for="level1">Beginner (1)</label>
+                    <input class="form-check-input" name="levels[]" type="checkbox" value="beginer" id="beginer">
+                    <label class="form-check-label" for="beginer">Beginner (1)</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="level2" checked>
-                    <label class="form-check-label" for="level2">Medium (0)</label>
+                    <input class="form-check-input" name="levels[]" type="checkbox" value="medium" id="medium"
+                        checked>
+                    <label class="form-check-label" for="medium">Medium (0)</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="level3">
-                    <label class="form-check-label" for="level3">Advance (1)</label>
+                    <input class="form-check-input" name="levels[]" type="checkbox" value="advance" id="advance">
+                    <label class="form-check-label" for="advance">Advance (1)</label>
                 </div>
             </div>
 
@@ -127,15 +128,14 @@
             </div>
 
             <!-- coureses_list -->
-            <div id="coureses_list">
+            <div id="coureses_list" data-page="1">
                 @include('frontend.partials.course-list')
             </div>
+
 
         </div>
     </div>
 </div>
-
-
 
 
 <script>
@@ -163,33 +163,11 @@
 
         document.getElementById('clearFilters').addEventListener('click', function() {
             document.querySelectorAll('.form-check-input').forEach(cb => cb.checked = false);
+            fetchCourses(); // reload courses with no filters
         });
     });
 </script>
 
-
-{{-- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const tabs = document.querySelectorAll(".tab");
-        const tabContents = document.querySelectorAll("#coureses_list, #popular, #recent");
-
-        tabs.forEach(tab => {
-            tab.addEventListener("click", function() {
-                const target = this.getAttribute("data-tab");
-
-                // Remove active class from all tabs
-                tabs.forEach(t => t.classList.remove("active"));
-
-                // Hide all tab contents
-                tabContents.forEach(content => content.style.display = "none");
-
-                // Show selected tab content and add active class
-                document.getElementById(target).style.display = "block";
-                this.classList.add("active");
-            });
-        });
-    });
-</script> --}}
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -212,7 +190,7 @@
                 params.append('durations[]', el.value);
             });
 
-            const activeTab = document.querySelector('.tab.active').dataset.tab;
+            const activeTab = document.querySelector('.tab.active')?.dataset.tab;
             if (activeTab) {
                 params.append('sort_by', activeTab);
             }
@@ -225,7 +203,12 @@
                 })
                 .then(res => res.text())
                 .then(html => {
-                    document.getElementById('coureses_list').innerHTML = html;
+                    if (page === 1) {
+                        document.getElementById('coureses_list').innerHTML = html;
+                    } else {
+                        document.getElementById('coureses_list').insertAdjacentHTML('beforeend', html);
+                    }
+                    document.getElementById('coureses_list').dataset.page = page;
                 });
         }
 
@@ -239,15 +222,31 @@
             tab.addEventListener('click', () => fetchCourses());
         });
 
-        // Infinite scroll
+        // Clear button: uncheck all + reload page 1
+        const clearButton = document.getElementById('clearFilters');
+        if (clearButton) {
+            clearButton.addEventListener('click', function() {
+                document.querySelectorAll('.form-check-input').forEach(cb => cb.checked = false);
+                fetchCourses(1);
+            });
+        }
+
+        // Infinite scroll: load next page when scrolled to bottom
         window.addEventListener('scroll', () => {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                const nextPage = parseInt(document.querySelector('#coureses_list').dataset.page) + 1;
-                fetchCourses(nextPage);
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+                const currentPage = parseInt(document.getElementById('coureses_list').dataset.page ||
+                    '1');
+                fetchCourses(currentPage + 1);
+            }
+
+            // Reset to page 1 if scrolled to top
+            if (window.scrollY === 0) {
+                fetchCourses(1);
             }
         });
     });
 </script>
+
 
 
 @include('frontend_components.footer')
