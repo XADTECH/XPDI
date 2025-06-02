@@ -607,7 +607,7 @@
                                 <img src="https://i.pravatar.cc/120?img=5" class="rounded-circle me-3" width="100"
                                     height="100" />
                                 <div class="text-start">
-                                    <h6 class="mb-0 fw-bold">Iqra sultana</h6>
+                                    <h6 class="mb-0 fw-bold">Iqra Sultana</h6>
                                     <small class="text-muted">Student</small>
                                 </div>
                             </div>
