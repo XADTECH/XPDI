@@ -27,7 +27,7 @@
 
                     <div style="display: flex; align-items:center; justify-content:space-between">
                         <h5 class="mb-4">Shows Mail Data</h5>
-                        <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Back</a>
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Back</a>
 
                     </div>
 
@@ -35,22 +35,25 @@
 
                         <div class="col-md-12">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="" id="name"  value="{{$contact->name}}" required>
+                            <input type="text" class="form-control" name="" id="name"
+                                value="{{ isset($contact->name) ? $contact->name : '' }}" required>
                         </div>
 
                         <div class="col-md-12">
                             <label for="name" class="form-label">Email</label>
-                            <input type="text" class="form-control" name="email" id="name"  value="{{$contact->email}}" required>
+                            <input type="text" class="form-control" name="email" id="name"
+                                value="{{ isset($contact->email) ? $contact->email : '' }}" required>
                         </div>
 
                         <div class="col-md-12">
                             <label for="name" class="form-label">Subject</label>
-                            <input type="text" class="form-control" name="subject" id="name"  value="{{$contact->subject}}" required>
+                            <input type="text" class="form-control" name="subject" id="name"
+                                value="{{ isset($contact->subject) ? $contact->subject : '' }}" required>
                         </div>
 
                         <div class="col-md-12">
                             <label for="name" class="form-label">Message</label>
-                            <textarea type="text" class="form-control" rows="8">{{$contact->message}}</textarea>
+                            <textarea type="text" class="form-control" rows="8">{{ isset($contact->message) ? $contact->message : '' }}</textarea>
                         </div>
 
 
@@ -69,5 +72,3 @@
 
     </div>
 @endsection
-
-

@@ -68,4 +68,15 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class, 'students_courses', 'course_id', 'student_id');
     }
+
+
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class, 'course_id', 'id');
+    }
+
+    public function isWishedBy($userId)
+    {
+        return $this->wishlists()->where('user_id', $userId)->exists();
+    }
 }

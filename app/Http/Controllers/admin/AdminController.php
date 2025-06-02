@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -31,31 +32,40 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        // Total Data
-        $totalData = $this->dashboardService->getTotalData();
+        $total_courses = \App\Models\Course::count();
+        $total_enrolled_students = DB::table('students_courses')->distinct('student_id')->count('student_id');
+        $total_instructors = \App\Models\User::where('role', 'instructor')->count();
+        $total_enrollment_requests = DB::table('students_courses')->where('status', 0)->count();
 
-        // Last Week Data
-        $lastWeekData = $this->dashboardService->getLastWeekData();
+        $currentYear = Carbon::now()->year;
+        $months = collect([]);
+        $studentCounts = collect([]);
 
-        // Growth Calculation
-        $order_growth = $this->dashboardService->calculateGrowth($totalData['total_order'], $lastWeekData['last_week_orders']);
-        $earn_growth = $this->dashboardService->calculateGrowth($totalData['total_earn'], $lastWeekData['last_week_earn']);
-        $student_growth = $this->dashboardService->calculateGrowth($totalData['total_students'], $lastWeekData['last_week_students']);
-        $instructor_growth = $this->dashboardService->calculateGrowth($totalData['total_instructor'], $lastWeekData['last_week_instructors']);
+        for ($month = 1; $month <= 12; $month++) {
+            $count = DB::table('students_courses')
+                ->whereYear('created_at', $currentYear)
+                ->whereMonth('created_at', $month)
+                ->distinct('student_id')
+                ->count('student_id');
 
-        // Monthly Data
-        $monthlyData = $this->dashboardService->getMonthlyData();
+            $months->push(Carbon::create()->month($month)->format('F'));
+            $studentCounts->push($count);
+        }
 
-        //Contact list
-        $contact_list = Contact::latest()->get();
+        $contact_list = User::where('role', 'instructor')->get();
 
-        return view('backend.admin.index', array_merge($totalData, $lastWeekData, [
-            'order_growth' => $order_growth,
-            'earn_growth' => $earn_growth,
-            'student_growth' => $student_growth,
-            'instructor_growth' => $instructor_growth,
-        ], $monthlyData, compact('contact_list')));
+        return view('backend.admin.index', [
+            'total_courses' => $total_courses,
+            'total_enrolled_students' => $total_enrolled_students,
+            'total_instructors' => $total_instructors,
+            'total_enrollment_requests' => $total_enrollment_requests,
+            'months' => $months,
+            'studentCounts' => $studentCounts,
+            'contact_list' => $contact_list,
+        ]);
     }
+
+
 
     /*
 

@@ -163,7 +163,7 @@
             <!-- Sidebar (Mobile stacked, Desktop left-aligned) -->
             <div class="col-12 col-md-4 col-lg-3 bg-white p-3 sidebar">
                 <!-- Back -->
-                <a href="{{ url('/user/course') }}" class="text-decoration-none text-dark d-block mb-3 fw-semibold">
+                <a href="{{ url()->previous() }}" class="text-decoration-none text-dark d-block mb-3 fw-semibold">
                     <i class="bi bi-arrow-left me-2"></i> Back
                 </a>
 

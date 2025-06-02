@@ -29,7 +29,7 @@
    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-   <script src="{{asset('frontend/assets/plugins/select2/js/select2-custom.js')}}"></script>
+   <script src="{{ asset('frontend/assets/plugins/select2/js/select2-custom.js') }}"></script>
 
    <script>
        new PerfectScrollbar(".app-container")
@@ -67,18 +67,18 @@
        });
    </script>
 
-<script>
-    $(document).ready(function() {
-        $('#fav').on('change', function(event) {
-            const [file] = event.target.files;
-            if (file) {
-                $('#favPreview')
-                    .attr('src', URL.createObjectURL(file))
-                    .css('display', 'block'); // Show the image preview
-            }
-        });
-    });
-</script>
+   <script>
+       $(document).ready(function() {
+           $('#fav').on('change', function(event) {
+               const [file] = event.target.files;
+               if (file) {
+                   $('#favPreview')
+                       .attr('src', URL.createObjectURL(file))
+                       .css('display', 'block'); // Show the image preview
+               }
+           });
+       });
+   </script>
 
 
 

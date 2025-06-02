@@ -17,24 +17,23 @@ class UserCourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    // public function index()
-    // {
-    //     $student_id = Auth::user()->id;
-
-    //     $studentCourses = StudentCourse::where('student_id', $student_id)
-    //         ->with([
-    //             'course.instructor:id,name',
-    //             'course.category:id,name',
-    //             'course' => function ($query) {
-    //                 $query->withCount('course_lecture'); // Changed from 'course_lecture' to likely 'lectures'
-    //             }
-    //         ])->get();
-
-    //     return view('backend.user.my-courses', compact('studentCourses'));
-    // }
 
     public function index()
     {
+        // $student_id = Auth::user()->id;
+
+        // $studentCourses = StudentCourse::where('student_id', $student_id)
+        //     ->with([
+        //         'course.instructor:id,name',
+        //         'course.category:id,name',
+        //         'course' => function ($query) {
+        //             $query->withCount('course_lecture');
+        //         }
+        //     ])
+        //     ->paginate(3); // ✅ Paginate 3 records per page
+
+        // return view('backend.user.my-courses', compact('studentCourses'));
+
         $student_id = Auth::user()->id;
 
         $studentCourses = StudentCourse::where('student_id', $student_id)
@@ -45,7 +44,15 @@ class UserCourseController extends Controller
                     $query->withCount('course_lecture');
                 }
             ])
-            ->paginate(3); // ✅ Paginate 3 records per page
+            ->paginate(3);
+
+        foreach ($studentCourses as $studentCourse) {
+            $course = $studentCourse->course;
+
+            $wishlist = $course->wishlists()->where('user_id', $student_id)->first();
+            $course->is_wished = $wishlist ? true : false;
+            $course->wishlist_id = $wishlist ? $wishlist->id : null;
+        }
 
         return view('backend.user.my-courses', compact('studentCourses'));
     }

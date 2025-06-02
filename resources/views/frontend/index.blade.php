@@ -4,6 +4,36 @@
 <!-- Main Navbar -->
 @include('frontend_components.nav')
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+<style>
+    .wishlist-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        /* 🛑 key part to bring it in front */
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 1.5rem !important;
+    }
+
+    .wishlist-btn i {
+        transition: transform 0.2s ease;
+    }
+
+    .wishlist-btn:hover i {
+        transform: scale(1.2);
+    }
+
+    .course-card {
+        position: relative;
+    }
+</style>
+
+
 
 <!-- Hero Section -->
 <section class="hero-section">
@@ -69,7 +99,7 @@
         <div class="row g-4 justify-content-center">
             <!-- Card 1 -->
 
-            @foreach ($popular_courses as $course)
+            {{-- @foreach ($popular_courses as $course)
                 <div class="col-md-6 col-lg-4">
                     <div class="course-card p-3">
                         <div class="course-img-wrapper">
@@ -105,6 +135,90 @@
                                 </small>
                             </div>
 
+                        </div>
+
+                        <h6 class="fw-bold mb-1 ps-0 ms-0">
+                            {{ $course->course_title ? Str::ucfirst(Str::limit($course->course_title, 40, '...')) : '' }}
+                        </h6>
+
+                        <p class="text-muted small mb-2 ps-0 ms-0">
+                            {!! Str::limit(strip_tags($course->description), 100, '...') !!}
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-info text-dark small" style="text-transform: uppercase;">
+                                {{ $course->label ?? '' }}
+                            </span>
+                            <span class="text-orange fw-bold">Free</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between text-muted mt-2 small">
+                            <span><i class="bi bi-people"></i> {{ $course->students_count }} Students</span>
+                            <span><i class="bi bi-clock"></i> {{ $course->duration ?? '' }} minutes</span>
+                            <span><i class="bi bi-play-circle"></i> {{ $course->course_lecture_count }} Lessons</span>
+                        </div>
+
+                        @if (Auth::check() && Auth::user()->role === 'user')
+                            <a href="{{ url('/requirement-gathering/' . $course->course_name_slug) }}"
+                                class="btn btn-learn mt-3">Enroll now →</a>
+                        @else
+                            <a href="{{ url('/course-details/' . $course->course_name_slug) }}"
+                                class="btn btn-learn mt-3">Enroll now →</a>
+                        @endif
+                    </div>
+                </div>
+            @endforeach --}}
+
+
+            @foreach ($popular_courses as $course)
+                <div class="col-md-6 col-lg-4">
+                    <div class="course-card p-3 position-relative">
+
+                        @if (Auth::check() && Auth::user()->role === 'user')
+                            <button class="wishlist-btn position-absolute top-0 start-0 m-2 p-0 border-0 bg-transparent"
+                                data-course-id="{{ $course->id }}" data-wishlist-id="{{ $course->wishlist_id ?? '' }}"
+                                data-is-liked="{{ $course->is_wished ? '1' : '0' }}">
+                                @if ($course->is_wished)
+                                    <i class="bi bi-heart-fill text-danger fs-4"></i> {{-- filled red heart --}}
+                                @else
+                                    <i class="bi bi-heart fs-4" style="color: red;"></i> {{-- outlined red heart --}}
+                                @endif
+                            </button>
+                        @endif
+
+
+                        <div class="course-img-wrapper">
+                            <img src="{{ asset($course->course_image) }}" alt="Course image" />
+                            <div class="course-badge">
+                                {{ $course->category->name ?? '' }}
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ asset('frontend_assets/images/Courses/sales-sell-selling-commerce-costs-profit-retail-concept.jpg') }}"
+                                    class="rounded-circle me-2" width="30" height="30" alt="Author">
+                                <span class="text-dark small fw-semibold">
+                                    {{ $course->instructor->name ? ucwords($course->instructor->name) : '' }}
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="text-warning small me-1">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= round($course->review_avg_rating ?? 0))
+                                            ★
+                                        @else
+                                            ☆
+                                        @endif
+                                    @endfor
+                                </div>
+                                <strong class="me-1 small">
+                                    {{ number_format($course->review_avg_rating ?? 0, 1) }}
+                                </strong>
+                                <small class="text-muted">
+                                    ({{ $course->review_count }} Reviews)
+                                </small>
+                            </div>
                         </div>
 
                         <h6 class="fw-bold mb-1 ps-0 ms-0">
@@ -766,6 +880,70 @@
             if (link.href.includes(`${path}`)) {
                 links.forEach((l) => l.classList.remove("active"));
                 link.classList.add("active");
+            }
+        });
+    });
+</script>
+
+{{-- ///// js for add and remove to and from wishlist in popular coruses section --}}
+
+<script>
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const courseId = this.getAttribute('data-course-id');
+            let wishlistId = this.getAttribute('data-wishlist-id');
+            const isLiked = this.getAttribute('data-is-liked') === '1';
+            const heartIcon = this.querySelector('i');
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+            const baseUrl = "{{ url('/') }}";
+
+            if (isLiked) {
+                // DELETE request
+                fetch(`${baseUrl}/user/remove/wishlist/${wishlistId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            heartIcon.classList.remove('bi-heart-fill', 'text-danger');
+                            heartIcon.classList.add('bi-heart');
+                            heartIcon.style.color = 'red';
+                            heartIcon.style.borderRadius = '50%';
+
+                            this.setAttribute('data-is-liked', '0');
+                            this.setAttribute('data-wishlist-id', '');
+                        }
+                    })
+                    .catch(err => console.error('Error:', err));
+            } else {
+                // POST request
+                fetch(`${baseUrl}/wishlist/add`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            course_id: courseId
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            heartIcon.classList.remove('bi-heart');
+                            heartIcon.classList.add('bi-heart-fill', 'text-danger');
+                            heartIcon.style.border = 'none';
+
+                            this.setAttribute('data-is-liked', '1');
+                            this.setAttribute('data-wishlist-id', data.wishlist_id);
+                        }
+                    })
+                    .catch(err => console.error('Error:', err));
             }
         });
     });

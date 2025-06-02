@@ -25,18 +25,46 @@ use Illuminate\Support\Facades\Log;
 
 class FrontendController extends Controller
 {
+    // public function index()
+    // {
+    //     $popular_courses = Course::with(['instructor', 'category', 'review'])
+    //         ->withCount(['students', 'course_lecture', 'review']) // count reviews
+    //         ->withAvg('review', 'rating') // average rating
+    //         ->orderByDesc('students_count')
+    //         ->limit(6)
+    //         ->get();
+
+
+    //     return view('frontend.index', compact('popular_courses'));
+    // }
+
     public function index()
     {
         $popular_courses = Course::with(['instructor', 'category', 'review'])
-            ->withCount(['students', 'course_lecture', 'review']) // count reviews
-            ->withAvg('review', 'rating') // average rating
+            ->withCount(['students', 'course_lecture', 'review'])
+            ->withAvg('review', 'rating')
             ->orderByDesc('students_count')
             ->limit(6)
             ->get();
 
+        if (Auth::check()) {
+            $userId = Auth::id();
+
+            foreach ($popular_courses as $course) {
+                $wishlist = $course->wishlists()->where('user_id', $userId)->first();
+                $course->is_wished = $wishlist ? true : false;
+                $course->wishlist_id = $wishlist ? $wishlist->id : null;
+            }
+        } else {
+            foreach ($popular_courses as $course) {
+                $course->is_wished = false;
+                $course->wishlist_id = null;
+            }
+        }
 
         return view('frontend.index', compact('popular_courses'));
     }
+
 
     public function view_old($slug)
     {
@@ -188,26 +216,83 @@ class FrontendController extends Controller
         }
     }
 
+    // public function view($slug)
+    // {
+    //     $course = Course::with([
+    //         'category',
+    //         'subCategory',
+    //         'instructor' => function ($q) {
+    //             $q->withCount(['courses', 'reviews'])
+    //                 ->withAvg('reviews', 'rating');
+    //         },
+    //         'course_section.lecture',
+    //         'reviews.user'
+    //     ])
+    //         ->withCount(['course_lecture', 'students', 'review'])
+    //         ->withAvg('review', 'rating')
+    //         ->where('course_name_slug', $slug)
+    //         ->firstOrFail();
+
+    //     // Get other courses by the same instructor (exclude current)
+    //     $moreCourses = Course::withCount(['students', 'course_lecture', 'review'])
+    //         ->withAvg('review', 'rating')
+    //         ->where('instructor_id', $course->instructor->id)
+    //         ->where('id', '!=', $course->id)
+    //         ->limit(6)
+    //         ->get();
+
+    //     if (Auth::check()) {
+    //         $studentId = Auth::id();
+
+    //         $alreadyEnrolled = StudentCourse::where('student_id', $studentId)
+    //             ->where('course_id', $course->id)
+    //             ->exists();
+
+    //         if (!$alreadyEnrolled) {
+    //             StudentCourse::create([
+    //                 'student_id' => $studentId,
+    //                 'course_id' => $course->id,
+    //             ]);
+    //         }
+    //     }
+
+    //     return view('frontend.course-detail', compact('course', 'moreCourses'));
+    // }
+
     public function view($slug)
     {
         $course = Course::with([
             'category',
             'subCategory',
             'instructor' => function ($q) {
-                $q->withCount(['courses', 'reviews'])
-                    ->withAvg('reviews', 'rating');
+                $q->withCount(['courses', 'reviews' => function ($query) {
+                    $query->where('reviews.status', 1);
+                }])
+                    ->withAvg(['reviews' => function ($query) {
+                        $query->where('reviews.status', 1);
+                    }], 'rating');
             },
             'course_section.lecture',
-            'reviews.user'
+            'reviews' => function ($query) {
+                $query->where('reviews.status', 1)->with('user');
+            }
         ])
-            ->withCount(['course_lecture', 'students', 'review'])
-            ->withAvg('review', 'rating')
+            ->withCount(['course_lecture', 'students', 'review' => function ($query) {
+                $query->where('reviews.status', 1);
+            }])
+            ->withAvg(['review' => function ($query) {
+                $query->where('reviews.status', 1);
+            }], 'rating')
             ->where('course_name_slug', $slug)
             ->firstOrFail();
 
         // Get other courses by the same instructor (exclude current)
-        $moreCourses = Course::withCount(['students', 'course_lecture', 'review'])
-            ->withAvg('review', 'rating')
+        $moreCourses = Course::withCount(['students', 'course_lecture', 'review' => function ($query) {
+            $query->where('reviews.status', 1);
+        }])
+            ->withAvg(['review' => function ($query) {
+                $query->where('reviews.status', 1);
+            }], 'rating')
             ->where('instructor_id', $course->instructor->id)
             ->where('id', '!=', $course->id)
             ->limit(6)
@@ -230,6 +315,7 @@ class FrontendController extends Controller
 
         return view('frontend.course-detail', compact('course', 'moreCourses'));
     }
+
 
 
     public function courseCategory($slug)
@@ -374,6 +460,23 @@ class FrontendController extends Controller
 
         // Load more (pagination)
         $courses = $query->paginate(4);
+
+        // Attach is_wished flag for each course
+        if (Auth::check()) {
+            $userId = Auth::id();
+
+            foreach ($courses as $course) {
+                $wishlist = $course->wishlists()->where('user_id', $userId)->first();
+                $course->is_wished = $wishlist ? true : false;
+                $course->wishlist_id = $wishlist ? $wishlist->id : null;
+            }
+        } else {
+            foreach ($courses as $course) {
+                $course->is_wished = false;
+                $course->wishlist_id = null;
+            }
+        }
+
 
         // Supporting data
         $categories = Category::withCount('course')->get();

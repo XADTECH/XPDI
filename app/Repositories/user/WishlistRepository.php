@@ -29,7 +29,7 @@ class WishlistRepository
                 ->exists();
 
             if (!$exists) {
-                Wishlist::create([
+                $wishlist = Wishlist::create([
                     'user_id' => $userId,
                     'course_id' => $course_id,
                 ]);
@@ -37,9 +37,11 @@ class WishlistRepository
                 $wishlistCount = Wishlist::where('user_id', $userId)->count(); // Total wishlist count
                 $wishlist_course = Wishlist::where('user_id', $userId)->with('course', 'course.user')->get();
 
+
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Wishlist added successfully',
+                    'wishlist_id' => $wishlist->id, // ✅ send this back!
                     'wishlist_count' => $wishlistCount,
                     'wishlist_course' => $wishlist_course
                 ], 200);

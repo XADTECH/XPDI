@@ -240,7 +240,7 @@ Route::middleware(['auth', 'verified', 'role:user'])->prefix('user')->name('user
 
     Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
     Route::get('/wishlist-data', [WishlistController::class, 'getWishlist']);
-    Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+    Route::delete('/remove/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 
     /* Course Controller  */
 
