@@ -247,19 +247,36 @@
         }
 
         // Infinite scroll: next page on bottom, previous page on top
+        // window.addEventListener('scroll', () => {
+        //     const currentPage = parseInt(document.getElementById('coureses_list').dataset.page || '1');
+
+        //     // Load next page when near bottom
+        //     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 350) {
+        //         fetchCourses(currentPage + 1, 'append');
+        //     }
+
+        //     // Load previous page when near top (but not exactly at top)
+        //     if (window.scrollY < 350 && currentPage > 1) {
+        //         fetchCourses(currentPage - 1, 'prepend');
+        //     }
+        // });
+
         window.addEventListener('scroll', () => {
             const currentPage = parseInt(document.getElementById('coureses_list').dataset.page || '1');
 
-            // Load next page when near bottom
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 350) {
+            const scrollTriggerPoint = document.body.offsetHeight * 0.7;
+
+            // Load next page when past 70% of the page
+            if ((window.innerHeight + window.scrollY) >= scrollTriggerPoint) {
                 fetchCourses(currentPage + 1, 'append');
             }
 
-            // Load previous page when near top (but not exactly at top)
+            // Load previous page when near top (keep the same 350px margin)
             if (window.scrollY < 350 && currentPage > 1) {
                 fetchCourses(currentPage - 1, 'prepend');
             }
         });
+
     });
 </script>
 
