@@ -23,13 +23,60 @@ class CourseController extends Controller
         $this->courseService = $courseService;
     }
 
+    // public function index(Request $request)
+    // {
+    //     $instructor_id = Auth::user()->id;
+    //     $search = $request->input('search');
 
-    public function index()
+    //     $query = Course::where('instructor_id', $instructor_id)
+    //         ->with('category', 'subCategory')
+    //         ->latest();
+
+    //     if ($search) {
+    //         $query->where('course_name', 'like', '%' . $search . '%');
+    //     }
+
+    //     $all_courses = $query->paginate(10);
+
+    //     if ($request->ajax()) {
+    //         return view('backend.instructor.course.partials.course_table', compact('all_courses'))->render();
+    //     }
+
+    //     return view('backend.instructor.course.index', compact('all_courses', 'search'));
+    // }
+
+    public function index(Request $request)
     {
         $instructor_id = Auth::user()->id;
-        $all_courses = Course::where('instructor_id', $instructor_id)->with('category', 'subCategory')->latest()->get();
-        return view('backend.instructor.course.index', compact('all_courses'));
+        $search = $request->input('search');
+
+        $query = Course::where('instructor_id', $instructor_id)
+            ->with('category', 'subCategory')
+            ->latest();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('course_name', 'like', '%' . $search . '%')
+                    ->orWhereHas('category', function ($q2) use ($search) {
+                        $q2->where('name', 'like', '%' . $search . '%');
+                    })
+                    ->orWhereHas('subCategory', function ($q3) use ($search) {
+                        $q3->where('name', 'like', '%' . $search . '%');
+                    });
+            });
+        }
+
+        $all_courses = $query->paginate(10);
+
+        if ($request->ajax()) {
+            return view('backend.instructor.course.partials.course_table', compact('all_courses'))->render();
+        }
+
+        return view('backend.instructor.course.index', compact('all_courses', 'search'));
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.

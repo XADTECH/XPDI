@@ -13,11 +13,40 @@ class AdminCourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index()
+    // {
+    //     $all_courses = Course::latest()->with('user', 'category')->get();
+    //     return view('backend.admin.course.index', compact('all_courses'));
+    // }
+
+    public function index(Request $request)
     {
-        $all_courses = Course::latest()->with('user', 'category')->get();
-        return view('backend.admin.course.index', compact('all_courses'));
+        $search = $request->input('search');
+
+        $query = Course::with('category', 'subCategory')
+            ->latest();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('course_name', 'like', '%' . $search . '%')
+                    ->orWhereHas('category', function ($q2) use ($search) {
+                        $q2->where('name', 'like', '%' . $search . '%');
+                    })
+                    ->orWhereHas('subCategory', function ($q3) use ($search) {
+                        $q3->where('name', 'like', '%' . $search . '%');
+                    });
+            });
+        }
+
+        $all_courses = $query->paginate(10);
+
+        if ($request->ajax()) {
+            return view('backend.admin.course.partials.course_table', compact('all_courses'))->render();
+        }
+
+        return view('backend.admin.course.index', compact('all_courses', 'search'));
     }
+
 
     public function courseStatus(Request $request)
     {

@@ -34,142 +34,110 @@
         </div>
 
         <hr />
+
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
 
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>SL</th>
-                                <th>Image</th>
-                                <th>Course Name</th>
-                                <th>Instructor</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Show</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($all_courses as $index => $item)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>
-                                        @if ($item->course_image)
-                                            <img src="{{ asset($item->course_image) }}" width="140" height="80" />
-                                        @else
-                                            <span>No image found</span>
-                                        @endif
-                                    </td>
-                                    <td>{{ $item->course_name }}</td>
-                                    <td>{{ $item->user->name }}</td>
-                                    <td>{{ $item->category->name }}</td>
-                                    <td>
-                                        @if($item->discount_price)
-                                        <span>${{$item->discount_price}}</span>
-                                        @else
-                                        <span>${{$item->selling_price}}</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{route('admin.course.show', $item->id )}}" class="btn btn-primary">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-                                              </svg>
+                    <input type="text" id="searchInput" value="{{ $search }}" placeholder="Search courses..."
+                        class="form-control mb-3"
+                        style="max-width: 300px; display: inline-block; position: relative; float: right;">
 
-                                        </a>
-
-                                    </td>
-                                    <td>
-                                        <div class="form-check form-switch" >
-                                            <input class="form-check-input" style="cursor: pointer" type="checkbox" role="switch"
-                                                id="flexSwitchCheckDefault{{ $item->id }}"
-                                                data-course-id="{{ $item->id }}"
-                                                {{ $item->status == 1 ? 'checked' : '' }}>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
+                    <div id="coursesTable">
+                        @include('backend.admin.course.partials.course_table')
+                    </div>
 
                 </div>
             </div>
         </div>
 
-
     </div>
 @endsection
 
 @push('scripts')
-
     <script>
-        $(document).ready(function() {
-            $('.form-check-input').on('change', function() {
-                const courseId = $(this).data('course-id'); // Get user ID
+        // ✅ Delegated binding for toggle switch
+        $(document).on('change', '.form-check-input', function() {
+            const courseId = $(this).data('course-id');
+            const status = $(this).is(':checked') ? 1 : 0;
+            const row = $(this).closest('tr');
 
-                const status = $(this).is(':checked') ? 1 : 0; // Get status (1: Active, 0: Inactive)
-                const row = $(this).closest('tr'); // Find the parent row of the checkbox
-
-                $.ajax({
-                    url: '{{ route('admin.course.status') }}',
-                    type: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}', // CSRF token for security
-                        course_id: courseId,
-                        status: status
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            // Update the status badge dynamically
-                            const statusBadge = row.find('td:nth-child(6) .badge');
-                            if (status === 1) {
-                                statusBadge
-                                    .removeClass('bg-danger')
-                                    .addClass('bg-primary')
-                                    .text('Active');
-                            } else {
-                                statusBadge
-                                    .removeClass('bg-primary')
-                                    .addClass('bg-danger')
-                                    .text('Inactive');
-                            }
-
-                            // Show SweetAlert Toast Notification
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'success',
-                                title: response.message,
-                                showConfirmButton: false,
-                                timer: 3000
-                            });
-                        } else {
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'error',
-                                title: 'Error: ' + response.message,
-                                showConfirmButton: false,
-                                timer: 3000
-                            });
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('AJAX Error:', error);
+            $.ajax({
+                url: '{{ route('admin.course.status') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    course_id: courseId,
+                    status: status
+                },
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: response.message,
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+                    } else {
                         Swal.fire({
                             toast: true,
                             position: 'top-end',
                             icon: 'error',
-                            title: 'An error occurred while updating the status.',
+                            title: 'Error: ' + response.message,
                             showConfirmButton: false,
                             timer: 3000
                         });
                     }
-                });
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', error);
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'An error occurred while updating the status.',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                }
+            });
+        });
+
+        // ✅ Search + pagination AJAX
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const tableContainer = document.getElementById('coursesTable');
+
+            function fetchCourses(page = 1, search = '') {
+                fetch(`{{ route('admin.course.index') }}?search=${search}&page=${page}`, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.text())
+                    .then(html => {
+                        tableContainer.innerHTML = html;
+                    });
+            }
+
+            // Live search on keyup
+            searchInput.addEventListener('keyup', function() {
+                const value = searchInput.value.trim();
+                fetchCourses(1, value);
+            });
+
+            // Handle AJAX pagination clicks
+            document.addEventListener('click', function(e) {
+                const link = e.target.closest('.pagination a');
+                if (link) {
+                    e.preventDefault();
+                    const url = new URL(link.href);
+                    const page = url.searchParams.get('page');
+                    const search = searchInput.value.trim();
+                    fetchCourses(page, search);
+                }
             });
         });
     </script>

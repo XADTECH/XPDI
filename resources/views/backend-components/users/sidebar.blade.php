@@ -46,7 +46,7 @@
 
 <nav id="sidebarMenu" class="sidebar collapse collapse-horizontal d-lg-flex flex-column border-end">
     <div class="logo d-flex align-items-center">
-        <img src="{{ asset('frontend_assets/images/logo-2.png') }}" alt="xPDI logo" class="img-fluid">
+        <img src="{{ asset('frontend_assets/images/logo-2.png') }}" alt="xPDI logo" class="img-fluid ps-5">
     </div>
 
     <ul class="nav flex-column px-2">

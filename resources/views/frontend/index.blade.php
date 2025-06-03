@@ -77,7 +77,7 @@
 
 
         <div class="d-flex gap-5 justify-content-center flex-wrap mt-5">
-            <a href="#" class="btn btn-info text-white fw-semibold px-4 py-2">
+            <a href="{{ url('/courses') }}" class="btn btn-info text-white fw-semibold px-4 py-2">
                 EXPLORE COURSES →
             </a>
             <a href="{{ url('/register') }}" class="btn btn-light border fw-semibold px-4 py-2">

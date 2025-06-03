@@ -2,7 +2,8 @@
  <div class="sidebar-wrapper" data-simplebar="true">
      <div class="sidebar-header">
          <div>
-             <img src="{{ asset('frontend_assets/images/logo-2.png') }}" class="logo-icon" alt="logo icon">
+             <img src="{{ asset('frontend_assets/images/logo-2.png') }}" style="width: 100% !important;"
+                 class="logo-icon ps-5" alt="logo icon">
          </div>
          {{-- <div>
              <h4 class="logo-text">Admin</h4>
@@ -87,72 +88,6 @@
                  <li class="{{ setSidebar(['admin.order*']) }}">
                      <a href="{{ route('admin.order.index') }}"><i class='bx bx-radio-circle'></i>All Requests</a>
                  </li>
-
-
-             </ul>
-         </li>
-
-         <li>
-             <a href="javascript:;" class="has-arrow">
-                 <div class="parent-icon"><i class="bx bx-category"></i>
-                 </div>
-                 <div class="menu-title">Configuration Setting</div>
-             </a>
-             <ul>
-                 <li> <a href="{{ route('admin.mailSetting') }}"><i class='bx bx-radio-circle'></i>Mail Setting</a>
-                 </li>
-
-                 <li>
-                     <a href="{{ route('admin.stripeSetting') }}"><i class='bx bx-radio-circle'></i>Stripe Setting</a>
-                 </li>
-
-                 <li>
-                     <a href="{{ route('admin.googleSetting ') }}"><i class='bx bx-radio-circle'></i>Google Setting</a>
-                 </li>
-
-
-
-
-
-             </ul>
-         </li>
-
-
-         <li
-             class="{{ setSidebar(['admin.slider*', 'admin.info*', 'admin.partner*', 'admin.subscriber*', 'admin.site-setting*', 'admin.page-setting*']) }}">
-             <a href="javascript:;" class="has-arrow">
-                 <div class="parent-icon"><i class="bx bx-category"></i>
-                 </div>
-                 <div class="menu-title">Application Settings</div>
-             </a>
-             <ul>
-                 <li class="{{ setSidebar(['admin.slider*']) }}">
-                     <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>Manage Slider</a>
-                 </li>
-
-                 <li class="{{ setSidebar(['admin.info*']) }}">
-                     <a href="{{ route('admin.info.index') }}"><i class='bx bx-radio-circle'></i>Manage Info</a>
-                 </li>
-
-                 <li class="{{ setSidebar(['admin.partner*']) }}">
-                     <a href="{{ route('admin.partner.index') }}"><i class='bx bx-radio-circle'></i>Manage Partner</a>
-                 </li>
-
-                 <li class="{{ setSidebar(['admin.subscriber*']) }}">
-                     <a href="{{ route('admin.subscriber.index') }}"><i class='bx bx-radio-circle'></i>Manage
-                         Subscriber</a>
-                 </li>
-
-                 <li class="{{ setSidebar(['admin.site-setting*']) }}">
-                     <a href="{{ route('admin.site-setting.index') }}"><i class='bx bx-radio-circle'></i>Site
-                         Settings</a>
-                 </li>
-
-                 <li class="{{ setSidebar(['admin.page-setting*']) }}">
-                     <a href="{{ route('admin.page-setting.index') }}"><i class='bx bx-radio-circle'></i>Page
-                         Settings</a>
-                 </li>
-
 
 
              </ul>
