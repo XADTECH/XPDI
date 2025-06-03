@@ -171,7 +171,13 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        function fetchCourses(page = 1) {
+
+        let isLoading = false; // lock to prevent multiple triggers
+
+        function fetchCourses(page = 1, mode = 'append') {
+            if (isLoading) return;
+            isLoading = true;
+
             let params = new URLSearchParams();
 
             document.querySelectorAll('input[name="categories[]"]:checked').forEach(el => {
@@ -203,12 +209,21 @@
                 })
                 .then(res => res.text())
                 .then(html => {
-                    if (page === 1) {
-                        document.getElementById('coureses_list').innerHTML = html;
+                    const listEl = document.getElementById('coureses_list');
+                    if (page === 1 && mode !== 'prepend') {
+                        listEl.innerHTML = html;
+                    } else if (mode === 'prepend') {
+                        const oldHeight = listEl.scrollHeight;
+                        listEl.insertAdjacentHTML('afterbegin', html);
+                        // Adjust scroll position to avoid jump
+                        window.scrollTo(0, window.scrollY + (listEl.scrollHeight - oldHeight));
                     } else {
-                        document.getElementById('coureses_list').insertAdjacentHTML('beforeend', html);
+                        listEl.insertAdjacentHTML('beforeend', html);
                     }
-                    document.getElementById('coureses_list').dataset.page = page;
+                    listEl.dataset.page = page;
+                })
+                .finally(() => {
+                    isLoading = false;
                 });
         }
 
@@ -231,17 +246,18 @@
             });
         }
 
-        // Infinite scroll: load next page when scrolled to bottom
+        // Infinite scroll: next page on bottom, previous page on top
         window.addEventListener('scroll', () => {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
-                const currentPage = parseInt(document.getElementById('coureses_list').dataset.page ||
-                    '1');
-                fetchCourses(currentPage + 1);
+            const currentPage = parseInt(document.getElementById('coureses_list').dataset.page || '1');
+
+            // Load next page when near bottom
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 350) {
+                fetchCourses(currentPage + 1, 'append');
             }
 
-            // Reset to page 1 if scrolled to top
-            if (window.scrollY === 0) {
-                fetchCourses(1);
+            // Load previous page when near top (but not exactly at top)
+            if (window.scrollY < 350 && currentPage > 1) {
+                fetchCourses(currentPage - 1, 'prepend');
             }
         });
     });
